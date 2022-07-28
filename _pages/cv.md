@@ -11,25 +11,32 @@ redirect_from:
 
 Education
 ======
-University of California, Los Angeles, Department of Mathematics
+* University of California, Los Angeles, Department of Mathematics
   * Ph.D. in Mathematics (2012)
   * Dissertation: Image and Signal Processing with Non-Gaussian Noise: EM-Type Algorithms and Adaptive Outlier Pursuit
   * Advisor: Professor Luminita A. Vese
 
-University of Science and Technology of China, Department of Mathematics
+* University of Science and Technology of China, Department of Mathematics
   * M.S. in Mathematics (2008)
   * B.S. in Mathematics (2005)
 
 Work experience
 ======
-Michigan State University, Department of Computational Mathematics, Science and Engineering; Department of Mathematics
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Michigan State University, Department of Computational Mathematics, Science and Engineering; Department of Mathematics
+  * Associate Professor (2021-present)
+  * Assistant Professor (2015 - 2021)
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* University of California, Los Angeles, Department of Mathematics
+  * Assistant Adjunct Professor (2014 - 2015)
+  * Postdoctoral Scholar (2013 - 2014)
+  * Mentor: Professor [Wotao Yin](https://wotaoyin.mathopt.com/)
+
+* Rice University, Department of Computational and Applied Mathematics
+  * Postdoc Fellow (2012 - 2013)
+  * Mentor: Professor [Wotao Yin](https://wotaoyin.mathopt.com/)
+
+
+
+
   
 
