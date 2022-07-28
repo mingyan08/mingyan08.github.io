@@ -23,7 +23,7 @@ Education
 Work experience
 ======
 * Michigan State University, Department of Computational Mathematics, Science and Engineering
-* Michigan State University, Department of Mathematics
+  Michigan State University, Department of Mathematics
   * Associate Professor (2021-present)
   * Assistant Professor (2015 - 2021)
 
