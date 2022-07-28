@@ -82,8 +82,8 @@ analytics:
 author:
   name             : "Ming Yan"
   avatar           : "profile.png"
-  bio              : "Associate Professor"
-  location         : "Location"
+  bio              : "Associate Professor at the Chinese University of Hong Kong, Shenzhen"
+  location         : "Shenzhen, China"
   employer         :
   pubmed           : 
   googlescholar    : "http://yourfullgooglescholarurl.com"
@@ -109,7 +109,7 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          :
   vine             :
   weibo            :
   xing             :
