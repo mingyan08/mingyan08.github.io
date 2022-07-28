@@ -39,9 +39,9 @@ Previous undergraduate students (chronological order)
 * Andrew Schmidt (2016-2018, MSU): PhD in Operations Research at Columbia University
 * Tyler Will (2016-2018, MSU)
 * Katja Oklejas (spring 2017, MSU)
-* Qi Lyu (spring 2017, Xi'an Jiaotong University): MS in CMSE at Michigan State University 
+* Qi Lyu (spring 2017, Xi'an Jiaotong University): MS in Computational Mathematics, Science and Engineering at Michigan State University 
 * Zhenru Wang (spring 2017, MSU)
-* Katrina Gensterblum (summer 2017, MSU): MS in Data Science at Michigan State University
+* Katrina Gensterblum (summer 2017, MSU): MS in Computational Mathematics, Science and Engineering at Michigan State University
 * Huimin Hu (spring 2018, Xi'an Jiaotong University)
 * Joseph Stafford (spring 2018, MSU)
 * Chenyu Zhou (fall 2019, Guangzhou University)
