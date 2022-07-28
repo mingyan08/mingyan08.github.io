@@ -11,7 +11,7 @@ redirect_from:
 
 Education
 ======
-* University of California, Los Angeles, Department of Mathematics
+University of California, Los Angeles, Department of Mathematics
   * Ph.D. in Mathematics (2012)
   * Dissertation: Image and Signal Processing with Non-Gaussian Noise: EM-Type Algorithms and Adaptive Outlier Pursuit
   * Advisor: Professor Luminita A. Vese
