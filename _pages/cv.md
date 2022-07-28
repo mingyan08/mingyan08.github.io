@@ -15,9 +15,10 @@ University of California, Los Angeles, Department of Mathematics
   * Ph.D. in Mathematics (2012)
   * Dissertation: Image and Signal Processing with Non-Gaussian Noise: EM-Type Algorithms and Adaptive Outlier Pursuit
   * Advisor: Professor Luminita A. Vese
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+
+University of Science and Technology of China, Department of Mathematics
+  * M.S. in Mathematics (2008)
+  * B.S. in Mathematics (2005)
 
 Work experience
 ======
