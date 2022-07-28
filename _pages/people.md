@@ -31,7 +31,7 @@ Previous post-docs and visitors (chronological order)
 Previous undergraduate students (chronological order)
 =====
 * Jerry Luo (summer 2014, UCLA): PhD in Mathematics at Arizona State University
-* Kayla Shapiro (summer 2014, UC Berkeley)
+* Kayla Shapiro (summer 2014, UC Berkeley): MS in Computer Science at Imperial College London
 * Hao-Jun Michael Shi (summer 2014, UCLA): PhD in Industrial Engineering and Management Sciences at Northwestern University
 * Qi Yang (summer 2014, University of Southern California): PhD in Data Science and MIT
 * Kan Zhu (summer 2014, UCLA): MS in Computer Science at Columbia University
