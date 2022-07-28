@@ -47,7 +47,7 @@ Previous undergraduate students (chronological order)
 * Chenyu Zhou (fall 2019, Guangzhou University)
 * Jamie Schmidt (fall 2019, MSU)
 * Benjamin Tuckey (fall 2019, MSU)
-* Xingyu Yang (2020-2021, MSU)
+* Xingyu Yang (2020-2021, MSU): MS in Data Science at George Washington University
 * Evan Bell (spring 2021, MSU)
 * Wenyu Shang (spring 2021, MSU)
 * Chijin Liu (spring 2021, Xi'an Jiaotong University)
