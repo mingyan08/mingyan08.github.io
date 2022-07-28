@@ -9,6 +9,9 @@ author_profile: true
 
 Previous Teaching
 ======
+* The Chinese University of Hong Kong, Shenzhen
+  * MAT 3007: Optimization, Summer 2022 
+
 * Michigan State University
   * CMSE 202: Computational Modeling Tools and Techniques, Spring 2017
   * CMSE 382: Optimization Methods in Data Science, Fall 2021
