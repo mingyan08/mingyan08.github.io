@@ -22,8 +22,10 @@ Education
 
 Work experience
 ======
-* Michigan State University, Department of Computational Mathematics, Science and Engineering
-  Michigan State University, Department of Mathematics
+* The Chinese University of Hong Kong, Shenzhen, School of Data Science
+  * Associate Professor (2022-present)
+
+* Michigan State University, Department of Computational Mathematics, Science and Engineering; Department of Mathematics
   * Associate Professor (2021-present)
   * Assistant Professor (2015 - 2021)
 
