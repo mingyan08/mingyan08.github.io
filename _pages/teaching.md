@@ -21,7 +21,7 @@ Previous Teaching
   * MTH 132: Calculus I, Spring 2018
   * MTH 314: Matrix Algebra I, Spring 2016, Spring 2019, Spring 2020, Fall 2021
 
-* University of California, Los Angeles:
+* University of California, Los Angeles
   * Math 3B: Calculus for Life Sciences Students, Fall 2014
   * Math 115A: Linear Algebra, Winter 2015
   * Math 142: Mathematical Modeling, Spring 2015
