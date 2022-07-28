@@ -13,4 +13,4 @@ Primal-dual algorithms
 
 Decentralized consensus algorithms
 ===== 
-* Decentralized consensus algorithms: DGD, EXTRA/PG-EXTRA, NIDS
+* [Decentralized consensus algorithms](http://mingyan08.github.io/Slides/Decentralized.pdf): DGD, EXTRA/PG-EXTRA, NIDS
