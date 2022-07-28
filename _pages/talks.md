@@ -9,7 +9,7 @@ author_profile: true
 
 Primal-dual algorithms
 =====
-* [Primal-dual algorithms](Slides/PD3O.pdf): PD3O, Condat-Vu, Chambolle-Pock, PDFP, PAPC, AFBA, FDFP2O.
+* [Primal-dual algorithms](http://academicpages.github.io/Slides/PD3O.pdf): PD3O, Condat-Vu, Chambolle-Pock, PDFP, PAPC, AFBA, FDFP2O.
 
 Decentralized consensus algorithms
 ===== 
