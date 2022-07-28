@@ -24,8 +24,9 @@ Previous graduate student
 
 Previous post-docs and visitors (chronological order)
 =====
-* Zhi Li (Postdoc 2016-2019): first job–Assistant Professor at East China Normal University
+* Zhi Li (Postdoc 2016-2019): First job–Assistant Professor at East China Normal University
 * Jun Feng (Visitor 2018, Chengdu University of Technology)
+* Zhishen Huang (Postdoc 2021-2022): First job--Research Scientist at Amazon
 
 Previous undergraduate students (chronological order)
 =====
