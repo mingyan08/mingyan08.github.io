@@ -22,7 +22,7 @@ Previous graduate student
 * Xiaorui Liu (PhD 2022, joint with Jiliang Tang (CSE)): First job--Assistant Professor at North Carolina State University
 
 
-Previous post-docs and visitors (chronological order)
+Previous postdocs and visitors (chronological order)
 =====
 * Zhi Li (Postdoc 2016-2019): First job–Assistant Professor at East China Normal University
 * Jun Feng (Visitor 2018, Chengdu University of Technology)
@@ -33,7 +33,7 @@ Previous undergraduate students (chronological order)
 * Jerry Luo (summer 2014, UCLA): PhD in Mathematics at Arizona State University
 * Kayla Shapiro (summer 2014, UC Berkeley): MS in Computer Science at Imperial College London
 * Hao-Jun Michael Shi (summer 2014, UCLA): PhD in Industrial Engineering and Management Sciences at Northwestern University
-* Qi Yang (summer 2014, University of Southern California): PhD in Data Science and MIT
+* Qi Yang (summer 2014, University of Southern California): PhD in Data Science at MIT
 * Kan Zhu (summer 2014, UCLA): MS in Computer Science at Columbia University
 * Siqi Zhang (summer 2016, South University of Science and Technology of China): PhD in Industrial Engineering at UIUC
 * Andrew Schmidt (2016-2018, MSU): PhD in Operations Research at Columbia University
@@ -49,5 +49,5 @@ Previous undergraduate students (chronological order)
 * Benjamin Tuckey (fall 2019, MSU)
 * Xingyu Yang (2020-2021, MSU): MS in Data Science at George Washington University
 * Evan Bell (spring 2021, MSU)
-* Wenyu Shang (spring 2021, MSU)
+* Wenyu Shang (spring 2021, MSU): MS in Data Science at University of Southern California
 * Chijin Liu (spring 2021, Xi'an Jiaotong University)
