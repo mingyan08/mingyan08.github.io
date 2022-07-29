@@ -101,12 +101,13 @@ You can also find my recent articles on [my Google Scholar profile](https://scho
 
 - M. Yan, [http://dx.doi.org/10.1080/00207160.2012.709933 Convergence analysis of SART: optimization and statistics], International Journal of Computer Mathematics, 90 (2013), 30-47. ([Papers/PDF/IJCM2013.pdf pdf]) [http://dblp.uni-trier.de/rec/bibtex/journals/ijcm/Yan13 BibTex]
 
-=== 2012
+2012
+===
 - J. Chen, J. Cong, L. Vese, J. Villasenor, M. Yan and Y. Zou, [A hybrid architecture for compressive sensing 3D CT reconstruction](http://dx.doi.org/10.1109/JETCAS.2012.2221530) IEEE Journal on Emerging and Selected Topics in Circuits and Systems, 2 (2012), 616-625. [BibTex](http://dblp.uni-trier.de/rec/bibtex/journals/esticas/ChenCVVYZ12)
 
-- M. Yan, Y. Yang and S. Osher, [Robust 1-bit compressive sensing using adaptive outlier pursuit](http://dx.doi.org/10.1109/TSP.2012.2193397) IEEE Transactions on Signal Processing, 60 (2012), 3868-3875. ([Papers/PDF/TSP2012.pdf pdf]) ([http://github.com/mingyan08/aop Code]) [http://dblp.uni-trier.de/rec/bibtex/journals/tsp/YanYO12 BibTex]
+- M. Yan, Y. Yang and S. Osher, [Robust 1-bit compressive sensing using adaptive outlier pursuit](http://dx.doi.org/10.1109/TSP.2012.2193397) IEEE Transactions on Signal Processing, 60 (2012), 3868-3875. ([Code](http://github.com/mingyan08/aop)) [BibTex](http://dblp.uni-trier.de/rec/bibtex/journals/tsp/YanYO12)
 
-- J. Chen, J. Cong, M. Yan and Y. Zou, [http://dx.doi.org/10.1145/2145694.2145721 FPGA-accelerated 3D reconstruction using compressive sensing], In: Proceeding of the ACM/SIGDA International Symposium on Field Programmable Gate Arrays (FPGA 2012), 163-166. [http://dblp.uni-trier.de/rec/bibtex/conf/fpga/ChenCYZ12 BibTex]
+- J. Chen, J. Cong, M. Yan and Y. Zou, [FPGA-accelerated 3D reconstruction using compressive sensing](http://dx.doi.org/10.1145/2145694.2145721), In: Proceeding of the ACM/SIGDA International Symposium on Field Programmable Gate Arrays (FPGA 2012), 163-166. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/fpga/ChenCYZ12)
 
 201
 == 
