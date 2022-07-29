@@ -82,7 +82,7 @@ You can also find my recent articles on [my Google Scholar profile](https://scho
 
 - H. Zhang, M. Yan and W. Yin, [One condition for solution uniqueness and robustness of both l1-synthesis and l1-analysis minimizations](http://dx.doi.org/10.1007/s10444-016-9467-y), Advances in Computational Mathematics, 42 (2016), 1381–1399. ([SN SharedIt Link](http://rdcu.be/mE5r)) 
 
-- Z. Peng, Y. Xu, M. Yan and W. Yin, [ARock: an algorithmic framework for asynchronous parallel coordinate updates](http://dx.doi.org/10.1137/15M1024950), SIAM Journal on Scientific Computing, 38 (2016), A2851-A2879. ([Code](http://www.math.ucla.edu/~wotaoyin/papers/tmac.html)) 
+- Z. Peng, Y. Xu, M. Yan and W. Yin, [ARock: an algorithmic framework for asynchronous parallel coordinate updates](http://dx.doi.org/10.1137/15M1024950), SIAM Journal on Scientific Computing, 38 (2016), A2851-A2879. 
 
 - F. Li, S. Osher, J. Qin and M. Yan, [A multiphase image segmentation based on fuzzy membership functions and L1-norm fidelity](http://dx.doi.org/10.1007/s10915-016-0183-z), Journal of Scientific Computing, 69 (2016), 82-106. ([SN SharedIt Link](http://rdcu.be/mE5m)) 
 
@@ -112,8 +112,8 @@ You can also find my recent articles on [my Google Scholar profile](https://scho
 
 - J. Chen, J. Cong, M. Yan and Y. Zou, [FPGA-accelerated 3D reconstruction using compressive sensing](http://dx.doi.org/10.1145/2145694.2145721), In: Proceeding of the ACM/SIGDA International Symposium on Field Programmable Gate Arrays (FPGA 2012), 163-166. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/fpga/ChenCYZ12)
 
-201
-== 
+2011
+=== 
 - M. Yan, [EM-type algorithms for image reconstruction with background emission and Poisson noise](http://dx.doi.org/10.1007/978-3-642-24028-7_4)In: Proceeding of 7th International Symposium on Visual Computing, LNCS 6938 (2011), 33-42. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/isvc/Yan11)
 
 - M. Yan, J. Chen, L. A. Vese, J. Villasenor, A. Bui and J. Cong, [EM+TV based reconstruction for cone-beam CT with reduced radiation](http://dx.doi.org/10.1007/978-3-642-24028-7_1), In: Proceeding of 7th International Symposium on Visual Computing, LNCS 6938 (2011), 1-10. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/isvc/YanCVVBC11)
