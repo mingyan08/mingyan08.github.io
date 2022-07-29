@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Education"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -9,7 +9,6 @@ redirect_from:
 
 {% include base_path %}
 
-Education
 ======
 * University of California, Los Angeles, Department of Mathematics
   * Ph.D. in Mathematics (2012)
