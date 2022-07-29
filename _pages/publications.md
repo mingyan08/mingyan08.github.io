@@ -130,7 +130,9 @@ You can also find my recent articles on [my Google Scholar profile](https://scho
 
 - H. Han, M. Yan and C. Wu, [An energy regularization method for the backward diffusion problem and its applications to image deblurring](https://www.global-sci.com/intro/article_detail/cicp/7786.html), Communications in Computational Physics, 4 (2008), 177-194. 
 
-== Thesis
+
+Thesis
+===
 - M. Yan, Image and Signal Processing with Non-Gaussian Noise: EM-Type Algorithms and Adaptive Outlier Pursuit, Department of Mathematics, University of California, Los Angeles, 2012. 
 
 
