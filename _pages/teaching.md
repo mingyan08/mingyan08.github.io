@@ -7,7 +7,7 @@ author_profile: true
 
 {% include base_path %}
 
-======
+
 * No teaching in Fall 2022
 
 Previous Teaching
