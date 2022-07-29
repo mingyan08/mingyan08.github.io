@@ -72,27 +72,29 @@ You can also find my recent articles on [my Google Scholar profile](https://scho
 - Q. Xu, M. Yan, C. Huang, J. Xiong, Q. Huang and Y. Yao, [http://dx.doi.org/10.1145/3123266.3123267 Exploring outliers in crowdsourced ranking for QoE], In: Proceedings of the ACM International Conference on Multimedia (MM 2017), 1540-1548. ([Papers/IRLSHodgeRank/index.html website])
 
 
-=== 2016
-- M. Yan and W. Yin, [http://dx.doi.org/10.1007/978-3-319-41589-5_5 Self equivalence of the alternating direction method of multipliers],  in R. Glowinski, S. Osher and W. Yin (Eds.), Splitting Methods in Communication and Imaging, Science and Engineering (2016), New York, Springer, 165-194. ([Papers/PDF/Springer2016.pdf pdf])
+2016
+=== 
+- M. Yan and W. Yin, [Self equivalence of the alternating direction method of multipliers](http://dx.doi.org/10.1007/978-3-319-41589-5_5),  in R. Glowinski, S. Osher and W. Yin (Eds.), Splitting Methods in Communication and Imaging, Science and Engineering (2016), New York, Springer, 165-194.
 
-- I. Baytas, M. Yan, A. Jain and J. Zhou, [http://dx.doi.org/10.1109/ICDM.2016.0012 Asynchronous multi-task learning], In: Proceedings of IEEE International Conference on Data Mining (ICDM 2016), 11-20.
+- I. Baytas, M. Yan, A. Jain and J. Zhou, [Asynchronous multi-task learning](http://dx.doi.org/10.1109/ICDM.2016.0012), In: Proceedings of IEEE International Conference on Data Mining (ICDM 2016), 11-20.
 
-- L. Chen, M. Yan, C. Qian, N. Xi, Z. Zhou, Y. Yang, B. Song and L. Dong, [http://dx.doi.org/10.1117/1.JEI.25.6.063003 Nonconvex compressive video sensing], Journal of Electronic Imaging, 25 (2016), 063003.
+- L. Chen, M. Yan, C. Qian, N. Xi, Z. Zhou, Y. Yang, B. Song and L. Dong, [Nonconvex compressive video sensing](http://dx.doi.org/10.1117/1.JEI.25.6.063003), Journal of Electronic Imaging, 25 (2016), 063003.
 
-- H. Zhang, M. Yan and W. Yin, [http://dx.doi.org/10.1007/s10444-016-9467-y One condition for solution uniqueness and robustness of both l1-synthesis and l1-analysis minimizations], Advances in Computational Mathematics, 42 (2016), 1381–1399. ([http://rdcu.be/mE5r SN SharedIt Link]) ([Papers/PDF/ACOM2016.pdf pdf])
+- H. Zhang, M. Yan and W. Yin, [One condition for solution uniqueness and robustness of both l1-synthesis and l1-analysis minimizations](http://dx.doi.org/10.1007/s10444-016-9467-y), Advances in Computational Mathematics, 42 (2016), 1381–1399. ([SN SharedIt Link](http://rdcu.be/mE5r)) 
 
-- Z. Peng, Y. Xu, M. Yan and W. Yin, [http://dx.doi.org/10.1137/15M1024950 ARock: an algorithmic framework for asynchronous parallel coordinate updates], SIAM Journal on Scientific Computing, 38 (2016), A2851-A2879. ([Papers/PDF/SISC2016.pdf pdf]) ([http://www.math.ucla.edu/~wotaoyin/papers/tmac.html Code]) 
+- Z. Peng, Y. Xu, M. Yan and W. Yin, [ARock: an algorithmic framework for asynchronous parallel coordinate updates](http://dx.doi.org/10.1137/15M1024950), SIAM Journal on Scientific Computing, 38 (2016), A2851-A2879. ([Code](http://www.math.ucla.edu/~wotaoyin/papers/tmac.html)) 
 
-- F. Li, S. Osher, J. Qin and M. Yan, [http://dx.doi.org/10.1007/s10915-016-0183-z A multiphase image segmentation based on fuzzy membership functions and L1-norm fidelity], Journal of Scientific Computing, 69 (2016), 82-106. ([http://rdcu.be/mE5m SN SharedIt Link]) ([Papers/PDF/JSC2016.pdf pdf])
+- F. Li, S. Osher, J. Qin and M. Yan, [A multiphase image segmentation based on fuzzy membership functions and L1-norm fidelity](http://dx.doi.org/10.1007/s10915-016-0183-z), Journal of Scientific Computing, 69 (2016), 82-106. ([SN SharedIt Link](http://rdcu.be/mE5m)) 
 
-- Z. Peng, T. Wu, Y. Xu, M. Yan and W. Yin, [http://dx.doi.org/10.4310/AMSA.2016.v1.n1.a2 Coordinate friendly structures, algorithms and applications], Annals of Mathematical Sciences and Applications, 1 (2016), 57-119. ([Papers/PDF/AMSA2016.pdf pdf])
+- Z. Peng, T. Wu, Y. Xu, M. Yan and W. Yin, [Coordinate friendly structures, algorithms and applications](http://dx.doi.org/10.4310/AMSA.2016.v1.n1.a2), Annals of Mathematical Sciences and Applications, 1 (2016), 57-119. 
 
-=== 2015 
-- X. Huang, L. Shi and M. Yan, [http://dx.doi.org/10.1007/s40305-014-0069-4 Nonconvex sorted L1 minimization for sparse approximation], Journal of the Operations Research Society of China, 3 (2015), 207-229. ([http://rdcu.be/mEX5 SN SharedIt Link]) ([Papers/PDF/JORSC2015.pdf pdf])
+2015
+=== 
+- X. Huang, L. Shi and M. Yan, [Nonconvex sorted L1 minimization for sparse approximation](http://dx.doi.org/10.1007/s40305-014-0069-4), Journal of the Operations Research Society of China, 3 (2015), 207-229. ([SN SharedIt Link](http://rdcu.be/mEX5)) 
 
 2013
 ===
-- Z. Peng, M. Yan and W. Yin, [Parallel and distributed sparse optimization](http://dx.doi.org/10.1109/ACSSC.2013.6810364), In: Proceeding of IEEE Asilomar Conference on Signals Systems and Computers, 2013, 659-664. ([website](http://www.math.ucla.edu/~wotaoyin/papers/GRock/))
+- Z. Peng, M. Yan and W. Yin, [Parallel and distributed sparse optimization](http://dx.doi.org/10.1109/ACSSC.2013.6810364), In: Proceeding of IEEE Asilomar Conference on Signals Systems and Computers, 2013, 659-664. 
 
 - M. Yan, A. Bui, J. Cong and L.A. Vese, [General convergent expectation maximization (EM)-type algorithms for image reconstruction](http://dx.doi.org/10.3934/ipi.2013.7.1007), Inverse Problems and Imaging, 7 (2013), 1007-1029. 
 
