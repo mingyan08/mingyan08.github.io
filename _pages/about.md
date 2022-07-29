@@ -8,5 +8,13 @@ redirect_from:
   - /about.html
 ---
 
-Coming soon
+Coming in August. 
+
+
+
+Associate Professor
+==
+
+
+
 
