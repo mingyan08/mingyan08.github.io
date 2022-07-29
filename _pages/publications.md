@@ -120,9 +120,9 @@ You can also find my recent articles on [my Google Scholar profile](https://scho
 
 2008
 ===
-- H. Han and M. Yan, [A mixed finite element method on a staggered mesh for Navier-Stokes equations](http://www.global-sci.org/jcm/readabs.php?vol=26&no=6&page=816), Journal of Computational Mathematics, 26 (2008), 816-824. ([Papers/PDF/JCM2008.pdf pdf])
+- H. Han and M. Yan, [A mixed finite element method on a staggered mesh for Navier-Stokes equations](https://global-sci.org/intro/article_detail/jcm/8661.html), Journal of Computational Mathematics, 26 (2008), 816-824. 
 
-- H. Han, M. Yan and C. Wu, [An energy regularization method for the backward diffusion problem and its applications to image deblurring](http://www.global-sci.com/issue/abstract/readabs.php?vol=4&page=177&ppage=194&year=2008&issue=1), Communications in Computational Physics, 4 (2008), 177-194. ([Papers/PDF/CiCP2008.pdf pdf])
+- H. Han, M. Yan and C. Wu, [An energy regularization method for the backward diffusion problem and its applications to image deblurring](https://www.global-sci.com/intro/article_detail/cicp/7786.html), Communications in Computational Physics, 4 (2008), 177-194. 
 
 == Thesis
 - M. Yan, Image and Signal Processing with Non-Gaussian Noise: EM-Type Algorithms and Adaptive Outlier Pursuit, Department of Mathematics, University of California, Los Angeles, 2012. 
