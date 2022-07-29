@@ -55,21 +55,23 @@ You can also find my recent articles on [my Google Scholar profile](https://scho
 
 - Z. Peng, Y. Xu, M. Yan and W. Yin, [http://doi.org/10.1007/s40305-017-0183-1 On the convergence of asynchronous parallel iteration with unbounded delays], Journal of the Operations Research Society of China, 7 (2019), 5-42. ([http://rdcu.be/AQG3 SN SharedIt Link]) ([Papers/PDF/JORSC2018.pdf pdf]) 
 
-=== 2018
-- X. Huang, L. Shi, M. Yan and J. A.K. Suykens, [http://doi.org/10.1016/j.neucom.2018.06.070 Pinball loss minimization for one-bit compressive sensing: Convex models and algorithms], Neurocomputing, 314 (2018) 275-283. ([http://www.esat.kuleuven.be/stadius/ADB/huang/downloads/1bitCSLab.zip Code])
+2018
+===
+- X. Huang, L. Shi, M. Yan and J. A.K. Suykens, [Pinball loss minimization for one-bit compressive sensing: Convex models and algorithms](http://doi.org/10.1016/j.neucom.2018.06.070), Neurocomputing, 314 (2018) 275-283. ([Code](http://www.esat.kuleuven.be/stadius/ADB/huang/downloads/1bitCSLab.zip))
 
-- F. He, X. Huang, Y. Liu, and M. Yan, [http://doi.org/10.1109/LSP.2018.2860242 Fast signal recovery from saturated measurements by linear loss and nonconvex penalties], IEEE Signal Processing Letters, 25 (2018) 1374-1378.
+- F. He, X. Huang, Y. Liu, and M. Yan, [Fast signal recovery from saturated measurements by linear loss and nonconvex penalties](http://doi.org/10.1109/LSP.2018.2860242), IEEE Signal Processing Letters, 25 (2018) 1374-1378.
 
-- H. Tang, X. Lian, M. Yan, C. Zhang and J. Liu, [http://proceedings.mlr.press/v80/tang18a.html D2: Decentralized training over decentralized data], In: Proceeding of International Conference on Machine Learning 2018, PMLR 80 (2018), 4848-4856.
+- H. Tang, X. Lian, M. Yan, C. Zhang and J. Liu, [D2: Decentralized training over decentralized data](http://proceedings.mlr.press/v80/tang18a.html), In: Proceeding of International Conference on Machine Learning 2018, PMLR 80 (2018), 4848-4856.
 
-- M. Yan, [http://doi.org/10.1007/s10915-018-0680-3 A new primal-dual algorithm for minimizing the sum of three functions with a linear operator], Journal of Scientific Computing, 76 (2018), 1698-1717. ([http://rdcu.be/Ic0x SN SharedIt Link]) ([Papers/PDF/JSC2018b.pdf pdf]) ([Slides/PD3O.pdf Slides]) ([https://github.com/mingyan08/PD3O Code])
+- M. Yan, [A new primal-dual algorithm for minimizing the sum of three functions with a linear operator](http://doi.org/10.1007/s10915-018-0680-3), Journal of Scientific Computing, 76 (2018), 1698-1717. ([SN SharedIt Link](http://rdcu.be/Ic0x)) ([Code](https://github.com/mingyan08/PD3O))
 
-- Y. Lou and M. Yan, [http://dx.doi.org/10.1007/s10915-017-0463-2 Fast l1-l2 minimization via a proximal operator], Journal of Scientific Computing, 74 (2018), 767-785. ([http://rdcu.be/s5YO SN SharedIt Link]) ([Papers/PDF/JSC2018.pdf pdf]) ([https://github.com/mingyan08/ProxL1-L2 Code])
+- Y. Lou and M. Yan, [Fast l1-l2 minimization via a proximal operator](http://dx.doi.org/10.1007/s10915-017-0463-2), Journal of Scientific Computing, 74 (2018), 767-785. ([SN SharedIt Link](http://rdcu.be/s5YO)) ([Code](https://github.com/mingyan08/ProxL1-L2))
 
-- X. Huang and M. Yan, [http://doi.org/10.1016/j.sigpro.2017.10.023 Nonconvex penalties with analytical solutions for one-bit compressive sensing], Signal Processing, 144 (2018), 341-351. ([Papers/PDF/SignalProcessing2018.pdf pdf])
+- X. Huang and M. Yan, [Nonconvex penalties with analytical solutions for one-bit compressive sensing](http://doi.org/10.1016/j.sigpro.2017.10.023), Signal Processing, 144 (2018), 341-351. 
 
-=== 2017 
-- Q. Xu, M. Yan, C. Huang, J. Xiong, Q. Huang and Y. Yao, [http://dx.doi.org/10.1145/3123266.3123267 Exploring outliers in crowdsourced ranking for QoE], In: Proceedings of the ACM International Conference on Multimedia (MM 2017), 1540-1548. ([Papers/IRLSHodgeRank/index.html website])
+2017
+=== 
+- Q. Xu, M. Yan, C. Huang, J. Xiong, Q. Huang and Y. Yao, [Exploring outliers in crowdsourced ranking for QoE](http://dx.doi.org/10.1145/3123266.3123267), In: Proceedings of the ACM International Conference on Multimedia (MM 2017), 1540-1548.
 
 
 2016
