@@ -1,11 +1,14 @@
 ---
 layout: archive
-title: "Teaching"
+title: "Current Teaching"
 permalink: /teaching/
 author_profile: true
 ---
 
 {% include base_path %}
+
+======
+* No teaching in Fall 2022
 
 Previous Teaching
 ======
