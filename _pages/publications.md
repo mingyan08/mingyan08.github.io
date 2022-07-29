@@ -51,9 +51,9 @@ You can also find my recent articles on [my Google Scholar profile](https://scho
 
 - Y. Hao, M. Yan, B. Heath, Y. Lei, and Y. Xie, [Fast and robust deconvolution of tumor infiltrating lymphocyte from expression profiles using least trimmed squares](http://doi.org/10.1371/journal.pcbi.1006976), PLOS Computational Biology, 15 (2019), e1006976. 
 
-- X. Huang, H. Yang, Y. Huang, L. Shi, F. He, A. Maier, and M. Yan, [http://doi.org/10.1016/j.sigpro.2019.04.011 Robust mixed one-bit compressive sensing], Signal Processing, 162 (2019), 161–168.
+- X. Huang, H. Yang, Y. Huang, L. Shi, F. He, A. Maier, and M. Yan, [Robust mixed one-bit compressive sensing](http://doi.org/10.1016/j.sigpro.2019.04.011), Signal Processing, 162 (2019), 161–168.
 
-- Z. Peng, Y. Xu, M. Yan and W. Yin, [http://doi.org/10.1007/s40305-017-0183-1 On the convergence of asynchronous parallel iteration with unbounded delays], Journal of the Operations Research Society of China, 7 (2019), 5-42. ([http://rdcu.be/AQG3 SN SharedIt Link]) ([Papers/PDF/JORSC2018.pdf pdf]) 
+- Z. Peng, Y. Xu, M. Yan and W. Yin, [On the convergence of asynchronous parallel iteration with unbounded delays](http://doi.org/10.1007/s40305-017-0183-1), Journal of the Operations Research Society of China, 7 (2019), 5-42. ([SN SharedIt Link](http://rdcu.be/AQG3))
 
 2018
 ===
