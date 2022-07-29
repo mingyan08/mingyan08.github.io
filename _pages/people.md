@@ -1,13 +1,12 @@
 ---
 layout: archive
-title: "Students, post-docs, and visitors"
+title: "Current graduate students (chronological order)"
 permalink: /people/
 author_profile: true
 ---
 
 {% include base_path %}
 
-Current graduate students (chronological order)
 ======
 * Zhuoqing Song (Math@Fudan, joint with Lei Shi)
 
