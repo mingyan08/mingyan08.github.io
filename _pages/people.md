@@ -7,7 +7,7 @@ author_profile: true
 
 {% include base_path %}
 
-======
+
 * Zhuoqing Song (Math@Fudan, joint with Lei Shi)
 
 Current undergraduate students
