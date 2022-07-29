@@ -90,16 +90,17 @@ You can also find my recent articles on [my Google Scholar profile](https://scho
 === 2015 
 - X. Huang, L. Shi and M. Yan, [http://dx.doi.org/10.1007/s40305-014-0069-4 Nonconvex sorted L1 minimization for sparse approximation], Journal of the Operations Research Society of China, 3 (2015), 207-229. ([http://rdcu.be/mEX5 SN SharedIt Link]) ([Papers/PDF/JORSC2015.pdf pdf])
 
-=== 2013
-- Z. Peng, M. Yan and W. Yin, [http://dx.doi.org/10.1109/ACSSC.2013.6810364 Parallel and distributed sparse optimization], In: Proceeding of IEEE Asilomar Conference on Signals Systems and Computers, 2013, 659-664. ([http://www.math.ucla.edu/~wotaoyin/papers/GRock/ website])
+2013
+===
+- Z. Peng, M. Yan and W. Yin, [Parallel and distributed sparse optimization](http://dx.doi.org/10.1109/ACSSC.2013.6810364), In: Proceeding of IEEE Asilomar Conference on Signals Systems and Computers, 2013, 659-664. ([website](http://www.math.ucla.edu/~wotaoyin/papers/GRock/))
 
-- M. Yan, A. Bui, J. Cong and L.A. Vese, [http://dx.doi.org/10.3934/ipi.2013.7.1007 General convergent expectation maximization (EM)-type algorithms for image reconstruction], Inverse Problems and Imaging, 7 (2013), 1007-1029. ([Papers/PDF/IPI2013.pdf pdf])
+- M. Yan, A. Bui, J. Cong and L.A. Vese, [General convergent expectation maximization (EM)-type algorithms for image reconstruction](http://dx.doi.org/10.3934/ipi.2013.7.1007), Inverse Problems and Imaging, 7 (2013), 1007-1029. 
 
-- M. Yan, Y. Yang and S. Osher, [http://dx.doi.org/10.1007/s10915-013-9682-3 Exact low-rank matrix completion from sparsely corrupted entries via adaptive outlier pursuit], Journal of Scientific Computing, 56 (2013), 433-449. ([http://rdcu.be/mE5j SN SharedIt Link]) ([Papers/PDF/JSC2013.pdf pdf]) [http://dblp.uni-trier.de/rec/bibtex/journals/jscic/YanYO13 BibTex]
+- M. Yan, Y. Yang and S. Osher, [Exact low-rank matrix completion from sparsely corrupted entries via adaptive outlier pursuit](http://dx.doi.org/10.1007/s10915-013-9682-3), Journal of Scientific Computing, 56 (2013), 433-449. ([SN SharedIt Link](http://rdcu.be/mE5j)) [BibTex](http://dblp.uni-trier.de/rec/bibtex/journals/jscic/YanYO13)
 
-- M. Yan, [http://dx.doi.org/10.1137/12087178X Restoration of images corrupted by impulse noise and mixed Gaussian impulse noise using blind inpainting], SIAM Journal on Imaging Sciences, 6 (2013), 1227-1245. ([Papers/PDF/SIIMS2013.pdf pdf]) [http://dblp.uni-trier.de/rec/bibtex/journals/siamis/Yan13 BibTex]
+- M. Yan, [Restoration of images corrupted by impulse noise and mixed Gaussian impulse noise using blind inpainting](http://dx.doi.org/10.1137/12087178X), SIAM Journal on Imaging Sciences, 6 (2013), 1227-1245. [BibTex](http://dblp.uni-trier.de/rec/bibtex/journals/siamis/Yan13)
 
-- M. Yan, [http://dx.doi.org/10.1080/00207160.2012.709933 Convergence analysis of SART: optimization and statistics], International Journal of Computer Mathematics, 90 (2013), 30-47. ([Papers/PDF/IJCM2013.pdf pdf]) [http://dblp.uni-trier.de/rec/bibtex/journals/ijcm/Yan13 BibTex]
+- M. Yan, [Convergence analysis of SART: optimization and statistics](http://dx.doi.org/10.1080/00207160.2012.709933), International Journal of Computer Mathematics, 90 (2013), 30-47. [BibTex](http://dblp.uni-trier.de/rec/bibtex/journals/ijcm/Yan13)
 
 2012
 ===
