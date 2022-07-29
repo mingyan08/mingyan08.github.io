@@ -9,7 +9,6 @@ redirect_from:
 
 {% include base_path %}
 
-======
 * University of California, Los Angeles, Department of Mathematics
   * Ph.D. in Mathematics (2012)
   * Dissertation: Image and Signal Processing with Non-Gaussian Noise: EM-Type Algorithms and Adaptive Outlier Pursuit
