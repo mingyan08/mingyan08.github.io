@@ -9,6 +9,7 @@ author_profile: true
 
 Current graduate students (chronological order)
 ======
+* Zhuoqing Song (Math@Fudan, joint with Lei Shi)
 
 Current undergraduate students
 =====
