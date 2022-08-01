@@ -20,7 +20,7 @@ Associate Professor (on leave from August 2022)\
 
 
 <h2 style="color:red;">Openning</h2>
-I am recruiting PhD students, Postodocs, and Visiting Students. If you are interested, please email me.
+I am recruiting PhD students, Postodocs, and Visiting Students at The Chinese University of Hong Kong, Shenzhen. If you are interested, please email me.
 
 
 
