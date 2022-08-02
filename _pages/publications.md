@@ -9,11 +9,31 @@ author_profile: true
 
 You can also find my recent articles on [my Google Scholar profile](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ)
 
+2022
+===
+- L. Wang and M. Yan, [Hessian informed mirror descent](http://doi.org/10.1007/s10915-022-01933-5), Journal of Scientific Computing, 92(2022), 90
 
+- Z. Song, L. Shi, S. Pu, and M. Yan, [Compressed gradient tracking for decentralized optimization over general directed networks](http://doi.org/10.1109/TSP.2022.3160238), IEEE Transactions on Signal Processing, 70(2022), 1775--1787.
+
+-	Z. Li, M. Yan, T. Zeng, and G. Zhang, [Phase retrieval from incomplete data via weighted nuclear norm minimization](http://doi.org/10.1016/j.patcog.2022.108537), Pattern Recognition, 125(2022), 108537. 
+
+- M. Yan, [Asynchronous parallel computing](http://doi.org/10.1002/9781118445112.stat08317), in W. Piegorsch, R. Levine, H. Zhang, and	T. Lee (Eds.), Handbook of Computational Statistics and Data Science.
 
 2021
 === 
+- H. Tang, Y. Li, J. Liu, and M. Yan, [ErrorCompensatedX: error compensation for variance reduced algorithms](https://openreview.net/forum?id=_lo3udikhNH), In: Proceedings of the Conference on Neural Information Processing Systems (NeurIPS 2021). 
+
+- X. Zeng, M. Yan, and M. Zhang, [Mercury: a framework for efficient and elastic on-device distributed DNN training](http://doi.org/10.1145/3485730.3485930), In: Proceedings of Conference on Embedded Networked Sensor Systems (SenSys 2021), 29--41.
+
+- S. Alghunaim, Q. Lyu, M. Yan, and A. Sayed, [Dual consensus proximal algorithm for multi-agent sharing problems](http://doi.org/10.1109/TSP.2021.3114978), IEEE Transactions on Signal Processing, 69(2021), 5568--5579.
+
+- H. Ouassal, M. Yan, and J. Nanzer, [Decentralized frequency alignment for collaborative beamforming in distributed phased arrays](http://doi.org/10.1109/TWC.2021.3073120), IEEE Transactions on Wireless Communications, 20 (2021), 6269--6281.
+
+- X. Liu, W. Jin, Y. Ma, Y. Li, H. Liu, Y. Wang, M. Yan, and J. Tang, [Elastic graph neural networks](http://proceedings.mlr.press/v139/liu21k.html), In: Proceedings of International Conference on Machine Learning (ICML 2021), PMLR 139 (2021), 6837--6849, 2021. 
+
 - S. Vakalis, D. Chen, M. Yan, and J. Nanzer, [Image enhancement in active incoherent millimeter-wave imaging](http://doi.org/10.1117/12.2585650), In: Proceedings of Passive and Active Millimeter-Wave Imaging XXIV, 11745 (2021), 1174507. 
+
+- J. Carrillo, L. Wang, W. Xu, and M. Yan, [Variational asymptotic preserving scheme for the Vlasov-Poisson-Fokker-Planck system](http://doi.org/10.1137/20M1350431), Multiscale Modeling and Simulation, 19 (2021),  478--505. 
 
 - W. Guo, Y. Lou, J. Qin, and M. Yan, [A novel regularization based on the error function for sparse recovery](http://doi.org/10.1007/s10915-021-01443-w), Journal of Scientific Computing, 87 (2021), 31.
 
