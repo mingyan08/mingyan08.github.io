@@ -13,10 +13,10 @@ Associate Professor (since August 2022)\
 [The Chinese University of Hong Kong, Shenzhen](https://www.cuhk.edu.cn/en)
 
 
-Associate Professor (on leave from August 2022)\
+<!--Associate Professor (on leave from August 2022)\
 [Department of Computational Mathematics, Science and Engineering (CMSE)](https://cmse.msu.edu/)\
 [Department of Mathematics](https://math.msu.edu/)\
-[Michigan State University](https://msu.edu/)
+[Michigan State University](https://msu.edu/)-->
 
 
 <h2 style="color:red;">Openning</h2>
