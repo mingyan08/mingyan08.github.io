@@ -10,9 +10,9 @@ redirect_from:
 
 Associate Professor (since August 2022)\
 [School of Data Science](https://sds.cuhk.edu.cn)\
-[The Chinese University of Hong Kong, Shenzhen](https://www.cuhk.edu.cn/en)
-Daoyuan Building 321A
-2001 Longxiang Boulevard, Longgang District, Shenzhen, 518172
+[The Chinese University of Hong Kong, Shenzhen](https://www.cuhk.edu.cn/en)\
+Daoyuan Building 321A\
+2001 Longxiang Boulevard, Longgang District, Shenzhen, 518172\
 
 
 <!--Associate Professor (on leave from August 2022)\
