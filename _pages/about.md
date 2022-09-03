@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Associate Professor (since August 2022)\
+Associate Professor\
 [School of Data Science](https://sds.cuhk.edu.cn)\
 [The Chinese University of Hong Kong, Shenzhen](https://www.cuhk.edu.cn/en)\
 Daoyuan Building 321A\
