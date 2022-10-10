@@ -21,7 +21,8 @@ Daoyuan Building 321A\
 [Michigan State University](https://msu.edu/)-->
 
 
-<h2 style="color:red;">Openning</h2>
+<h2 style="color:red;">Opening</h2>
+  
 I am recruiting PhD students, Postodocs, and Visiting Students at The Chinese University of Hong Kong, Shenzhen. If you are interested, please email me.
 
 
