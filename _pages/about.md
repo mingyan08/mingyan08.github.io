@@ -23,8 +23,7 @@ Daoyuan Building 321A\
 
 <h2 style="color:red;">Opening</h2>
   
-I am recruiting PhD students, Postodocs, and Visiting Students at The Chinese University of Hong Kong, Shenzhen. If you are interested, please email me.
-
+I am recruiting Ph.D. students, Postdocs, and Visiting Students at The Chinese University of Hong Kong, Shenzhen. If you are interested, please email me.
 
 
 Research Interest
