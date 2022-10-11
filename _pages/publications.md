@@ -136,7 +136,7 @@ You can also find my recent articles on [my Google Scholar profile](https://scho
 
 2011
 === 
-- M. Yan, [EM-type algorithms for image reconstruction with background emission and Poisson noise](http://dx.doi.org/10.1007/978-3-642-24028-7_4)In: Proceeding of 7th International Symposium on Visual Computing, LNCS 6938 (2011), 33-42. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/isvc/Yan11)
+- M. Yan, [EM-type algorithms for image reconstruction with background emission and Poisson noise](http://dx.doi.org/10.1007/978-3-642-24028-7_4) In: Proceeding of 7th International Symposium on Visual Computing, LNCS 6938 (2011), 33-42. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/isvc/Yan11)
 
 - M. Yan, J. Chen, L. A. Vese, J. Villasenor, A. Bui and J. Cong, [EM+TV based reconstruction for cone-beam CT with reduced radiation](http://dx.doi.org/10.1007/978-3-642-24028-7_1), In: Proceeding of 7th International Symposium on Visual Computing, LNCS 6938 (2011), 1-10. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/isvc/YanCVVBC11)
 
