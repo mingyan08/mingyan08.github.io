@@ -9,6 +9,7 @@ author_profile: true
 
 
 * Zhuoqing Song (Math@Fudan, joint with Lei Shi)
+* Jianting Pan (DS@CUHK-SZ)
 
 Current undergraduate students
 =====
@@ -17,9 +18,9 @@ Current undergraduate students
 Previous graduate student
 ===== 
 * Qi Lyu (MS 2021) 
-* Ningyu Sha (PhD 2021, joint with Yuying Xie (CMSE)): First job--Applied Scientist at Amazon
-* Yao Li (PhD 2022): First job--Research Scientist at Huawei
-* Xiaorui Liu (PhD 2022, joint with Jiliang Tang (CSE)): First job--Assistant Professor at North Carolina State University
+* Ningyu Sha (Ph.D. 2021, joint with Yuying Xie (CMSE)): First job--Applied Scientist at Amazon
+* Yao Li (Ph.D. 2022): First job--Research Scientist at Huawei
+* Xiaorui Liu (Ph.D. 2022, joint with Jiliang Tang (CSE)): First job--Assistant Professor at North Carolina State University
 
 
 Previous postdocs and visitors (chronological order)
@@ -30,13 +31,13 @@ Previous postdocs and visitors (chronological order)
 
 Previous undergraduate students (chronological order)
 =====
-* Jerry Luo (summer 2014, UCLA): PhD in Mathematics at Arizona State University
+* Jerry Luo (summer 2014, UCLA): Ph.D. in Mathematics at Arizona State University
 * Kayla Shapiro (summer 2014, UC Berkeley): MS in Computer Science at Imperial College London
-* Hao-Jun Michael Shi (summer 2014, UCLA): PhD in Industrial Engineering and Management Sciences at Northwestern University
-* Qi Yang (summer 2014, University of Southern California): PhD in Data Science at MIT
+* Hao-Jun Michael Shi (summer 2014, UCLA): Ph.D. in Industrial Engineering and Management Sciences at Northwestern University
+* Qi Yang (summer 2014, University of Southern California): Ph.D. in Data Science at MIT
 * Kan Zhu (summer 2014, UCLA): MS in Computer Science at Columbia University
-* Siqi Zhang (summer 2016, South University of Science and Technology of China): PhD in Industrial Engineering at UIUC
-* Andrew Schmidt (2016-2018, MSU): PhD in Operations Research at Columbia University
+* Siqi Zhang (summer 2016, South University of Science and Technology of China): Ph.D. in Industrial Engineering at UIUC
+* Andrew Schmidt (2016-2018, MSU): Ph.D. in Operations Research at Columbia University
 * Tyler Will (2016-2018, MSU)
 * Katja Oklejas (spring 2017, MSU)
 * Qi Lyu (spring 2017, Xi'an Jiaotong University): MS in Computational Mathematics, Science and Engineering at Michigan State University 
