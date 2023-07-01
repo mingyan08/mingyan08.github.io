@@ -14,7 +14,7 @@ description              : &description "personal description"
 url                      : https://mingyan08.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "mingyan08/mingyan08.github.io"
-teaser                   : "iamges/Yan3.jpg"
+teaser                   : "Yan3.JPG"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
 future                   : true
@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : "Ming Yan"
-  avatar           : "images/Yan3.jpg"
+  avatar           : "Yan3.JPG"
   bio              : "Associate Professor at the Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)"
   location         : "Shenzhen, China"
   employer         :
