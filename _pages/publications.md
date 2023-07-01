@@ -9,8 +9,20 @@ author_profile: true
 
 You can also find my recent articles on [my Google Scholar profile](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ)
 
+2023
+===
+- Z. Song, L. Shi, S. Pu, and M. Yan, Optimal gradient tracking for decentralized optimization, Mathematical Programming, accepted.
+
+- W. Chettleburgh, Z. Huang, and M. Yan, [Fast robust principle component analysis using Gauss-Newton Iterations](http://doi.org/10.1109/ICASSP49357.2023.10096269), In: Proceedings of the 2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2023).
+
+- M. Hu, Y. Lou, B. Wang, M. Yan, X. Yang, and Q. Ye, [Accelerated sparse recovery via gradient descent with nonlinear conjugate gradient momentum](http://doi.org/10.1007/s10915-023-02148-y), Journal of Scientific Computing, 95(2023), 33.
+
 2022
 ===
+- S. Alam, L. Liu, M. Yan, and M. Zhang, [FedRolex: Model-heterogeneous federated learning with rolling submodel extraction](http://openreview.net/forum?id=OtxyysUdBE), In: Proceedings of the Conference on Neural Information Processing Systems (NeurIPS 2022). 
+
+- Z. Song, W. Li, K. Jin, L. Shi, M. Yan, W. Yin, K. Yuan, [Communication-efficient topologies for decentralized learning with O(1) consensus rate](http://openreview.net/forum?id=AyiiHcRzTd), In: Proceedings of the Conference on Neural Information Processing Systems (NeurIPS 2022). 
+
 - L. Wang and M. Yan, [Hessian informed mirror descent](http://doi.org/10.1007/s10915-022-01933-5), Journal of Scientific Computing, 92(2022), 90
 
 - Z. Song, L. Shi, S. Pu, and M. Yan, [Compressed gradient tracking for decentralized optimization over general directed networks](http://doi.org/10.1109/TSP.2022.3160238), IEEE Transactions on Signal Processing, 70(2022), 1775--1787.
