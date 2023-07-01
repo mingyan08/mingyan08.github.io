@@ -8,11 +8,14 @@ author_profile: true
 {% include base_path %}
 
 
-* No teaching in Fall 2022
+* Fall 2023: MAT 3007 Optimization
+* Spring 2024: MAT 3007 Optimization
+* Spring 2024: MAT 1002 Calculus II
 
 Previous Teaching
 ======
 * The Chinese University of Hong Kong, Shenzhen
+  * MAT 1002: Calculus II, Spring 2023 
   * MAT 3007: Optimization, Summer 2022 
 
 * Michigan State University
