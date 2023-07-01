@@ -56,4 +56,3 @@ Previous undergraduate students (chronological order)
 * Wenyu Shang (spring 2021, MSU): MS in Data Science at University of Southern California
 * Chijin Liu (spring 2021, Xi'an Jiaotong University)
 * William Chettleburgh (2020-2022, MSU)
-* 
