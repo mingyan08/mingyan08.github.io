@@ -10,10 +10,13 @@ author_profile: true
 
 * Zhuoqing Song (Math@Fudan, joint with Lei Shi)
 * Jianting Pan (DS@CUHK-SZ)
+* Chenhao Si (DS@CUHK-SZ)
+* Sirong Dai (DS@CUHK-SZ, joint with Yunbin Zhao)
+* Jinxin Xiong (DS@CUHK-SZ, joint with Xiaodong Luo)
 
 Current undergraduate students
 =====
-* William Chettleburgh (2020-2022, MSU)
+* Yuantao Zhang (2022-, CUHK-SZ)
 
 Previous graduate student
 ===== 
@@ -52,3 +55,5 @@ Previous undergraduate students (chronological order)
 * Evan Bell (spring 2021, MSU)
 * Wenyu Shang (spring 2021, MSU): MS in Data Science at University of Southern California
 * Chijin Liu (spring 2021, Xi'an Jiaotong University)
+* William Chettleburgh (2020-2022, MSU)
+* 
