@@ -11,7 +11,7 @@ Recent articles are also on [Google Scholar](https://scholar.google.com/citation
 
 2023
 ===
-- Z. Song, L. Shi, S. Pu, and M. Yan, Optimal gradient tracking for decentralized optimization, Mathematical Programming, accepted.
+- Z. Song, L. Shi, S. Pu, and M. Yan, [Optimal gradient tracking for decentralized optimization](http://doi.org/10.1007/s10107-023-01997-7), Mathematical Programming, accepted.
 
 - W. Chettleburgh, Z. Huang, and M. Yan, [Fast robust principle component analysis using Gauss-Newton Iterations](http://doi.org/10.1109/ICASSP49357.2023.10096269), In: Proceedings of the 2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2023).
 
