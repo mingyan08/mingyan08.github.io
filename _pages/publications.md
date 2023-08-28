@@ -7,7 +7,7 @@ author_profile: true
 
 {% include base_path %}
 
-Recent articles are also on [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ).
+Recent articles are also available on [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ).
 
 2023
 ===
