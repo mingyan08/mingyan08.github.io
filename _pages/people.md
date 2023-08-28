@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Current graduate students (chronological order)"
+title: "Current Graduate Students (Chronological Order)"
 permalink: /people/
 author_profile: true
 ---
@@ -12,13 +12,12 @@ author_profile: true
 * Jianting Pan (DS@CUHK-SZ)
 * Chenhao Si (DS@CUHK-SZ)
 * Sirong Dai (DS@CUHK-SZ, joint with Yunbin Zhao)
-* Jinxin Xiong (DS@CUHK-SZ, joint with Xiaodong Luo)
 
-Current undergraduate students
+Current Undergraduate Students
 =====
-* Yuantao Zhang (2022-, CUHK-SZ)
+* Yuantao Zhang (2022-2023, CUHK-SZ)
 
-Previous graduate student
+Previous Graduate Student
 ===== 
 * Qi Lyu (MS 2021): First job--Software Engineer at Benefits Science Technologies
 * Ningyu Sha (Ph.D. 2021, joint with Yuying Xie (CMSE)): First job--Applied Scientist at Amazon
@@ -26,13 +25,13 @@ Previous graduate student
 * Xiaorui Liu (Ph.D. 2022, joint with Jiliang Tang (CSE)): First job--Assistant Professor at North Carolina State University
 
 
-Previous postdocs and visitors (chronological order)
+Previous Postdocs and Visitors (Chronological Order)
 =====
 * Zhi Li (Postdoc 2016-2019): First job–Assistant Professor at East China Normal University
 * Jun Feng (Visitor 2018, Chengdu University of Technology)
 * Zhishen Huang (Postdoc 2021-2022): First job--Research Scientist at Amazon
 
-Previous undergraduate students (chronological order)
+Previous Undergraduate Students (Chronological Order)
 =====
 * Jerry Luo (summer 2014, UCLA): Ph.D. in Mathematics at Arizona State University
 * Kayla Shapiro (summer 2014, UC Berkeley): MS in Computer Science at Imperial College London
