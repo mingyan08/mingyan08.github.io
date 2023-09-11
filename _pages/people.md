@@ -15,7 +15,7 @@ author_profile: true
 
 Current Undergraduate Students
 =====
-* Yuantao Zhang (2022-2023, CUHK-SZ)
+
 
 Previous Graduate Student
 ===== 
@@ -55,3 +55,4 @@ Previous Undergraduate Students (Chronological Order)
 * Wenyu Shang (spring 2021, MSU): MS in Data Science at University of Southern California
 * Chijin Liu (spring 2021, Xi'an Jiaotong University)
 * William Chettleburgh (2020-2022, MSU)
+* Yuantao Zhang (2022-2023, CUHK-SZ)
