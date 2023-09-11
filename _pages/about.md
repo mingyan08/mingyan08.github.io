@@ -9,6 +9,7 @@ redirect_from:
 ---
 
 Associate Professor\
+Assistant Dean\
 [School of Data Science](https://sds.cuhk.edu.cn)\
 [the Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)](https://www.cuhk.edu.cn/en)\
 Daoyuan Building 410\
