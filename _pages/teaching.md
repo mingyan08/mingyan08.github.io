@@ -9,7 +9,6 @@ author_profile: true
 
 
 * Fall 2023: MAT 3007 Optimization
-* Spring 2024: MAT 3007 Optimization
 * Spring 2024: MAT 1002 Calculus II
 
 Previous Teaching
