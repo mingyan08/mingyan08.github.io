@@ -7,15 +7,13 @@ author_profile: true
 
 {% include base_path %}
 
-
-* Fall 2023: MAT 3007 Optimization
-* Spring 2024: MAT 1002 Calculus II
+* Spring 2025: MAT 1002 Calculus II
 
 Previous Teaching
 ======
 * The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)
-  * MAT 1002: Calculus II, Spring 2023 
-  * MAT 3007: Optimization, Summer 2022 
+  * MAT 1002: Calculus II, Spring 2023, Spring 2024, Spring 2025 
+  * MAT 3007: Optimization, Summer 2022, Fall 2023
 
 * Michigan State University (MSU)
   * CMSE 202: Computational Modeling Tools and Techniques, Spring 2017
