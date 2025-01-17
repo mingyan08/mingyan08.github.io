@@ -9,9 +9,22 @@ author_profile: true
 
 Recent articles are also available on [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ).
 
+2025
+===
+- J. Pan and M. Yan, [Efficient sparse probability measures recovery via Bregman gradient](), Journal of Scientific Computing, accepted.
+
+2024
+===
+- M. Yan and Y. Li, [On the improved conditions for some primal-dual algorithms](http://doi.org/10.1007/s10915-024-02537-x), Journal of Scientific Computing, 99(2024), 74.
+
+- C. Wang, M. Yan, and J. Yu, [Sorted l1/l2 minimization for sparse signal recovery](http://doi.org/10.1007/s10915-024-02497-2), Journal of Scientific Computing, 99(2024), 32.
+
+- Z. Song, L. Shi, S. Pu, and M. Yan, [Provably accelerated decentralized gradient method over unbalanced directed graphs](https://doi.org/10.1137/22M148570X), SIAM Journal on Optimization, 34(2024), 1131--1156.
+
+- Z. Song, L. Shi, S. Pu, and M. Yan, [Optimal gradient tracking for decentralized optimization](http://doi.org/10.1007/s10107-023-01997-7), Mathematical Programming, 207(2024), 1--53.
+
 2023
 ===
-- Z. Song, L. Shi, S. Pu, and M. Yan, [Optimal gradient tracking for decentralized optimization](http://doi.org/10.1007/s10107-023-01997-7), Mathematical Programming, accepted.
 
 - W. Chettleburgh, Z. Huang, and M. Yan, [Fast robust principle component analysis using Gauss-Newton Iterations](http://doi.org/10.1109/ICASSP49357.2023.10096269), In: Proceedings of the 2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2023).
 
