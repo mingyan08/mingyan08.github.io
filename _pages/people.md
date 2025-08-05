@@ -7,8 +7,6 @@ author_profile: true
 
 {% include base_path %}
 
-
-* Zhuoqing Song (Math@Fudan, joint with Lei Shi)
 * Jianting Pan (DS@CUHK-SZ)
 * Chenhao Si (DS@CUHK-SZ)
 * Sirong Dai (DS@CUHK-SZ, joint with Yunbin Zhao)
@@ -23,7 +21,7 @@ Previous Graduate Student
 * Ningyu Sha (Ph.D. 2021, joint with Yuying Xie (CMSE)): First job--Applied Scientist at Amazon
 * Yao Li (Ph.D. 2022): First job--Research Scientist at Huawei
 * [Xiaorui Liu](https://sites.google.com/ncsu.edu/xiaorui/) (Ph.D. 2022, joint with Jiliang Tang (CSE)): First job--Assistant Professor at North Carolina State University
-
+* Zhuoqing Song (Math@Fudan, joint with Lei Shi)
 
 Previous Postdocs and Visitors (Chronological Order)
 =====
