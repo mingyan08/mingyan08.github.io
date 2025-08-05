@@ -11,10 +11,6 @@ author_profile: true
 * Chenhao Si (DS@CUHK-SZ)
 * Sirong Dai (DS@CUHK-SZ, joint with Yunbin Zhao)
 
-Current Undergraduate Students
-=====
-
-
 Previous Graduate Student
 ===== 
 * Qi Lyu (MS 2021): First job--Software Engineer at Benefits Science Technologies
