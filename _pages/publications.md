@@ -17,7 +17,7 @@ Recent articles are also available on [Google Scholar](https://scholar.google.co
 ===
 - M. Yan and Y. Li, [On the improved conditions for some primal-dual algorithms](http://doi.org/10.1007/s10915-024-02537-x), Journal of Scientific Computing, 99(2024), 74.
 
-- C. Wang, M. Yan, and J. Yu, [Sorted l1/l2 minimization for sparse signal recovery](http://doi.org/10.1007/s10915-024-02497-2), Journal of Scientific Computing, 99(2024), 32.
+- C. Wang, M. Yan, and J. Yu, [Sorted L1/L2 minimization for sparse signal recovery](http://doi.org/10.1007/s10915-024-02497-2), Journal of Scientific Computing, 99(2024), 32.
 
 - Z. Song, L. Shi, S. Pu, and M. Yan, [Provably accelerated decentralized gradient method over unbalanced directed graphs](https://doi.org/10.1137/22M148570X), SIAM Journal on Optimization, 34(2024), 1131--1156.
 
@@ -26,7 +26,7 @@ Recent articles are also available on [Google Scholar](https://scholar.google.co
 2023
 ===
 
-- W. Chettleburgh, Z. Huang, and M. Yan, [Fast robust principle component analysis using Gauss-Newton Iterations](http://doi.org/10.1109/ICASSP49357.2023.10096269), In: Proceedings of the 2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2023).
+- W. Chettleburgh, Z. Huang, and M. Yan, [Fast robust principal component analysis using Gauss-Newton iterations](http://doi.org/10.1109/ICASSP49357.2023.10096269), In: Proceedings of the 2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2023).
 
 - M. Hu, Y. Lou, B. Wang, M. Yan, X. Yang, and Q. Ye, [Accelerated sparse recovery via gradient descent with nonlinear conjugate gradient momentum](http://doi.org/10.1007/s10915-023-02148-y), Journal of Scientific Computing, 95(2023), 33.
 
@@ -46,9 +46,9 @@ Recent articles are also available on [Google Scholar](https://scholar.google.co
 
 2021
 === 
-- H. Tang, Y. Li, J. Liu, and M. Yan, [ErrorCompensatedX: error compensation for variance reduced algorithms](https://openreview.net/forum?id=_lo3udikhNH), In: Proceedings of the Conference on Neural Information Processing Systems (NeurIPS 2021). 
+- H. Tang, Y. Li, J. Liu, and M. Yan, [ErrorCompensatedX: Error compensation for variance reduced algorithms](https://openreview.net/forum?id=_lo3udikhNH), In: Proceedings of the Conference on Neural Information Processing Systems (NeurIPS 2021). 
 
-- X. Zeng, M. Yan, and M. Zhang, [Mercury: a framework for efficient and elastic on-device distributed DNN training](http://doi.org/10.1145/3485730.3485930), In: Proceedings of Conference on Embedded Networked Sensor Systems (SenSys 2021), 29--41.
+- X. Zeng, M. Yan, and M. Zhang, [Mercury: A framework for efficient and elastic on-device distributed DNN training](http://doi.org/10.1145/3485730.3485930), In: Proceedings of Conference on Embedded Networked Sensor Systems (SenSys 2021), 29--41.
 
 - S. Alghunaim, Q. Lyu, M. Yan, and A. Sayed, [Dual consensus proximal algorithm for multi-agent sharing problems](http://doi.org/10.1109/TSP.2021.3114978), IEEE Transactions on Signal Processing, 69(2021), 5568--5579.
 
@@ -106,11 +106,11 @@ Recent articles are also available on [Google Scholar](https://scholar.google.co
 
 - F. He, X. Huang, Y. Liu, and M. Yan, [Fast signal recovery from saturated measurements by linear loss and nonconvex penalties](http://doi.org/10.1109/LSP.2018.2860242), IEEE Signal Processing Letters, 25 (2018) 1374-1378.
 
-- H. Tang, X. Lian, M. Yan, C. Zhang and J. Liu, [D2: Decentralized training over decentralized data](http://proceedings.mlr.press/v80/tang18a.html), In: Proceeding of International Conference on Machine Learning 2018, PMLR 80 (2018), 4848-4856.
+- H. Tang, X. Lian, M. Yan, C. Zhang and J. Liu, [D2: Decentralized training over decentralized data](http://proceedings.mlr.press/v80/tang18a.html), In: Proceedings of the International Conference on Machine Learning 2018, PMLR 80 (2018), 4848-4856.
 
 - M. Yan, [A new primal-dual algorithm for minimizing the sum of three functions with a linear operator](http://doi.org/10.1007/s10915-018-0680-3), Journal of Scientific Computing, 76 (2018), 1698-1717. ([SN SharedIt Link](http://rdcu.be/Ic0x)) ([Code](https://github.com/mingyan08/PD3O))
 
-- Y. Lou and M. Yan, [Fast l1-l2 minimization via a proximal operator](http://dx.doi.org/10.1007/s10915-017-0463-2), Journal of Scientific Computing, 74 (2018), 767-785. ([SN SharedIt Link](http://rdcu.be/s5YO)) ([Code](https://github.com/mingyan08/ProxL1-L2))
+- Y. Lou and M. Yan, [Fast L1-L2 minimization via a proximal operator](http://dx.doi.org/10.1007/s10915-017-0463-2), Journal of Scientific Computing, 74 (2018), 767-785. ([SN SharedIt Link](http://rdcu.be/s5YO)) ([Code](https://github.com/mingyan08/ProxL1-L2))
 
 - X. Huang and M. Yan, [Nonconvex penalties with analytical solutions for one-bit compressive sensing](http://doi.org/10.1016/j.sigpro.2017.10.023), Signal Processing, 144 (2018), 341-351. 
 
@@ -129,7 +129,7 @@ Recent articles are also available on [Google Scholar](https://scholar.google.co
 
 - H. Zhang, M. Yan and W. Yin, [One condition for solution uniqueness and robustness of both l1-synthesis and l1-analysis minimizations](http://dx.doi.org/10.1007/s10444-016-9467-y), Advances in Computational Mathematics, 42 (2016), 1381–1399. ([SN SharedIt Link](http://rdcu.be/mE5r)) 
 
-- Z. Peng, Y. Xu, M. Yan and W. Yin, [ARock: an algorithmic framework for asynchronous parallel coordinate updates](http://dx.doi.org/10.1137/15M1024950), SIAM Journal on Scientific Computing, 38 (2016), A2851-A2879. 
+- Z. Peng, Y. Xu, M. Yan and W. Yin, [ARock: An algorithmic framework for asynchronous parallel coordinate updates](http://dx.doi.org/10.1137/15M1024950), SIAM Journal on Scientific Computing, 38 (2016), A2851-A2879. 
 
 - F. Li, S. Osher, J. Qin and M. Yan, [A multiphase image segmentation based on fuzzy membership functions and L1-norm fidelity](http://dx.doi.org/10.1007/s10915-016-0183-z), Journal of Scientific Computing, 69 (2016), 82-106. ([SN SharedIt Link](http://rdcu.be/mE5m)) 
 
@@ -141,7 +141,7 @@ Recent articles are also available on [Google Scholar](https://scholar.google.co
 
 2013
 ===
-- Z. Peng, M. Yan and W. Yin, [Parallel and distributed sparse optimization](http://dx.doi.org/10.1109/ACSSC.2013.6810364), In: Proceeding of IEEE Asilomar Conference on Signals Systems and Computers, 2013, 659-664. 
+- Z. Peng, M. Yan and W. Yin, [Parallel and distributed sparse optimization](http://dx.doi.org/10.1109/ACSSC.2013.6810364), In: Proceedings of IEEE Asilomar Conference on Signals, Systems and Computers, 2013, 659-664. 
 
 - M. Yan, A. Bui, J. Cong and L.A. Vese, [General convergent expectation maximization (EM)-type algorithms for image reconstruction](http://dx.doi.org/10.3934/ipi.2013.7.1007), Inverse Problems and Imaging, 7 (2013), 1007-1029. 
 
@@ -149,7 +149,7 @@ Recent articles are also available on [Google Scholar](https://scholar.google.co
 
 - M. Yan, [Restoration of images corrupted by impulse noise and mixed Gaussian impulse noise using blind inpainting](http://dx.doi.org/10.1137/12087178X), SIAM Journal on Imaging Sciences, 6 (2013), 1227-1245. [BibTex](http://dblp.uni-trier.de/rec/bibtex/journals/siamis/Yan13)
 
-- M. Yan, [Convergence analysis of SART: optimization and statistics](http://dx.doi.org/10.1080/00207160.2012.709933), International Journal of Computer Mathematics, 90 (2013), 30-47. [BibTex](http://dblp.uni-trier.de/rec/bibtex/journals/ijcm/Yan13)
+- M. Yan, [Convergence analysis of SART: Optimization and statistics](http://dx.doi.org/10.1080/00207160.2012.709933), International Journal of Computer Mathematics, 90 (2013), 30-47. [BibTex](http://dblp.uni-trier.de/rec/bibtex/journals/ijcm/Yan13)
 
 2012
 ===
@@ -157,17 +157,17 @@ Recent articles are also available on [Google Scholar](https://scholar.google.co
 
 - M. Yan, Y. Yang and S. Osher, [Robust 1-bit compressive sensing using adaptive outlier pursuit](http://dx.doi.org/10.1109/TSP.2012.2193397) IEEE Transactions on Signal Processing, 60 (2012), 3868-3875. ([Code](http://github.com/mingyan08/aop)) [BibTex](http://dblp.uni-trier.de/rec/bibtex/journals/tsp/YanYO12)
 
-- J. Chen, J. Cong, M. Yan and Y. Zou, [FPGA-accelerated 3D reconstruction using compressive sensing](http://dx.doi.org/10.1145/2145694.2145721), In: Proceeding of the ACM/SIGDA International Symposium on Field Programmable Gate Arrays (FPGA 2012), 163-166. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/fpga/ChenCYZ12)
+- J. Chen, J. Cong, M. Yan and Y. Zou, [FPGA-accelerated 3D reconstruction using compressive sensing](http://dx.doi.org/10.1145/2145694.2145721), In: Proceedings of the ACM/SIGDA International Symposium on Field Programmable Gate Arrays (FPGA 2012), 163-166. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/fpga/ChenCYZ12)
 
 2011
 === 
-- M. Yan, [EM-type algorithms for image reconstruction with background emission and Poisson noise](http://dx.doi.org/10.1007/978-3-642-24028-7_4) In: Proceeding of 7th International Symposium on Visual Computing, LNCS 6938 (2011), 33-42. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/isvc/Yan11)
+- M. Yan, [EM-type algorithms for image reconstruction with background emission and Poisson noise](http://dx.doi.org/10.1007/978-3-642-24028-7_4) In: Proceedings of the 7th International Symposium on Visual Computing, LNCS 6938 (2011), 33-42. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/isvc/Yan11)
 
-- M. Yan, J. Chen, L. A. Vese, J. Villasenor, A. Bui and J. Cong, [EM+TV based reconstruction for cone-beam CT with reduced radiation](http://dx.doi.org/10.1007/978-3-642-24028-7_1), In: Proceeding of 7th International Symposium on Visual Computing, LNCS 6938 (2011), 1-10. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/isvc/YanCVVBC11)
+- M. Yan, J. Chen, L. A. Vese, J. Villasenor, A. Bui and J. Cong, [EM+TV based reconstruction for cone-beam CT with reduced radiation](http://dx.doi.org/10.1007/978-3-642-24028-7_1), In: Proceedings of the 7th International Symposium on Visual Computing, LNCS 6938 (2011), 1-10. [BibTex](http://dblp.uni-trier.de/rec/bibtex/conf/isvc/YanCVVBC11)
 
-- J. Chen, M. Yan, L. A. Vese, J. Villasenor, A. Bui and J. Cong, EM+TV for reconstruction of cone-beam CT with curved detectors using GPU, In: Proceeding of International Meeting on Fully Three-Dimensional Image Reconstruction in Radiology and Nuclear Medicine, 2011, 363-366. 
+- J. Chen, M. Yan, L. A. Vese, J. Villasenor, A. Bui and J. Cong, EM+TV for reconstruction of cone-beam CT with curved detectors using GPU, In: Proceedings of International Meeting on Fully Three-Dimensional Image Reconstruction in Radiology and Nuclear Medicine, 2011, 363-366. 
 
-- M. Yan and L. A. Vese, [Expectation maximization and total variation based model for computed tomography reconstruction from undersampled data](http://dx.doi.org/10.1117/12.878238), In: Proceeding of SPIE Medical Imaging, Proceedings of SPIE, 7961 (2011), 79612X. 
+- M. Yan and L. A. Vese, [Expectation maximization and total variation based model for computed tomography reconstruction from undersampled data](http://dx.doi.org/10.1117/12.878238), In: Proceedings of SPIE Medical Imaging, Proceedings of SPIE, 7961 (2011), 79612X. 
 
 2008
 ===
