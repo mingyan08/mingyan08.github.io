@@ -24,7 +24,7 @@ Daoyuan Building 410<br>
 
 <h2 style="color:red;">Open Positions</h2>
   
-I am **currently recruiting** Ph.D. students, postdocs, and Visiting Students at The Chinese University of Hong Kong, Shenzhen. If you are interested, please email me.
+I am **currently recruiting** Ph.D. students, postdocs, and visiting students at The Chinese University of Hong Kong, Shenzhen. If you are interested, please email me.
 
 
 Research Interest
