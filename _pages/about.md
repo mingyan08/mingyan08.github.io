@@ -8,11 +8,11 @@ redirect_from:
   - /about.html
 ---
 
-Associate Professor\
-Assistant Dean\
-[School of Data Science](https://sds.cuhk.edu.cn)\
-[the Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)](https://www.cuhk.edu.cn/en)\
-Daoyuan Building 410\
+Associate Professor<br>
+Assistant Dean<br>
+[School of Data Science](https://sds.cuhk.edu.cn)<br>
+[the Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)](https://www.cuhk.edu.cn/en)<br>
+Daoyuan Building 410<br>
 2001 Longxiang Boulevard, Longgang District, Shenzhen, 518172
 
 
@@ -22,22 +22,25 @@ Daoyuan Building 410\
 [Michigan State University](https://msu.edu/)-->
 
 
-<h2 style="color:red;">Opening</h2>
+<h2 style="color:red;">Open Positions</h2>
   
-I am recruiting Ph.D. students, Postdocs, and Visiting Students at The Chinese University of Hong Kong, Shenzhen. If you are interested, please email me.
+I am **currently recruiting** Ph.D. students, postdocs, and Visiting Students at The Chinese University of Hong Kong, Shenzhen. If you are interested, please email me.
 
 
 Research Interest
 ===
-+ Optimization methods and their applications in sparse recovery and regularized inverse problems
-+ Variational methods for image processing
-+ Parallel and distributed algorithms for solving big data problems
-+ Federated learning, machine learning
-
++ Optimization methods, especially for sparse recovery and inverse problems
++ Federated and machine learning algorithms
++ Parallel and distributed algorithms for large-scale data
++ Variational techniques in image processing
 
 Research Support 
 === 
-<p><img src="https://mingyan08.github.io/images/nsfc.png" width="100px" alt=""><img src="https://mingyan08.github.io/images/NSF.png" width="100px" alt=""><img src="https://mingyan08.github.io/images/FORD.png" width="100px" alt="" style="horizontal-align:middle;margin:30px 10px">
-<img src="https://mingyan08.github.io/images/Facebook.png" width="100px" alt="" style="horizontal-align:middle;margin:0px 10px"></p>
+<p>
+  <img src="https://mingyan08.github.io/images/nsfc.png" width="100px" alt="">
+  <img src="https://mingyan08.github.io/images/NSF.png" width="100px" alt="">
+  <img src="https://mingyan08.github.io/images/FORD.png" width="100px" alt="" style="vertical-align:middle;margin:30px 10px;">
+  <img src="https://mingyan08.github.io/images/Facebook.png" width="100px" alt="" style="vertical-align:middle;margin:0px 10px;">
+</p>
 
 
