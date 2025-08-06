@@ -11,7 +11,8 @@ Recent articles are also available on [Google Scholar](https://scholar.google.co
 
 2025
 ===
-- J. Pan and M. Yan, [Efficient sparse probability measures recovery via Bregman gradient](), Journal of Scientific Computing, accepted.
+-  C. Si and M. Yan, [Initialization-enhanced physics-informed neural network with domain decomposition (IDPINN)](http://doi.org/10.1016/j.jcp.2025.113914), Journal of Computational Physics, 530(2025), 113914.
+- J. Pan and M. Yan, [Efficient sparse probability measures recovery via Bregman gradient](http://doi.org/10.1007/s10915-025-02797-1), Journal of Scientific Computing, 102(2025), 66.
 
 2024
 ===
