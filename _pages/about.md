@@ -11,7 +11,7 @@ redirect_from:
 Associate Professor<br>
 Assistant Dean<br>
 [School of Data Science](https://sds.cuhk.edu.cn)<br>
-[the Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)](https://www.cuhk.edu.cn/en)<br>
+[The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)](https://www.cuhk.edu.cn/en)<br>
 Daoyuan Building 410<br>
 2001 Longxiang Boulevard, Longgang District, Shenzhen, 518172
 
