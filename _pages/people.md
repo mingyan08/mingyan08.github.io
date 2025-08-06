@@ -11,7 +11,7 @@ author_profile: true
 * Chenhao Si (DS@CUHK-SZ)
 * Sirong Dai (DS@CUHK-SZ, joint with Yunbin Zhao)
 
-Previous Graduate Student
+Previous Graduate Students
 ===== 
 * Qi Lyu (MS 2021): First job--Software Engineer at Benefits Science Technologies
 * Ningyu Sha (Ph.D. 2021, joint with Yuying Xie (CMSE)): First job--Applied Scientist at Amazon
@@ -32,7 +32,7 @@ Previous Undergraduate Students (Chronological Order)
 * Hao-Jun Michael Shi (summer 2014, UCLA): Ph.D. in Industrial Engineering and Management Sciences at Northwestern University
 * Qi Yang (summer 2014, University of Southern California): Ph.D. in Data Science at MIT
 * Kan Zhu (summer 2014, UCLA): MS in Computer Science at Columbia University
-* Siqi Zhang (summer 2016, South University of Science and Technology of China): Ph.D. in Industrial Engineering at UIUC
+* Siqi Zhang (summer 2016, Southern University of Science and Technology): Ph.D. in Industrial Engineering at UIUC
 * Andrew Schmidt (2016-2018, MSU): Ph.D. in Operations Research at Columbia University
 * Tyler Will (2016-2018, MSU)
 * Katja Oklejas (spring 2017, MSU)
