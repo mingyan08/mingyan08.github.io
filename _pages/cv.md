@@ -24,7 +24,7 @@ Work Experience
   * Associate Professor (2022 - present)
 
 * Michigan State University (MSU), Department of Computational Mathematics, Science and Engineering; Department of Mathematics
-  * Associate Professor (2021 - 2023) (on leave from 2022 to 2023) 
+  * Associate Professor (2021 - 2023; on leave from 2022 to 2023) 
   * Assistant Professor (2015 - 2021)
 
 * University of California, Los Angeles (UCLA), Department of Mathematics
