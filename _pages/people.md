@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Current Graduate Students (Chronological Order)"
+title: "Current Graduate Students and Postdocs (Chronological Order)"
 permalink: /people/
 author_profile: true
 ---
@@ -19,13 +19,14 @@ Previous Graduate Students
 * [Xiaorui Liu](https://sites.google.com/ncsu.edu/xiaorui/) (Ph.D. 2022, joint with Jiliang Tang (CSE)): First job--Assistant Professor at North Carolina State University
 * Zhuoqing Song (Math@Fudan, joint with Lei Shi)
 
-Previous Postdocs and Visitors (Chronological Order)
+Previous Postdocs (Chronological Order)
 =====
-* Zhi Li (Postdoc 2016-2019): First job–Assistant Professor at East China Normal University
-* Jun Feng (Visitor 2018, Chengdu University of Technology)
+* Zhi Li (Postdoc 2016-2019): First job--Assistant Professor at East China Normal University
 * Zhishen Huang (Postdoc 2021-2022): First job--Research Scientist at Amazon
 
-Previous Undergraduate Students (Chronological Order)
+<!-- * Jun Feng (Visitor 2018, Chengdu University of Technology) --> 
+
+<!-- Previous Undergraduate Students (Chronological Order)
 =====
 * Jerry Luo (summer 2014, UCLA): Ph.D. in Mathematics at Arizona State University
 * Kayla Shapiro (summer 2014, UC Berkeley): MS in Computer Science at Imperial College London
@@ -45,8 +46,8 @@ Previous Undergraduate Students (Chronological Order)
 * Jamie Schmidt (fall 2019, MSU)
 * Benjamin Tuckey (fall 2019, MSU)
 * Xingyu Yang (2020-2021, MSU): MS in Data Science at George Washington University
-* Evan Bell (spring 2021, MSU)
+* Evan Bell (spring 2021, MSU)  
 * Wenyu Shang (spring 2021, MSU): MS in Data Science at University of Southern California
 * Chijin Liu (spring 2021, Xi'an Jiaotong University)
 * William Chettleburgh (2020-2022, MSU)
-* Yuantao Zhang (2022-2023, CUHK-SZ)
+* Yuantao Zhang (2022-2023, CUHK-SZ) -->
