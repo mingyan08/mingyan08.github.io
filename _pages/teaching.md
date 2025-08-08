@@ -7,7 +7,7 @@ author_profile: true
 
 {% include base_path %}
 
-* Spring 2025: MAT 1002 Calculus II
+<!--* Spring 2026: MAT 1002 Calculus II-->
 
 Previous Teaching
 ======
