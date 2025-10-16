@@ -37,7 +37,7 @@ Research Interest
 Research Support 
 === 
 + 国家自然科学基金委员会
-+ 广东省科技厅
++ 广东省科学技术厅
 + 深圳市科技创新局
 + U.S. NSF
 + Ford
