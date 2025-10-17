@@ -19,26 +19,14 @@ Daoyuan Building 410 <br>
 ---
 
 ## Research Overview
-My research lies at the intersection of **optimization theory**, **machine learning**, and **scientific computing**.  
-I am particularly interested in developing mathematically grounded algorithms for **AI for Science**, including:
-
-* Optimization and acceleration theory  
-* Physics-informed neural networks (PINNs) and their complex-valued extensions  
-* Bregman-distance-based and adaptive accelerated algorithms  
-* Decentralized and distributed learning methods
-
-Our goal is to design algorithms that are both **theoretically sound** and **practically efficient** for large-scale or structure-rich problems arising in modern data science.
-
+My research lies at the intersection of **optimization theory**, **machine learning**, and **scientific computing**. Our goal is to design algorithms that are both **theoretically sound** and **practically efficient** for large-scale or structure-rich problems arising in modern data science.
 
 ## Opportunities
-
 I am **recruiting highly motivated PhD students, postdocs, and visiting students** to join my research group at CUHK-Shenzhen. Preferred backgrounds include mathematics, computer science, or related areas with strong analytical and programming skills.   
 
 If you are interested in working on topics such as **optimization**, **machine learning**, or **AI-based scientific computing**, please refer to the [Join Us](/join_us/) page for application instructions.
 
-
 ## Acknowledgment
-
 My research is supported by the 
 * **China**: National Natural Science Foundation of China (NSFC), Department of Science and Technology of Guangdong Province, and Shenzhen Science and Technology Innovation Commission.
 * **U.S.**: NSF, Ford, Meta  
