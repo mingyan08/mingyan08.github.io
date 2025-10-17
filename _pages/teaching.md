@@ -2,7 +2,7 @@
 layout: archive
 title: "Current Teaching"
 permalink: /teaching/
-author_profile: true
+author_profile: false
 ---
 
 {% include base_path %}
