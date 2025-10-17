@@ -1,12 +1,11 @@
 ---
 layout: archive
+title: "Current Graduate Students and Postdocs"
 permalink: /people/
 author_profile: true
 ---
 
 {% include base_path %}
-
-## Current Graduate Students and Postdocs
 
 * **Jianting Pan** (DS@CUHK-SZ)
 * **Chenhao Si** (DS@CUHK-SZ)
