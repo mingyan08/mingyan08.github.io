@@ -7,7 +7,7 @@ author_profile: true
 
 {% include base_path %}
 
-Recent articles are also available on [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ).
+A full publication list is also available on [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ).
 
 ## 2025
 - C. Si and M. Yan, [Initialization-enhanced physics-informed neural network with domain decomposition (IDPINN)](http://doi.org/10.1016/j.jcp.2025.113914), *Journal of Computational Physics*, 530, 113914.
