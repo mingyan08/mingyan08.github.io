@@ -33,3 +33,5 @@ author_profile: true
 
 ### Rice University
   * [**CAAM 654: Sparse Optimization** (Graduate, Fall 2012)](http://www.caam.rice.edu/~optimization/sparse/index.html)
+
+_Last updated: {{ site.time | date: "%B %Y" }}_
