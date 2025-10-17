@@ -2,11 +2,10 @@
 layout: archive
 title: "Join Us"
 permalink: /join_us/
-excerpt: "PhD, Postdoctoral, and Visiting Opportunities in Professor Ming Yan’s Group"
 author_profile: true
-redirect_from:
-  - /join_is
 ---
+
+{% include base_path %}
 
 Join the Group
 ===
