@@ -14,8 +14,7 @@ Our group conducts research at the intersection of **optimization**, **machine l
 If you are passionate about mathematical foundations and algorithmic innovations for AI, we welcome your application.
 
 
-PhD Students
-======
+## PhD Students
 
 Applicants should have a strong background in **mathematics**, **computer science**, or **related disciplines**,  with solid analytical skills and research motivation.
 
@@ -25,8 +24,7 @@ If you are interested, please email me with the subject line **“PhD Applicatio
 * A brief statement of research interests  
 * Publications or project reports (if any)
 
-Postdoctoral Researchers
-======
+## Postdoctoral Researchers
 
 We welcome postdoctoral researchers with a strong background in **optimization**, **machine learning**,  **numerical analysis**, or **scientific computing**.  
 
@@ -36,8 +34,8 @@ Interested applicants are encouraged to contact me directly with:
 * A short research statement outlining future plans  
 
 
-Visiting Students & Research Interns
-======
+## Visiting Students & Research Interns
+
 We also host **visiting students** and **research interns**. These positions are ideal for students who wish to explore research topics in optimization and AI for Science before pursuing graduate studies.
 
 To apply, please send:
