@@ -1,12 +1,15 @@
 ---
-permalink: /join_us/
+layout: archive
 title: "Join Us"
+permalink: /join_us/
 excerpt: "PhD, Postdoctoral, and Visiting Opportunities in Professor Ming Yan’s Group"
-author_profile: false
-layout: single
+author_profile: true
+redirect_from:
+  - /join_is
 ---
 
-# Join the Group
+Join the Group
+===
 
 We are always looking for **motivated and talented researchers** to join our group at the **[School of Data Science (SDS)](https://sds.cuhk.edu.cn)**, **[The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)](https://www.cuhk.edu.cn/en)**.
 
