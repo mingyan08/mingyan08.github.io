@@ -12,8 +12,8 @@ main:
   - title: "People"
     url: /people/
         
-#  - title: "Blog Posts"
-#    url: /year-archive/
+  - title: "Join us"
+    url: /join_us/
     
   - title: "CV"
     url: /cv/
