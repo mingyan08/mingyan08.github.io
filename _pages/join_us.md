@@ -1,14 +1,11 @@
 ---
 layout: archive
-title: "Join Us"
+title: "Join the Group"
 permalink: /join_us/
 author_profile: true
 ---
 
 {% include base_path %}
-
-Join the Group
-======
 
 We are always looking for **motivated and talented researchers** to join our group.
 
