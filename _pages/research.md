@@ -16,3 +16,5 @@ author_profile: true
   * Accelerated algorithms: OGT (Optimal Gradient Tracking), OPAPC
   * Compressed communication: LEAD
   * Directed graphs: APD (Accelerated Push-DIGing)
+
+_Last updated: {{ site.time | date: "%B %Y" }}_
