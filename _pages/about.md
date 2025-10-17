@@ -1,5 +1,5 @@
 ---
-layout: 
+layout: archive
 permalink: /about/
 title: "About Me"
 excerpt: "About Professor Ming Yan"
