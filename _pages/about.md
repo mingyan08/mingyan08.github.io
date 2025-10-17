@@ -30,3 +30,5 @@ author_profile: true
 
 * Rice University
   * Postdoctoral Fellow (2012 - 2013)
+ 
+_Last updated: {{ site.time | date: "%B %Y" }}_
