@@ -1,6 +1,17 @@
 ---
+layout: splash
 permalink: /
-title: "About me"
+title: "Ming Yan"
+header:
+  overlay_color: "#003366"
+  overlay_filter: 0.2
+  overlay_image: /assets/images/cuhk-banner.jpg
+  actions:
+    - label: "Join Us"
+      url: /join_us/
+    - label: "Publications"
+      url: /publications/
+
 excerpt: "About me"
 author_profile: true
 redirect_from: 
