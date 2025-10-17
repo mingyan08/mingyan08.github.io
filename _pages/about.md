@@ -1,54 +1,43 @@
 ---
 layout: archive
-permalink: /about/
-title: "About Me"
-excerpt: "About Professor Ming Yan"
+title: "Education"
+permalink: /cv/
 author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
+redirect_from:
+  - /resume
 ---
 
-### Ming Yan (严明)
+{% include base_path %}
 
-**Associate Professor**, **Assistant Dean** <br>
-[School of Data Science](https://sds.cuhk.edu.cn)  <br>
-[The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)](https://www.cuhk.edu.cn/en)  <br>
-Daoyuan Building 410 <br>
-2001 Longxiang Boulevard, Longgang District, Shenzhen, 518172
+* University of California, Los Angeles (UCLA), Department of Mathematics
+  * Ph.D. in Mathematics (2012)
+  * Dissertation: “Image and Signal Processing with Non-Gaussian Noise: EM-Type Algorithms and Adaptive Outlier Pursuit”
+  * Advisor: Professor [Luminita A. Vese](https://www.math.ucla.edu/~lvese/)
 
-<!--Associate Professor (on leave from August 2022)\
-[Department of Computational Mathematics, Science and Engineering (CMSE)](https://cmse.msu.edu/)\
-[Department of Mathematics](https://math.msu.edu/)\
-[Michigan State University](https://msu.edu/)-->
----
+* University of Science and Technology of China (USTC), Department of Mathematics
+  * M.S. in Mathematics (2008)
+  * B.S. in Mathematics (2005)
 
-## Research Overview
-My research lies at the intersection of **optimization theory**, **machine learning**, and **scientific computing**.  
-I am particularly interested in developing mathematically grounded algorithms for **AI for Science**, including:
+Work Experience
+======
+* The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen), School of Data Science
+  * Associate Professor (2022 - present)
 
-- Optimization and acceleration theory  
-- Physics-informed neural networks (PINNs) and their complex-valued extensions  
-- Bregman-distance-based and adaptive accelerated algorithms  
-- Decentralized and distributed learning methods  
+* Michigan State University (MSU), Department of Computational Mathematics, Science and Engineering; Department of Mathematics
+  * Associate Professor (2021 - 2023; on leave from 2022 to 2023) 
+  * Assistant Professor (2015 - 2021)
 
-Our goal is to design algorithms that are both **theoretically sound** and **practically efficient** for large-scale or structure-rich problems arising in modern data science.
----
+* University of California, Los Angeles (UCLA), Department of Mathematics
+  * Assistant Adjunct Professor (2014 - 2015)
+  * Postdoctoral Scholar (2013 - 2014)
+  * Mentor: Professor [Wotao Yin](https://wotaoyin.mathopt.com/)
 
-## Opportunities
-
-I am **recruiting highly motivated PhD students, postdocs, and visiting students** to join my research group at CUHK-Shenzhen. Preferred backgrounds include mathematics, computer science, or related areas with strong analytical and programming skills.   
-
-If you are interested in working on topics such as **optimization**, **machine learning**, or **AI-based scientific computing**, please refer to the [Join Us](/join_us/) page for application instructions.
----
+* Rice University, Department of Computational and Applied Mathematics
+  * Postdoctoral Fellow (2012 - 2013)
+  * Mentor: Professor [Wotao Yin](https://wotaoyin.mathopt.com/)
 
 
-## Acknowledgment
 
-My research is supported by the **National Natural Science Foundation of China (NSFC)**,  
-the **Shenzhen Science and Technology Innovation Commission**,  
-and several institutional grants from CUHK-Shenzhen.  
-I gratefully acknowledge these agencies for their support.
----
 
-_Last updated: {{ site.time | date: "%B %Y" }}_
+  
+
