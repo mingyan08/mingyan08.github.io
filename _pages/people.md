@@ -11,6 +11,7 @@ author_profile: true
 * **Chenhao Si** (DS@CUHK-SZ)
 * **Sirong Dai** (DS@CUHK-SZ, joint with Yunbin Zhao)
 * **Anjie Dong** (CS@CUHK-SZ)
+* **Zhengyang Tang** (CIE@CUHK-SZ, joint with Benyou Wang)
 
 ---
 
