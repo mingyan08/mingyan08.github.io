@@ -9,7 +9,7 @@ author_profile: true
 
 A full publication list is also available on [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ).
 
-**Jump to:** [2025](#2025) | [2024](#2024) | [2023](#2023) | [Earlier years](#2022)
+**Jump to:** [2025](#2022), [2024](#2015) 
 
 
 ## 2025
