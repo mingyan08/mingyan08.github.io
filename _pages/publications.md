@@ -9,6 +9,9 @@ author_profile: true
 
 A full publication list is also available on [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ).
 
+**Jump to:** [2025](#2025) | [2024](#2024) | [2023](#2023) | [Earlier years](#2022)
+
+
 ## 2025
 - C. Si and M. Yan, [Initialization-enhanced physics-informed neural network with domain decomposition (IDPINN)](http://doi.org/10.1016/j.jcp.2025.113914), *Journal of Computational Physics*, 530, 113914.
 - J. Pan and M. Yan, [Efficient sparse probability measures recovery via Bregman gradient](http://doi.org/10.1007/s10915-025-02797-1), *Journal of Scientific Computing*, 102, 66.
