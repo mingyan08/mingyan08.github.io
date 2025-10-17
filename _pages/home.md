@@ -39,10 +39,8 @@ If you are interested in working on topics such as **optimization**, **machine l
 
 ## Acknowledgment
 
-My research is supported by the **National Natural Science Foundation of China (NSFC)**,  
-the **Shenzhen Science and Technology Innovation Commission**,  
-and several institutional grants from CUHK-Shenzhen.  
-I gratefully acknowledge these agencies for their support.
-
+My research is supported by the 
+* **China**: National Natural Science Foundation of China (NSFC), Department of Science and Technology of Guangdong Province, and Shenzhen Science and Technology Innovation Commission.
+* **U.S.**: NSF, Ford, Meta  
 
 _Last updated: {{ site.time | date: "%B %Y" }}_
