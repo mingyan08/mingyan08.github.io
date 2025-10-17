@@ -1,12 +1,12 @@
 ---
 layout: archive
+title: "Current Teaching"
 permalink: /teaching/
 author_profile: true
 ---
 
 {% include base_path %}
 
-## Current Teaching
 <!--* Spring 2026: MAT 1002 Calculus II-->
 
 ## Previous Teaching
