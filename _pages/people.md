@@ -2,7 +2,7 @@
 layout: archive
 title: "Current Graduate Students and Postdocs"
 permalink: /people/
-author_profile: true
+author_profile: false
 ---
 
 {% include base_path %}
