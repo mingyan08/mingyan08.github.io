@@ -1,5 +1,5 @@
 ---
-layout: splash
+layout: 
 permalink: /about/
 title: "About Me"
 excerpt: "About Professor Ming Yan"
