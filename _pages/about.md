@@ -1,51 +1,54 @@
 ---
 layout: splash
-permalink: /
-title: "Ming Yan"
-header:
-  overlay_color: "#003366"
-  overlay_filter: 0.2
-  overlay_image: /assets/images/cuhk-banner.jpg
-  actions:
-    - label: "Join Us"
-      url: /join_us/
-    - label: "Publications"
-      url: /publications/
-
-excerpt: "About me"
+permalink: /about/
+title: "About Me"
+excerpt: "About Professor Ming Yan"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-Associate Professor<br>
-Assistant Dean<br>
-[School of Data Science](https://sds.cuhk.edu.cn)<br>
-[The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)](https://www.cuhk.edu.cn/en)<br>
-Daoyuan Building 410<br>
-2001 Longxiang Boulevard, Longgang District, Shenzhen, 518172
+### Ming Yan (严明)
 
+**Associate Professor**, **Assistant Dean** <br>
+[School of Data Science](https://sds.cuhk.edu.cn)  <br>
+[The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)](https://www.cuhk.edu.cn/en)  <br>
+Daoyuan Building 410 <br>
+2001 Longxiang Boulevard, Longgang District, Shenzhen, 518172
 
 <!--Associate Professor (on leave from August 2022)\
 [Department of Computational Mathematics, Science and Engineering (CMSE)](https://cmse.msu.edu/)\
 [Department of Mathematics](https://math.msu.edu/)\
 [Michigan State University](https://msu.edu/)-->
+---
+
+## Research Overview
+My research lies at the intersection of **optimization theory**, **machine learning**, and **scientific computing**.  
+I am particularly interested in developing mathematically grounded algorithms for **AI for Science**, including:
+
+- Optimization and acceleration theory  
+- Physics-informed neural networks (PINNs) and their complex-valued extensions  
+- Bregman-distance-based and adaptive accelerated algorithms  
+- Decentralized and distributed learning methods  
+
+Our goal is to design algorithms that are both **theoretically sound** and **practically efficient** for large-scale or structure-rich problems arising in modern data science.
+---
+
+## Opportunities
+
+I am **recruiting highly motivated PhD students, postdocs, and visiting students** to join my research group at CUHK-Shenzhen. Preferred backgrounds include mathematics, computer science, or related areas with strong analytical and programming skills.   
+
+If you are interested in working on topics such as **optimization**, **machine learning**, or **AI-based scientific computing**, please refer to the [Join Us](/join_us/) page for application instructions.
+---
 
 
-<h2 style="color:red;">Open Positions</h2>
-  
-I am **currently recruiting** Ph.D. students, postdocs, and visiting students at The Chinese University of Hong Kong, Shenzhen. If you are interested, please email me.
+## Acknowledgment
 
+My research is supported by the **National Natural Science Foundation of China (NSFC)**,  
+the **Shenzhen Science and Technology Innovation Commission**,  
+and several institutional grants from CUHK-Shenzhen.  
+I gratefully acknowledge these agencies for their support.
+---
 
-Research Interest
-===
-+ Optimization methods, especially for sparse recovery and inverse problems
-+ Federated and machine learning algorithms
-+ Parallel and distributed algorithms for large-scale data
-+ Variational techniques in image processing
-
-Research Support 
-=== 
-+ **China:** 国家自然科学基金委员会, 广东省科学技术厅, 深圳市科技创新局
-+ **U.S.:** NSF, Ford, Meta
+_Last updated: {{ site.time | date: "%B %Y" }}_
