@@ -1,27 +1,28 @@
 ---
 layout: archive
-title: "Current Graduate Students and Postdocs"
 permalink: /people/
 author_profile: true
 ---
 
 {% include base_path %}
 
+## Current Graduate Students and Postdocs
+
 * **Jianting Pan** (DS@CUHK-SZ)
 * **Chenhao Si** (DS@CUHK-SZ)
 * **Sirong Dai** (DS@CUHK-SZ, joint with Yunbin Zhao)
 * **Anjie Dong** (CS@CUHK-SZ)
 
-Previous Graduate Students
-===== 
+## Previous Graduate Students
+
 * **Qi Lyu** (MS 2021): First job--Software Engineer at Benefits Science Technologies
 * **Ningyu Sha** (Ph.D. 2021, joint with Yuying Xie): First job--Applied Scientist at Amazon
 * **Yao Li** (Ph.D. 2022): First job--Research Scientist at Huawei
 * [**Xiaorui Liu**](https://sites.google.com/ncsu.edu/xiaorui/) (Ph.D. 2022, joint with Jiliang Tang): First job--Assistant Professor at North Carolina State University
 * **Zhuoqing Song** (Math@Fudan, joint with Lei Shi)
 
-Previous Postdocs
-=====
+## Previous Postdocs
+
 * **Zhi Li** (Postdoc 2016-2019): First job--Assistant Professor at East China Normal University
 * **Zhishen Huang** (Postdoc 2021-2022): First job--Research Scientist at Amazon
 
@@ -52,3 +53,4 @@ Previous Postdocs
 * Chijin Liu (spring 2021, Xi'an Jiaotong University)
 * William Chettleburgh (2020-2022, MSU)
 * Yuantao Zhang (2022-2023, CUHK-SZ) -->
+_Last updated: {{ site.time | date: "%B %Y" }}_
