@@ -19,7 +19,7 @@ If you are passionate about mathematical foundations and algorithmic innovations
 
 Applicants should have a strong background in **mathematics**, **computer science**, or **related disciplines** — with solid analytical skills and strong research motivation.  
 
-If you are interested, please email me at [mingyan08@cuhk.edu.cn](mailto:mingyan08@cuhk.edu.cn) with the subject line **“PhD Application – [Your Name]”**, and include the following materials:
+If you are interested, please email me with the subject line **“PhD Application – [Your Name]”**, and include the following materials:
 * CV / Resume  
 * Transcript(s)  
 * A brief statement of research interests  
