@@ -27,7 +27,7 @@ Primal-dual splitting methods are fundamental tools for structured convex and no
 ## Sparse Optimization and Signal Processing
 Sparse modeling provides a powerful framework for recovering signals and images from limited or corrupted data. My earlier research contributed several advances in **nonconvex regularization**, **robust PCA**, and **low-rank matrix recovery**. These works combine optimization theory with practical algorithms for **image reconstruction, denoising, and compressive sensing**, resulting in efficient solvers with strong recovery guarantees.
 
-### Physics-Informed Neural Networks (PINN)
+## Physics-Informed Neural Networks (PINN)
 Physics-Informed Neural Networks integrate deep learning with physical laws to solve differential equations efficiently. My recent work improves accuracy and training efficiency through novel network architectures and smoothness-regularized formulations.  This line of research bridges traditional numerical analysis and modern AI, enabling data-driven discovery and simulation of complex physical systems.
 
 ## Artificial Intelligence (AI) for Mathematical and Optimization Problems
