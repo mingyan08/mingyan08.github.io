@@ -8,63 +8,44 @@ author_profile: true
 {% include base_path %}
 
 Join the Group
-===
+======
 
-We are always looking for **motivated and talented researchers** to join our group at the **[School of Data Science (SDS)](https://sds.cuhk.edu.cn)**, **[The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)](https://www.cuhk.edu.cn/en)**.
+We are always looking for **motivated and talented researchers** to join our group.
 
-Our group conducts research at the intersection of **optimization**, **machine learning**, and **scientific computing**, with current focuses on:
-
-- Optimization theory and algorithmic acceleration  
-- AI for Science and data-driven modeling of physical systems  
-- Decentralized and distributed algorithms  
+Our group conducts research at the intersection of **optimization**, **machine learning**, and **scientific computing**. 
 
 If you are passionate about mathematical foundations and algorithmic innovations for AI, we welcome your application.
 
----
 
-## 🧑‍🎓 PhD Students
+PhD Students
+======
 
-We recruit PhD students through the **School of Data Science** PhD program at CUHK-Shenzhen. Applicants should have a strong background in **mathematics**, **computer science**, or **related disciplines**,  with solid analytical skills and research motivation.
+Applicants should have a strong background in **mathematics**, **computer science**, or **related disciplines**,  with solid analytical skills and research motivation.
 
-### Admission routes
+If you are interested, please email me with the subject line **“PhD Application – [Your Name]”**, and include the following materials:
+* CV / Resume  
+* Transcript(s)  
+* A brief statement of research interests  
+* Publications or project reports (if any)
 
-If you are interested, please email me with the subject line **“PhD Application – [Your Name]”**,  
-and include the following materials:
-- CV / Resume  
-- Transcript(s)  
-- A brief statement of research interests  
-- Publications or project reports (if any)
-
----
-
-## 🧑‍🔬 Postdoctoral Researchers
+Postdoctoral Researchers
+======
 
 We welcome postdoctoral researchers with a strong background in **optimization**, **machine learning**,  **numerical analysis**, or **scientific computing**.  
 
 Interested applicants are encouraged to contact me directly with:
-- CV (including publication list)  
-- Two representative papers  
-- A short research statement outlining future plans  
+* CV (including publication list)  
+* Two representative papers  
+* A short research statement outlining future plans  
 
----
 
-## 🌏 Visiting Students & Research Interns
-
+Visiting Students & Research Interns
+======
 We also host **visiting students** and **research interns**. These positions are ideal for students who wish to explore research topics in optimization and AI for Science before pursuing graduate studies.
 
 To apply, please send:
-- A short CV  
-- Transcript  
-- Proposed research period and topic of interest  
-
----
-
-## 💡 Tips for Applicants
-
-- Familiarize yourself with our **recent publications** on [Publications](/publications/).  
-- In your email, briefly describe why your interests align with our ongoing projects.  
-- Early contact (before formal deadlines) is encouraged — it helps identify the best matching funding channel.
-
----
+* A short CV  
+* Transcript  
+* Proposed research period and topic of interest  
 
 _Last updated: {{ site.time | date: "%B %Y" }}_
