@@ -154,7 +154,7 @@ Recent articles are also available on [Google Scholar](https://scholar.google.co
 
 2011
 === 
-- M. Yan, [EM-type algorithms for image reconstruction with background emission and Poisson noise](http://dx.doi.org/10.1007/978-3-642-24028-7_4) *International Symposium on Visual Computing 2011*, 33-42. 
+- M. Yan, [EM-type algorithms for image reconstruction with background emission and Poisson noise](http://dx.doi.org/10.1007/978-3-642-24028-7_4), *International Symposium on Visual Computing 2011*, 33-42. 
 
 - M. Yan, J. Chen, L. A. Vese, J. Villasenor, A. Bui, and J. Cong, [EM+TV based reconstruction for cone-beam CT with reduced radiation](http://dx.doi.org/10.1007/978-3-642-24028-7_1), *International Symposium on Visual Computing 2011*, 1-10.
 
@@ -164,9 +164,9 @@ Recent articles are also available on [Google Scholar](https://scholar.google.co
 
 2008
 ===
-- H. Han and M. Yan, [A mixed finite element method on a staggered mesh for Navier-Stokes equations](https://global-sci.org/intro/article_detail/jcm/8661.html), *Journal of Computational Mathematics*, 26, 816-824. 
+- H. Han and M. Yan, [A mixed finite element method on a staggered mesh for Navier-Stokes equations](https://global-sci.com/article/84966/a-mixed-finite-element-method-on-a-staggered-mesh-for-navier-stokes-equations), *Journal of Computational Mathematics*, 26, 816-824. 
 
-- H. Han, M. Yan, and C. Wu, [An energy regularization method for the backward diffusion problem and its applications to image deblurring](https://www.global-sci.com/intro/article_detail/cicp/7786.html), *Communications in Computational Physics*, 4, 177-194. 
+- H. Han, M. Yan, and C. Wu, [An energy regularization method for the backward diffusion problem and its applications to image deblurring](https://global-sci.com/article/81249/an-energy-regularization-method-for-the-backward-diffusion-problem-and-its-applications-to-image-deblurring), *Communications in Computational Physics*, 4, 177-194. 
 
 
 Thesis
