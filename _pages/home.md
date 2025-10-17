@@ -1,12 +1,8 @@
 ---
 layout: archive
-permalink: /about/
+permalink: /
 title: "About Me"
-excerpt: "About Professor Ming Yan"
 author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
 ---
 
 ### Ming Yan (严明)
