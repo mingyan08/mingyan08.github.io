@@ -14,16 +14,16 @@ author_profile: true
 
 ## Previous Graduate Students
 
-* **Qi Lyu** (MS 2021): First job--Software Engineer at Benefits Science Technologies
-* **Ningyu Sha** (Ph.D. 2021, joint with Yuying Xie): First job--Applied Scientist at Amazon
-* **Yao Li** (Ph.D. 2022): First job--Research Scientist at Huawei
-* [**Xiaorui Liu**](https://sites.google.com/ncsu.edu/xiaorui/) (Ph.D. 2022, joint with Jiliang Tang): First job--Assistant Professor at North Carolina State University
+* **Qi Lyu** (MS 2021) — Software Engineer at Benefits Science Technologies
+* **Ningyu Sha** (Ph.D. 2021, joint with Yuying Xie) — Applied Scientist at Amazon
+* **Yao Li** (Ph.D. 2022) — Research Scientist at Huawei
+* [**Xiaorui Liu**](https://sites.google.com/ncsu.edu/xiaorui/) (Ph.D. 2022, joint with Jiliang Tang): — Assistant Professor at North Carolina State University
 * **Zhuoqing Song** (Math@Fudan, joint with Lei Shi)
 
 ## Previous Postdocs
 
-* **Zhi Li** (Postdoc 2016-2019): First job--Assistant Professor at East China Normal University
-* **Zhishen Huang** (Postdoc 2021-2022): First job--Research Scientist at Amazon
+* **Zhi Li** (Postdoc 2016-2019) — Assistant Professor at East China Normal University
+* **Zhishen Huang** (Postdoc 2021-2022) — Research Scientist at Amazon
 
 <!-- * Jun Feng (Visitor 2018, Chengdu University of Technology) --> 
 
