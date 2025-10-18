@@ -7,6 +7,8 @@ author_profile: false
 
 {% include base_path %}
 
+---
+
 <!--* Spring 2026: MAT 1002 Calculus II-->
 
 ---
