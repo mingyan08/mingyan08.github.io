@@ -26,6 +26,8 @@ A full publication list is also available on [Google Scholar](https://scholar.go
 - W. Chettleburgh, Z. Huang, and M. Yan, [Fast robust principal component analysis using Gauss-Newton iterations](http://doi.org/10.1109/ICASSP49357.2023.10096269), *ICASSP 2023*.
 - M. Hu, Y. Lou, B. Wang, M. Yan, X. Yang, and Q. Ye, [Accelerated sparse recovery via gradient descent with nonlinear conjugate gradient momentum](http://doi.org/10.1007/s10915-023-02148-y), *Journal of Scientific Computing*, 95, 33.
 
+---
+
 ## 2022
 - S. Alam, L. Liu, M. Yan, and M. Zhang, [FedRolex: Model-heterogeneous federated learning with rolling submodel extraction](http://openreview.net/forum?id=OtxyysUdBE), *NeurIPS 2022*.
 - Z. Song, W. Li, K. Jin, L. Shi, M. Yan, W. Yin, K. Yuan, [Communication-efficient topologies for decentralized learning with O(1) consensus rate](http://openreview.net/forum?id=AyiiHcRzTd), *NeurIPS 2022*.
@@ -85,6 +87,8 @@ A full publication list is also available on [Google Scholar](https://scholar.go
 - F. Li, S. Osher, J. Qin, and M. Yan, [A multiphase image segmentation based on fuzzy membership functions and L1-norm fidelity](http://dx.doi.org/10.1007/s10915-016-0183-z), *Journal of Scientific Computing*, 69, 82-106. 
 - Z. Peng, T. Wu, Y. Xu, M. Yan, and W. Yin, [Coordinate friendly structures, algorithms and applications](http://dx.doi.org/10.4310/AMSA.2016.v1.n1.a2), *Annals of Mathematical Sciences and Applications*, 1, 57-119. 
 
+---
+
 ## 2015
 - X. Huang, L. Shi, and M. Yan, [Nonconvex sorted L1 minimization for sparse approximation](http://dx.doi.org/10.1007/s40305-014-0069-4), *Journal of the Operations Research Society of China*, 3, 207-229. 
 
@@ -109,6 +113,8 @@ A full publication list is also available on [Google Scholar](https://scholar.go
 ## 2008
 - H. Han and M. Yan, [A mixed finite element method on a staggered mesh for Navier-Stokes equations](https://global-sci.com/article/84966/a-mixed-finite-element-method-on-a-staggered-mesh-for-navier-stokes-equations), *Journal of Computational Mathematics*, 26, 816-824. 
 - H. Han, M. Yan, and C. Wu, [An energy regularization method for the backward diffusion problem and its applications to image deblurring](https://global-sci.com/article/81249/an-energy-regularization-method-for-the-backward-diffusion-problem-and-its-applications-to-image-deblurring), *Communications in Computational Physics*, 4, 177-194. 
+
+---
 
 ## Thesis
 - M. Yan, *Image and Signal Processing with Non-Gaussian Noise: EM-Type Algorithms and Adaptive Outlier Pursuit*, Department of Mathematics, University of California, Los Angeles, 2012. 
