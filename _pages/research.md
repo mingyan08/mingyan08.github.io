@@ -34,6 +34,16 @@ I have developed several accelerated and provably convergent methods for decentr
 
 ---
 
+## Physics-Informed Neural Networks (PINNs)
+Physics-Informed Neural Networks (PINNs) integrate deep learning with physical laws to solve differential equations efficiently. 
+My recent work improves accuracy and training efficiency through **novel network architectures** and **smoothness-regularized formulations**. 
+This research bridges traditional numerical analysis and modern AI, enabling data-driven discovery and simulation of complex physical systems.
+
++ Selected Publications:
+  - C. Si and M. Yan, [Initialization-enhanced physics-informed neural network with domain decomposition (IDPINN)](http://doi.org/10.1016/j.jcp.2025.113914), *Journal of Computational Physics*, 530 (2025), 113914.
+
+---
+
 ## Primal–Dual Algorithms
 Primal–dual splitting methods are fundamental tools for structured convex and nonconvex optimization. 
 I proposed the **PD3O algorithm (Primal–Dual Three-Operator Splitting)**, which unifies and generalizes a family of primal–dual methods. 
@@ -59,16 +69,8 @@ These works combine optimization theory with practical algorithms for **image re
   - M. Yan, Y. Yang, and S. Osher, [Robust 1-bit compressive sensing using adaptive outlier pursuit](http://dx.doi.org/10.1109/TSP.2012.2193397), *IEEE Transactions on Signal Processing*, 60 (2012), 3868-3875. ([Code](http://github.com/mingyan08/aop))
   - M. Yan, [Restoration of images corrupted by impulse noise and mixed Gaussian impulse noise using blind inpainting](http://dx.doi.org/10.1137/12087178X), *SIAM Journal on Imaging Sciences*, 6 (2013), 1227-1245. 
   - Y. Lou and M. Yan, [Fast L1-L2 minimization via a proximal operator](http://dx.doi.org/10.1007/s10915-017-0463-2), *Journal of Scientific Computing*, 74 (2018), 767-785. ([Code](https://github.com/mingyan08/ProxL1-L2))
-
----
-
-## Physics-Informed Neural Networks (PINNs)
-Physics-Informed Neural Networks (PINNs) integrate deep learning with physical laws to solve differential equations efficiently. 
-My recent work improves accuracy and training efficiency through **novel network architectures** and **smoothness-regularized formulations**. 
-This research bridges traditional numerical analysis and modern AI, enabling data-driven discovery and simulation of complex physical systems.
-
-+ Selected Publications:
-  - C. Si and M. Yan, [Initialization-enhanced physics-informed neural network with domain decomposition (IDPINN)](http://doi.org/10.1016/j.jcp.2025.113914), *Journal of Computational Physics*, 530 (2025), 113914.
+  - J. Liu, M. Yan, and T. Zeng, [Surface-aware blind image deblurring](http://doi.org/10.1109/TPAMI.2019.2941472), *IEEE Transactions on Pattern Analysis and Machine Intelligence*, 43 (2021), 1041-1055. 
+  - Z. Li, M. Yan, T. Zeng, and G. Zhang, [Phase retrieval from incomplete data via weighted nuclear norm minimization](http://doi.org/10.1016/j.patcog.2022.108537), *Pattern Recognition*, 125 (2022), 108537.
 
 ---
 
