@@ -14,7 +14,7 @@ author_profile: false
 ## Previous Teaching
 
 ### The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)
-* **MAT 1002: Calculus II** — Undergraduate course (Spring 2023, Spring 2024, Spring 2025)  
+* **[MAT 1002: Calculus II](/MAT1002/)** — Undergraduate course (Spring 2023, Spring 2024, Spring 2025, Spring 2026)  
 * **MAT 3007: Optimization** — Undergraduate course (Summer 2022, Fall 2023)
 
 ---
