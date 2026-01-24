@@ -20,7 +20,7 @@ author_profile: false
 * **Qi Lyu** (MS 2021) — Software Engineer, Benefits Science Technologies → Chief Technology Officer, Mathos AI
 * **Ningyu Sha** (Ph.D. 2021, joint with Yuying Xie) — Applied Scientist, Amazon
 * **Yao Li** (Ph.D. 2022) — Research Scientist, Huawei
-* [**Xiaorui Liu**](https://sites.google.com/ncsu.edu/xiaorui/) (Ph.D. 2022, joint with Jiliang Tang): — Assistant Professor, North Carolina State University
+* [**Xiaorui Liu**](https://sites.google.com/ncsu.edu/xiaorui/) (Ph.D. 2022, joint with Jiliang Tang) — Assistant Professor, North Carolina State University
 * **Zhuoqing Song** (Math@Fudan, joint with Lei Shi)
 
 ---
