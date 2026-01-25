@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Series & Sequences — Professor's Edition</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f0f2f5;
+      line-height: 1.6;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    h1 { color: #003366; margin-top: 0; }
+    #plot { width: 100%; height: 550px; margin-top: 20px; }
+    
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #dee2e6;
+    }
+    .input-group { display: flex; flex-direction: column; }
+    label { font-weight: bold; margin-bottom: 5px; font-size: 0.9rem; color: #444; }
+    
+    input, select, button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    button:hover { background-color: #003d80; }
+
+    .explanation {
+      margin-top: 25px;
+      padding: 15px;
+      background: #eef7ff;
+      border-left: 5px solid #0056b3;
+    }
+    .legend-note {
+      font-size: 0.85rem;
+      color: #666;
+      font-style: italic;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Series Convergence Visualizer</h1>
+    
+    <div class="controls">
+      <div class="input-group">
+        <label>Select a Classic Example</label>
+        <select id="presets" onchange="loadPreset()">
+          <option value="">-- Custom Input --</option>
+          <option value="1/n">Harmonic Series (Divergent)</option>
+          <option value="1/n^2">P-Series (p=2, Convergent)</option>
+          <option value="(-1)^(n+1)/n">Alternating Harmonic</option>
+          <option value="(1/2)^n">Geometric Series (r=1/2)</option>
+          <option value="1/factorial(n)">Taylor Series for e</option>
+          <option value="sin(n)/n">Oscillating Terms</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>Term $a_n$</label>
+        <input type="text" id="formula" value="1/n" />
+      </div>
+
+      <div class="input-group">
+        <label>Start $n$</label>
+        <input type="number" id="startN" value="1" min="0" max="10" />
+      </div>
+
+      <div class="input-group">
+        <label>Number of Terms ($N$)</label>
+        <input type="number" id="Nval" value="50" min="5" max="2000" />
+      </div>
+
+      <div class="input-group">
+        <label>&nbsp;</label>
+        <button onclick="updatePlot()">Visualize Series</button>
+      </div>
+    </div>
+
+    <div id="plot"></div>
+    <p class="legend-note">Note: For convergence, the sequence of terms $a_n$ (red) must go to zero, but that does not guarantee the partial sums $S_n$ (blue) will stabilize.</p>
+
+    <div class="explanation">
+      <h3>Educational Insight</h3>
+      <p>
+        A series $\sum a_n$ converges if the sequence of <strong>partial sums</strong> $S_n$ approaches a finite limit. 
+        In the graph above:
+      </p>
+      <ul>
+        <li><strong>Red Points ($a_n$):</strong> These are the individual "steps" you are adding.</li>
+        <li><strong>Blue Line ($S_n$):</strong> This is the total "height" reached after adding $n$ steps.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function loadPreset() {
+      const preset = document.getElementById("presets").value;
+      if (preset) {
+        document.getElementById("formula").value = preset;
+        updatePlot();
+      }
+    }
+
+    function computeData(formula, startN, N) {
+      let fstr = String(formula).trim().replace(/\bln\(/gi, 'log(');
+      const node = math.parse(fstr);
+      const code = node.compile();
+      
+      const a_n = []; // Individual terms
+      const S_n = []; // Partial sums
+      const x_vals = [];
+      let runningSum = 0;
+
+      for (let i = startN; i <= startN + N; i++) {
+        try {
+          const val = code.evaluate({ n: i });
+          const numericVal = Number(val);
+          
+          if (Number.isFinite(numericVal)) {
+            x_vals.push(i);
+            a_n.push(numericVal);
+            runningSum += numericVal;
+            S_n.push(runningSum);
+          }
+        } catch (e) {
+          console.error("Evaluation error at n=" + i);
+        }
+      }
+      return { x_vals, a_n, S_n };
+    }
+
+    function updatePlot() {
+      const formula = document.getElementById("formula").value;
+      const startN = parseInt(document.getElementById("startN").value);
+      const N = parseInt(document.getElementById("Nval").value);
+
+      const data = computeData(formula, startN, N);
+
+      const traceSum = {
+        x: data.x_vals,
+        y: data.S_n,
+        mode: 'lines+markers',
+        name: 'Partial Sum (Sₙ)',
+        line: { color: '#007bff', width: 2 },
+        marker: { size: 4 }
+      };
+
+      const traceTerms = {
+        x: data.x_vals,
+        y: data.a_n,
+        mode: 'markers',
+        name: 'Individual Term (aₙ)',
+        marker: { color: '#dc3545', size: 6, symbol: 'circle-open' }
+      };
+
+      const layout = {
+        title: `Series Analysis: aₙ = ${formula}`,
+        hovermode: 'closest',
+        xaxis: { title: 'n (index)' },
+        yaxis: { title: 'Value', zeroline: true },
+        showlegend: true,
+        legend: { x: 0, y: 1 },
+        margin: { t: 50 }
+      };
+
+      Plotly.newPlot("plot", [traceSum, traceTerms], layout, { responsive: true });
+    }
+
+    window.addEventListener('DOMContentLoaded', updatePlot);
+  </script>
+</body>
+</html>

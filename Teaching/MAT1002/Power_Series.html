@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Power Series & Taylor Polynomials</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; max-width: 1100px; margin: 0 auto; padding: 20px; background: #f4f7f9; }
+    .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; background: #e9ecef; padding: 20px; border-radius: 8px; }
+    label { font-weight: bold; display: block; margin-bottom: 5px; }
+    input, select { width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; box-sizing: border-box; }
+    .slider-container { grid-column: span 2; }
+    #plot { width: 100%; height: 600px; }
+    .math-info { background: #fff4e5; border-left: 5px solid #ff9800; padding: 15px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Power Series Visualizer</h1>
+    <p>Watch how the Taylor Polynomial $P_n(x)$ approximates the function as $n$ increases.</p>
+
+    <div class="controls">
+      <div>
+        <label>Target Function $f(x)$</label>
+        <select id="funcPreset" onchange="updateUI()">
+          <option value="exp(x)">e^x (Centered at 0)</option>
+          <option value="sin(x)">sin(x) (Centered at 0)</option>
+          <option value="cos(x)">cos(x) (Centered at 0)</option>
+          <option value="1/(1-x)">1 / (1-x) [Geometric Series]</option>
+          <option value="log(1+x)">ln(1+x)</option>
+        </select>
+      </div>
+      <div>
+        <label>Current Degree ($n$)</label>
+        <input type="number" id="degreeInput" value="5" min="0" max="50" oninput="updatePlot()">
+      </div>
+      <div class="slider-container">
+        <label>Slide to increase terms: <span id="degreeDisplay">5</span></label>
+        <input type="range" id="degreeSlider" min="0" max="30" value="5" oninput="syncDegree(this.value)">
+      </div>
+    </div>
+
+    <div id="plot"></div>
+
+    <div class="math-info">
+      <strong>Professor's Note:</strong> Observe the <strong>Interval of Convergence</strong>. For $e^x$, the polynomial will eventually match the curve everywhere ($R = \infty$). For $1/(1-x)$, the approximation will <em>always</em> fail outside of $(-1, 1)$, no matter how many terms you add.
+    </div>
+  </div>
+
+  <script>
+    // Define the Taylor coefficients for presets
+    const coefficients = {
+      'exp(x)': (n) => 1 / math.factorial(n),
+      'sin(x)': (n) => (n % 2 === 0) ? 0 : (Math.pow(-1, (n-1)/2) / math.factorial(n)),
+      'cos(x)': (n) => (n % 2 !== 0) ? 0 : (Math.pow(-1, n/2) / math.factorial(n)),
+      '1/(1-x)': (n) => 1,
+      'log(1+x)': (n) => (n === 0) ? 0 : (Math.pow(-1, n+1) / n)
+    };
+
+    function syncDegree(val) {
+      document.getElementById('degreeInput').value = val;
+      document.getElementById('degreeDisplay').innerText = val;
+      updatePlot();
+    }
+
+    function updateUI() { updatePlot(); }
+
+    function updatePlot() {
+      const funcType = document.getElementById('funcPreset').value;
+      const nMax = parseInt(document.getElementById('degreeInput').value);
+      
+      const xVals = [];
+      const yTrue = [];
+      const yApprox = [];
+      
+      // Setup range
+      for (let x = -3; x <= 3; x += 0.05) {
+        xVals.push(x);
+        
+        // Exact Function
+        try {
+          let scope = { x: x };
+          yTrue.push(math.evaluate(funcType, scope));
+        } catch(e) { yTrue.push(null); }
+
+        // Power Series Approximation
+        let sum = 0;
+        for (let n = 0; n <= nMax; n++) {
+          sum += coefficients[funcType](n) * Math.pow(x, n);
+        }
+        // Limit Y-axis for stability
+        yApprox.push(Math.abs(sum) > 20 ? (sum > 0 ? 20 : -20) : sum);
+      }
+
+      const trace1 = {
+        x: xVals, y: yTrue,
+        name: `f(x) = ${funcType}`,
+        line: { color: '#bbb', dash: 'dash' }
+      };
+
+      const trace2 = {
+        x: xVals, y: yApprox,
+        name: `Pₙ(x) Degree ${nMax}`,
+        line: { color: '#0056b3', width: 3 }
+      };
+
+      const layout = {
+        title: `Taylor Polynomial Approximation`,
+        xaxis: { range: [-3, 3], title: 'x' },
+        yaxis: { range: [-5, 5], title: 'y' },
+        hovermode: 'x'
+      };
+
+      Plotly.newPlot('plot', [trace1, trace2], layout);
+    }
+
+    window.onload = updatePlot;
+  </script>
+</body>
+</html>
