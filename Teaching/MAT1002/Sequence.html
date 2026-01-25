@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sequence Visualization — Multivariable Calculus</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+    h1, h2 { color: #003366; }
+    #plot {
+      width: 100%;
+      height: 500px;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: white;
+    }
+    .input-area, .slider-area {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    input, button {
+      font-size: 1rem;
+      padding: 6px 10px;
+    }
+    .quiz, .explanation {
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      margin-top: 25px;
+    }
+    .explanation {
+      background: #e9f2ff;
+      border-left: 5px solid #007bff;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Sequences and Convergence Visualization</h1>
+  <p class="explanation">
+    A sequence is a function from integers $n = 1, 2, 3, \dots$ to real numbers $a_n$.
+    Visually, we can think of these as discrete points on a graph.
+    Try typing your own $a_n$ formula below (e.g., <code>1/n</code>, <code>(-1)^n/n</code>, <code>log(n)/n</code>).
+  </p>
+
+  <div class="input-area">
+    <label>Enter sequence formula $a_n =$</label>
+    <input type="text" id="formula" value="1/n" />
+
+    <label>N =</label>
+    <input type="number" id="Nval" value="100" min="10" max="2000" step="10" style="width:80px;" />
+
+    <button onclick="updatePlot()">Plot</button>
+  </div>
+
+  <div class="slider-area">
+    <label>Adjust $\varepsilon$ (tolerance): </label>
+    <input type="range" id="epsilonSlider" min="0.001" max="1" step="0.001" value="0.1" style="width:200px;">
+    <span id="epsVal">0.1</span>
+  </div>
+
+  <div id="plot"></div>
+
+  <div class="explanation">
+    <h2>Concept Reminder</h2>
+    <p>
+      A sequence $\{a_n\}$ <b>converges</b> to $L$ if for every $\varepsilon > 0$, 
+      there exists an $N$ such that for all $n > N$, $|a_n - L| < \varepsilon$.
+    </p>
+    <p>
+      The shaded horizontal band shows the $\varepsilon$-neighborhood of the limit, 
+      and the vertical line marks where the definition is satisfied.
+    </p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quick Quiz</h2>
+    <p>Does the sequence $a_n = (-1)^n/n$ converge?</p>
+    <button onclick="showAnswer()">Show Answer</button>
+    <p id="answer" style="display:none;">
+      ✅ Yes — it converges to $0$ because the oscillations shrink in amplitude as $n \to \infty$. 
+      Let $\varepsilon > 0$. There exists $N = \lceil 1/\varepsilon \rceil \geq 1/\varepsilon$ such that 
+      $|a_n - 0| =1/n < 1/N \leq \varepsilon$ for all $n > N$.
+    </p>
+  </div>
+
+  <script>
+    // ===== Robust sequence computation =====
+    function computeSequence(formula, N = 100) {
+      let fstr = String(formula).trim();
+      fstr = fstr.replace(/\bln\(/gi, 'log(');
+
+      try {
+        const node = math.parse(fstr);
+        const code = node.compile();
+
+        const out = [];
+        for (let i = 1; i <= N; i++) {
+          const v = code.evaluate({ n: i });
+          out.push(Number.isFinite(v) ? v : NaN);
+        }
+        return out;
+      } catch (err) {
+        console.error('Failed to parse/compile formula:', fstr, err);
+        alert("Invalid expression. Try something like `1/n` or `(-1)^n/n`. See console for details.");
+        return Array(N).fill(NaN);
+      }
+    }
+
+    // ===== Estimate limit from last few terms =====
+    function estimateLimit(yVals) {
+      const tail = yVals.slice(-10).filter(v => Number.isFinite(v));
+      if (!tail.length) return 0;
+      return tail.reduce((a, b) => a + b, 0) / tail.length;
+    }
+
+    // ===== Find smallest N such that |a_n - L| < epsilon =====
+    function findN(yVals, L, eps) {
+      for (let i = 0; i < yVals.length; i++) {
+        if (Math.abs(yVals[i] - L) < eps) {
+          const allIn = yVals.slice(i).every(y => Math.abs(y - L) < eps);
+          if (allIn) return i + 1;
+        }
+      }
+      return yVals.length;
+    }
+
+    // ===== Main update plot function =====
+    function updatePlot() {
+      const formula = document.getElementById("formula").value;
+      const N = parseInt(document.getElementById("Nval").value, 10) || 100;
+      const nVals = Array.from({ length: N }, (_, i) => i + 1);
+      const eps = parseFloat(document.getElementById("epsilonSlider").value);
+      const yVals = computeSequence(formula, N);
+      const L = estimateLimit(yVals);
+      const Nval = findN(yVals, L, eps);
+
+      document.getElementById("epsVal").innerText = eps.toFixed(3);
+
+      // ===== Sequence points =====
+      const pointsTrace = {
+        x: nVals,
+        y: yVals,
+        mode: "markers",
+        marker: { color: "#007bff", size: 6 },
+        name: "aₙ"
+      };
+
+      // ===== Epsilon band =====
+      const epsBand = {
+        type: "rect",
+        xref: "paper",
+        yref: "y",
+        x0: 0,
+        x1: 1,
+        y0: L - eps,
+        y1: L + eps,
+        fillcolor: "rgba(0, 255, 0, 0.1)",
+        line: { width: 0 }
+      };
+
+      // ===== Vertical line at N =====
+      const Nline = {
+        type: "line",
+        x0: Nval,
+        x1: Nval,
+        y0: Math.min(...yVals.filter(v=>Number.isFinite(v))),
+        y1: Math.max(...yVals.filter(v=>Number.isFinite(v))),
+        line: { color: "red", width: 2, dash: "dot" }
+      };
+
+      // ===== Compute safe y-axis range =====
+      const dataMin = Math.min(...yVals.filter(v=>Number.isFinite(v)));
+      const dataMax = Math.max(...yVals.filter(v=>Number.isFinite(v)));
+      const ymin = Math.min(dataMin, L - eps);
+      const ymax = Math.max(dataMax, L + eps);
+      const pad = (ymax - ymin) * 0.05 || eps*0.05;
+      const yRange = [ymin - pad, ymax + pad];
+
+      const layout = {
+        title: `Visualization of Sequence aₙ = ${formula}`,
+        xaxis: { title: "n", range: [0, N + 5] },
+        yaxis: { title: "aₙ", zeroline: true, range: yRange },
+        shapes: [epsBand, Nline],
+        annotations: [
+          { x: Nval, y: L + eps, text: `N = ${Nval}`, showarrow: true, arrowhead: 2, ax: 30, ay: -30 },
+          { x: N/2, y: L, text: `Limit ≈ ${L.toFixed(3)}`, showarrow: false }
+        ],
+        transition: { duration: 800, easing: "cubic-in-out" }
+      };
+
+      Plotly.react("plot", [pointsTrace], layout, { responsive: true });
+    }
+
+    // ===== Slider interaction =====
+    document.getElementById("epsilonSlider").addEventListener("input", updatePlot);
+
+    function showAnswer() {
+      document.getElementById("answer").style.display = "block";
+    }
+
+    // ===== Initialize =====
+    updatePlot();
+  </script>
+</body>
+</html>
