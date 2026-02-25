@@ -41,6 +41,8 @@ This research bridges traditional numerical analysis and modern AI, enabling dat
 
 + Selected Publications:
   - C. Si and M. Yan, [Initialization-enhanced physics-informed neural network with domain decomposition (IDPINN)](http://doi.org/10.1016/j.jcp.2025.113914), *Journal of Computational Physics*, 530 (2025), 113914.
+  - C Si, M Yan, X Li, and Z Xia, [Complex physics-informed neural network](http://doi.org/10.1016/j.jcp.2026.114713), *Journal of Computational Physics*, 553 (2026), 114713.
+  - C Si and M Yan, [Convolution-weighting method for the physics-informed neural network: A primal-dual optimization perspective](http://doi.org/10.1016/j.jcp.2026.114773), *Journal of Computational Physics*, 555 (2026), 114773.
 
 ---
 
