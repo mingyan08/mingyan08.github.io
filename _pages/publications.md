@@ -11,8 +11,15 @@ A full publication list is also available on [Google Scholar](https://scholar.go
 
 **Jump to:** [2022](#2022), [2015](#2015) 
 
+## 2026
+- C. Si and M. Yan, [Convolution-weighting method for the physics-informed neural network: A primal-dual optimization perspective](http://doi.org/10.1016/j.jcp.2026.114773), *Journal of Computational Physics*, 555 (2026), 114773.
+
+- C. Si, M. Yan, X. Li, and Z. Xia, [Complex physics-informed neural network](http://doi.org/10.1016/j.jcp.2026.114713), *Journal of Computational Physics*, 553 (2026), 114713.
+
 
 ## 2025
+- W. Guo, Y. Lou, J. Qin, and M.Yan, [Time-varying graph signal recovery using high-order smoothness and adaptive low-rankness](http://doi.org/10.1007/978-3-031-87804-6_4), In Garcia-Cardona, C., Lee, H. (eds), *Advances in Data Science*, Springer, 91-111.
+
 - C. Si and M. Yan, [Initialization-enhanced physics-informed neural network with domain decomposition (IDPINN)](http://doi.org/10.1016/j.jcp.2025.113914), *Journal of Computational Physics*, 530, 113914.
 - J. Pan and M. Yan, [Efficient sparse probability measures recovery via Bregman gradient](http://doi.org/10.1007/s10915-025-02797-1), *Journal of Scientific Computing*, 102, 66.
 
