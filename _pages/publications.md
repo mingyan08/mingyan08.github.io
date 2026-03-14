@@ -55,7 +55,7 @@ A full publication list is also available on [Google Scholar](https://scholar.go
 - Y. Li and M. Yan, [On linear convergence of two decentralized algorithms](http://doi.org/10.1007/s10957-021-01833-y), *Journal of Optimization Theory and Applications*, 189, 271-290. 
 - X. Liu, Y. Li, R. Wang, J. Tang, and M. Yan, [Linear convergent decentralized optimization with compression](http://openreview.net/forum?id=84gjULz1t5), *ICLR 2021*. 
 - J. Liu, M. Yan, and T. Zeng, [Surface-aware blind image deblurring](http://doi.org/10.1109/TPAMI.2019.2941472), *IEEE Transactions on Pattern Analysis and Machine Intelligence*, 43, 1041-1055. 
-- Z. Li and M. Yan, [A primal-dual algorithm with optimal stepsizes and its application in decentralized consensus optimization](http://doi.org/10.1007/s10444-020-09840-9), *Advances in Computational Mathematics*, 47, 9.
+- Z. Li and M. Yan, [New convergence analysis of a primal-dual algorithm with large stepsizes](http://doi.org/10.1007/s10444-020-09840-9), *Advances in Computational Mathematics*, 47, 9.
 - N. Sha, L. Shi, and M. Yan, [Fast algorithms for robust principal component analysis with an upper bound on the rank](http://doi.org/10.3934/ipi.2020067), *Inverse Problems and Imaging*, 15, 109-128.
 
 ## 2020
