@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>外卖路线大挑战：人脑 vs 优化算法</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121a33;
+      --text:#eaf0ff;
+      --muted:#a9b4d6;
+      --accent:#7c5cff;
+      --accent2:#37d67a;
+      --warn:#ffcc66;
+      --bad:#ff5c7a;
+      --line:rgba(255,255,255,.10);
+      --sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:var(--sans); line-height:1.5;
+      background-image: radial-gradient(circle at 15% 50%, rgba(124,92,255,0.1), transparent 25%),
+                        radial-gradient(circle at 85% 30%, rgba(55,214,122,0.1), transparent 25%);
+    }
+    header{ text-align: center; padding: 30px 20px 10px; }
+    h1{ margin:0 0 10px; font-size:26px; }
+    .sub{ color:var(--muted); font-size:15px; max-width: 800px; margin: 0 auto; }
+    
+    main{
+      max-width: 1000px; margin: 20px auto; padding: 0 20px;
+      display: grid; grid-template-columns: 1fr 340px; gap: 20px;
+    }
+    @media (max-width: 800px){ main{ grid-template-columns: 1fr; } }
+
+    /* 画布区域 */
+    .canvas-container{
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 16px; padding: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    canvas{
+      width: 100%; height: 500px; background: rgba(0,0,0,0.2);
+      border-radius: 12px; cursor: crosshair; touch-action: none;
+    }
+    .instruction{
+      position: absolute; top: 20px; left: 20px; pointer-events: none;
+      background: rgba(0,0,0,0.6); padding: 8px 12px; border-radius: 8px;
+      font-size: 13px; color: var(--warn); border: 1px solid rgba(255,204,102,0.3);
+    }
+
+    /* 控制面板 */
+    .panel{
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 16px;
+    }
+    .score-box{
+      background: rgba(0,0,0,0.2); border: 1px solid var(--line);
+      border-radius: 12px; padding: 16px; text-align: center;
+    }
+    .score-title{ font-size: 14px; color: var(--muted); margin-bottom: 5px; }
+    .score-val{ font-size: 28px; font-weight: 900; font-variant-numeric: tabular-nums; }
+    .val-human{ color: #fff; }
+    .val-ai{ color: var(--accent2); }
+
+    button{
+      padding: 14px; border-radius: 10px; border: none; font-weight: bold; font-size: 15px;
+      cursor: pointer; transition: 0.2s;
+    }
+    .btn-primary{ background: linear-gradient(135deg, var(--accent), #9b8cff); color: #fff; }
+    .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 5px 15px rgba(124,92,255,0.4); }
+    .btn-secondary{ background: rgba(255,255,255,0.1); color: #fff; border: 1px solid var(--line); }
+    .btn-secondary:hover{ background: rgba(255,255,255,0.15); }
+    .btn-danger{ background: rgba(255,92,122,0.2); color: var(--bad); border: 1px solid rgba(255,92,122,0.4); }
+
+    /* 知识卡片 */
+    .knowledge{
+      margin-top: auto; padding: 15px; background: rgba(0,0,0,0.2);
+      border-left: 4px solid var(--accent); border-radius: 8px;
+      font-size: 13px; color: #d4dcff; line-height: 1.6; display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🛵 外卖路线大挑战</h1>
+  <div class="sub">
+    <b>规则：</b>你是骑手，从红色的“餐厅”出发，必须经过所有蓝色的“顾客”节点，最后回到餐厅。<br>
+    点击蓝点规划你的配送路线，看看你能不能凭直觉找到<b>最短的距离</b>！
+  </div>
+</header>
+
+<main>
+  <div class="canvas-container">
+    <div class="instruction" id="ui-tip">👉 点击蓝点开始连线</div>
+    <canvas id="mapCanvas"></canvas>
+  </div>
+
+  <div class="panel">
+    
+    <div class="score-box">
+      <div class="score-title">你的配送总距离</div>
+      <div class="score-val val-human" id="human-dist">0.0</div>
+    </div>
+    
+    <div class="score-box" style="border-color: rgba(55,214,122,0.3);">
+      <div class="score-title">算法极限最短距离</div>
+      <div class="score-val val-ai" id="ai-dist">???</div>
+    </div>
+
+    <button class="btn-secondary" id="btn-undo">撤销上一步</button>
+    <button class="btn-danger" id="btn-clear">清空我的路线</button>
+    <button class="btn-primary" id="btn-solve">⚡ 呼叫算法求最优解</button>
+    
+    <div style="height: 10px;"></div>
+    
+    <button class="btn-secondary" id="btn-level" style="border-color: var(--warn); color: var(--warn);">
+      🔥 太简单？增加订单数量！
+    </button>
+
+    <div class="knowledge" id="prof-note">
+      <b>💡 教授点评：</b><br>
+      刚才这个问题叫<strong>“旅行商问题 (TSP)”</strong>。当订单只有几个时，你的大脑能轻松应付。<br><br>
+      但当外卖订单增加到 15 个甚至更多时，路线组合会呈爆炸式增长（产生高维空间的复杂搜索）。人脑的直觉在处理大规模优化时会彻底失效。<br><br>
+      而<strong>数据科学与人工智能</strong>，正是通过设计巧妙的算法模型（如启发式搜索、高维随机优化等），在极短时间内从天文数字的可能性中，揪出那个“最优解”。这就是科技提升效率的魔法！
+    </div>
+  </div>
+</main>
+
+<script>
+  const canvas = document.getElementById('mapCanvas');
+  const ctx = canvas.getContext('2d');
+  
+  // 状态变量
+  let points = []; 
+  let humanPath = []; // 玩家依次点击的索引 [0, 3, 1, ...] (0是餐厅)
+  let aiPath = [];
+  let numPoints = 6; // 初始难度：1个餐厅 + 5个订单
+  
+  // 适应屏幕尺寸
+  function resizeCanvas() {
+    canvas.width = canvas.parentElement.clientWidth - 20;
+    canvas.height = 500;
+    initGame();
+  }
+  window.addEventListener('resize', resizeCanvas);
+
+  // 初始化随机点
+  function initGame() {
+    points = [];
+    humanPath = [0]; // 总是从餐厅(索引0)开始
+    aiPath = [];
+    document.getElementById('ai-dist').innerText = '???';
+    document.getElementById('prof-note').style.display = 'none';
+    
+    const margin = 40;
+    for(let i=0; i<numPoints; i++) {
+      points.push({
+        x: margin + Math.random() * (canvas.width - margin*2),
+        y: margin + Math.random() * (canvas.height - margin*2),
+        isStart: i === 0
+      });
+    }
+    updateUI();
+  }
+
+  // 计算两点距离
+  function getDist(p1, p2) {
+    return Math.sqrt((p1.x - p2.x)**2 + (p1.y - p2.y)**2);
+  }
+
+  // 计算路径总距离
+  function calcPathDistance(pathArray) {
+    if(pathArray.length < 2) return 0;
+    let d = 0;
+    for(let i=0; i<pathArray.length - 1; i++) {
+      d += getDist(points[pathArray[i]], points[pathArray[i+1]]);
+    }
+    // 如果已经连接了所有点，加上回程距离
+    if(pathArray.length === points.length) {
+      d += getDist(points[pathArray[pathArray.length-1]], points[0]);
+    }
+    return d;
+  }
+
+  // 绘制画面
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // 绘制AI路线 (如果有)
+    if (aiPath.length > 0) {
+      ctx.beginPath();
+      ctx.moveTo(points[aiPath[0]].x, points[aiPath[0]].y);
+      for (let i = 1; i < aiPath.length; i++) {
+        ctx.lineTo(points[aiPath[i]].x, points[aiPath[i]].y);
+      }
+      ctx.lineTo(points[aiPath[0]].x, points[aiPath[0]].y); // 回程
+      ctx.strokeStyle = 'rgba(55,214,122,0.6)';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+    }
+
+    // 绘制玩家路线
+    if (humanPath.length > 1) {
+      ctx.beginPath();
+      ctx.moveTo(points[humanPath[0]].x, points[humanPath[0]].y);
+      for (let i = 1; i < humanPath.length; i++) {
+        ctx.lineTo(points[humanPath[i]].x, points[humanPath[i]].y);
+      }
+      // 如果完成了，画虚线回程
+      if(humanPath.length === points.length) {
+         ctx.lineTo(points[humanPath[0]].x, points[humanPath[0]].y);
+      }
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+    }
+
+    // 绘制节点
+    points.forEach((p, idx) => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.isStart ? 12 : 8, 0, Math.PI * 2);
+      
+      if (p.isStart) {
+        ctx.fillStyle = '#ff5c7a'; // 餐厅红色
+      } else {
+        // 如果已经被玩家选中，颜色变灰
+        ctx.fillStyle = humanPath.includes(idx) ? '#666' : '#7c5cff';
+      }
+      
+      ctx.fill();
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // 标序号 (餐厅是 Start)
+      ctx.fillStyle = '#fff';
+      ctx.font = '12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      if(p.isStart) {
+        ctx.fillText('店', p.x, p.y - 20);
+      }
+    });
+  }
+
+  function updateUI() {
+    draw();
+    const d = calcPathDistance(humanPath);
+    document.getElementById('human-dist').innerText = d > 0 ? d.toFixed(1) : '0.0';
+    
+    const tip = document.getElementById('ui-tip');
+    if (humanPath.length === points.length) {
+      tip.innerText = "🎉 规划完成！看看右边，你的距离够短吗？";
+      tip.style.color = 'var(--accent2)';
+    } else {
+      tip.innerText = `👉 还需连接 ${points.length - humanPath.length} 个订单点`;
+      tip.style.color = 'var(--warn)';
+    }
+  }
+
+  // 交互逻辑：点击连线
+  canvas.addEventListener('mousedown', (e) => {
+    if (humanPath.length === points.length) return; // 已经连完
+
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // 寻找点击了哪个点
+    let clickedIdx = -1;
+    for(let i=1; i<points.length; i++) { // 不允许再点餐厅
+      if(getDist({x, y}, points[i]) < 20) {
+        clickedIdx = i;
+        break;
+      }
+    }
+
+    if(clickedIdx !== -1 && !humanPath.includes(clickedIdx)) {
+      humanPath.push(clickedIdx);
+      updateUI();
+    }
+  });
+
+  document.getElementById('btn-undo').addEventListener('click', () => {
+    if(humanPath.length > 1) {
+      humanPath.pop();
+      updateUI();
+    }
+  });
+
+  document.getElementById('btn-clear').addEventListener('click', () => {
+    humanPath = [0];
+    updateUI();
+  });
+
+  // 难度切换
+  document.getElementById('btn-level').addEventListener('click', () => {
+    numPoints = numPoints === 6 ? 15 : (numPoints === 15 ? 30 : 6);
+    document.getElementById('btn-level').innerText = `🔥 当前订单数：${numPoints-1} 个 (点击切换)`;
+    initGame();
+  });
+
+  // 简易且极速的 TSP 启发式算法 (Nearest Neighbor + 2-Opt)
+  document.getElementById('btn-solve').addEventListener('click', () => {
+    let bestPath = [0];
+    let unvisited = [];
+    for(let i=1; i<points.length; i++) unvisited.push(i);
+
+    // 1. 最近邻法生成初始解
+    let curr = 0;
+    while(unvisited.length > 0) {
+      let nearestIdx = 0;
+      let minDist = Infinity;
+      for(let i=0; i<unvisited.length; i++) {
+        let d = getDist(points[curr], points[unvisited[i]]);
+        if(d < minDist) { minDist = d; nearestIdx = i; }
+      }
+      curr = unvisited[nearestIdx];
+      bestPath.push(curr);
+      unvisited.splice(nearestIdx, 1);
+    }
+
+    // 2. 2-Opt 优化改善交叉线
+    let improved = true;
+    while(improved) {
+      improved = false;
+      for(let i=1; i<bestPath.length-2; i++) {
+        for(let j=i+1; j<bestPath.length-1; j++) {
+          let d1 = getDist(points[bestPath[i-1]], points[bestPath[i]]) + getDist(points[bestPath[j]], points[bestPath[j+1]]);
+          let d2 = getDist(points[bestPath[i-1]], points[bestPath[j]]) + getDist(points[bestPath[i]], points[bestPath[j+1]]);
+          if(d2 < d1) {
+            // 交换区间
+            let temp = bestPath.slice(i, j+1).reverse();
+            bestPath.splice(i, temp.length, ...temp);
+            improved = true;
+          }
+        }
+      }
+    }
+
+    aiPath = bestPath;
+    document.getElementById('ai-dist').innerText = calcPathDistance(aiPath).toFixed(1);
+    document.getElementById('prof-note').style.display = 'block'; // 显示教授点评
+    draw();
+  });
+
+  // 启动
+  setTimeout(resizeCanvas, 100);
+</script>
+</body>
+</html>
