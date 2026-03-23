@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>100元零食大挑战：人脑 vs 大数据</title>
+  <title>100元零食大挑战：每日限时寻优</title>
   <style>
     :root{
       --bg:#0b1020;
@@ -15,43 +15,28 @@
       --warn:#ffcc66;
       --bad:#ff5c7a;
       --line:rgba(255,255,255,.10);
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
     }
     *{box-sizing:border-box}
     body{
-      margin:0;
-      background:
-        radial-gradient(1200px 700px at 20% 10%, rgba(124,92,255,.15), transparent 50%),
-        radial-gradient(900px 600px at 80% 20%, rgba(55,214,122,.10), transparent 55%),
-        var(--bg);
-      color:var(--text);
-      font-family:var(--sans);
-      line-height:1.5;
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:var(--sans); line-height:1.5;
+      background-image: radial-gradient(1200px 700px at 20% 10%, rgba(124,92,255,.15), transparent 50%),
+                        radial-gradient(900px 600px at 80% 20%, rgba(55,214,122,.10), transparent 55%);
     }
-    header{
-      padding:40px 20px 20px;
-      text-align: center;
-      max-width:900px;
-      margin:0 auto;
-    }
+    header{ padding:40px 20px 20px; text-align: center; max-width:900px; margin:0 auto; }
     h1{ margin:0 0 10px; font-size:28px; letter-spacing:1px; }
     .sub{ color:var(--muted); font-size:16px; }
     
     main{
-      max-width:960px;
-      margin:0 auto;
-      padding:10px 20px 50px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:24px;
+      max-width:1000px; margin:0 auto; padding:10px 20px 50px;
+      display:grid; grid-template-columns: 1fr 1.1fr; gap:24px;
     }
     @media (max-width: 768px){ main{grid-template-columns:1fr;} }
     
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:24px;
+      border:1px solid var(--line); border-radius:16px; padding:24px;
       box-shadow: 0 10px 30px rgba(0,0,0,.3);
     }
     h2{ margin-top:0; font-size:20px; color:#fff; border-bottom:1px solid var(--line); padding-bottom:12px;}
@@ -64,50 +49,67 @@
     }
     .item-info{ display:flex; flex-direction:column; gap:4px; }
     .item-name{ font-size:18px; font-weight:bold; }
-    .item-desc{ font-size:13px; color:var(--muted); }
+    .item-desc{ font-size:14px; color:var(--warn); font-weight:600; }
     .stepper{ display:flex; align-items:center; gap:12px; }
     .btn-step{
       width:36px; height:36px; border-radius:50%; border:none;
       background:rgba(255,255,255,.1); color:#fff; font-size:20px; font-weight:bold;
       cursor:pointer; transition:0.2s;
     }
-    .btn-step:hover{ background:rgba(255,255,255,.2); }
-    .btn-step:active{ transform:scale(0.95); }
+    .btn-step:hover:not(:disabled){ background:rgba(255,255,255,.2); }
+    .btn-step:active:not(:disabled){ transform:scale(0.95); }
+    .btn-step:disabled{ opacity:0.3; cursor:not-allowed; }
     .qty{ font-size:20px; font-weight:bold; width:24px; text-align:center; }
     
-    /* 计分板 */
+    /* 计分板 (改为3列以容纳倒计时) */
     .score-board{
-      display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:24px;
+      display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px; margin-bottom:20px;
     }
     .metric{
-      background:rgba(0,0,0,.2); padding:16px; border-radius:12px; text-align:center;
-      border:1px solid var(--line);
+      background:rgba(0,0,0,.2); padding:16px 10px; border-radius:12px; text-align:center;
+      border:1px solid var(--line); position: relative; overflow: hidden;
     }
-    .metric-title{ font-size:14px; color:var(--muted); margin-bottom:8px; }
-    .metric-val{ font-size:28px; font-weight:900; }
+    .metric-title{ font-size:13px; color:var(--muted); margin-bottom:8px; }
+    .metric-val{ font-size:26px; font-weight:900; font-variant-numeric:tabular-nums; }
+    
+    /* 颜色状态 */
     .val-ok{ color:var(--accent2); }
     .val-bad{ color:var(--bad); }
     .val-warn{ color:var(--warn); }
     
+    /* 倒计时特效 */
+    .timer-box { border-color: var(--warn); background: rgba(255,204,102,0.05); }
+    .timer-box.danger { border-color: var(--bad); background: rgba(255,92,122,0.1); animation: pulse 1s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,92,122,0.4); } 70% { box-shadow: 0 0 0 10px rgba(255,92,122,0); } 100% { box-shadow: 0 0 0 0 rgba(255,92,122,0); } }
+
     /* 状态提示 */
     .status-msg{
-      text-align:center; padding:12px; border-radius:8px; font-weight:bold; margin-bottom:24px;
-      background:rgba(255,204,102,.1); color:var(--warn); border:1px solid rgba(255,204,102,.3);
+      text-align:center; padding:12px; border-radius:8px; font-weight:bold; margin-bottom:20px;
+      background:rgba(255,255,255,.05); color:var(--text); border:1px solid var(--line); transition:0.3s;
     }
     .status-msg.success{ background:rgba(55,214,122,.1); color:var(--accent2); border-color:rgba(55,214,122,.3); }
     .status-msg.error{ background:rgba(255,92,122,.1); color:var(--bad); border-color:rgba(255,92,122,.3); }
     
-    /* 大招按钮 */
+    /* 按钮 */
+    .btn-row{ display:flex; gap:10px; margin-bottom: 24px; }
     .btn-magic{
-      width:100%; padding:16px; border-radius:12px; border:none; cursor:pointer;
+      flex:2; padding:16px; border-radius:12px; border:none; cursor:pointer;
       background: linear-gradient(135deg, var(--accent), #9b8cff);
-      color:#fff; font-size:18px; font-weight:bold; letter-spacing:1px;
+      color:#fff; font-size:16px; font-weight:bold;
       box-shadow: 0 8px 20px rgba(124,92,255,.3); transition:0.3s;
     }
-    .btn-magic:hover{ transform:translateY(-2px); box-shadow: 0 12px 25px rgba(124,92,255,.4); }
+    .btn-magic:hover:not(:disabled){ transform:translateY(-2px); box-shadow: 0 12px 25px rgba(124,92,255,.4); }
+    .btn-magic:disabled{ opacity:0.5; cursor:not-allowed; box-shadow:none; }
     
+    .btn-reset{
+      flex:1; padding:16px; border-radius:12px; border:none; cursor:pointer;
+      background: rgba(255,255,255,0.1); color: #fff; font-size:16px; font-weight:bold;
+      border: 1px solid var(--line); transition:0.2s;
+    }
+    .btn-reset:hover{ background: rgba(255,255,255,0.15); }
+
     /* 算法揭秘区 */
-    #ai-result{ display:none; margin-top:24px; animation: fadeIn 0.5s ease-out; }
+    #ai-result{ display:none; animation: fadeIn 0.5s ease-out; }
     .ai-box{
       background:linear-gradient(135deg, rgba(55,214,122,.1), transparent);
       border:1px solid var(--accent2); border-radius:12px; padding:20px;
@@ -115,6 +117,7 @@
     .ai-title{ color:var(--accent2); font-size:18px; font-weight:bold; margin-bottom:12px; }
     .ai-list{ font-size:16px; line-height:1.8; margin-bottom:16px; }
     .ai-list b{ color:#fff; }
+    
     .knowledge{
       margin-top:20px; padding:16px; background:rgba(0,0,0,.2); border-radius:8px;
       border-left:4px solid var(--accent); font-size:14px; color:#d4dcff; line-height:1.6;
@@ -126,26 +129,28 @@
 
 <body>
 <header>
-  <h1>🛒 100元零食大挑战：人脑 vs 大数据</h1>
+  <h1>🛒 100元零食大挑战：限时寻优</h1>
   <div class="sub">
-    <b>游戏规则：</b>预算最多 100 元，必须买至少 3 种<b>不同</b>的零食。<br>
-    请你动动手指加减购物车，看看你能配出的<b>最高满意度</b>是多少？
+    <b>规则：</b>预算最多 100 元，必须买至少 3 种不同的零食。寻找满意度最高的组合！<br>
+    <span style="color:var(--warn)">★ 每日盲盒：今天的“物价”和“满意度”已根据日期随机生成。点击加号，30秒倒计时立刻开始！</span>
   </div>
 </header>
 
 <main>
   <section class="card">
-    <h2>1. 你的购物车（请在此操作）</h2>
-    
+    <h2>1. 你的购物车 (点击开始)</h2>
     <div id="items-container">
       </div>
-    
   </section>
 
   <section class="card">
-    <h2>2. 战况统计</h2>
+    <h2>2. 战况统计与算法比拼</h2>
     
     <div class="score-board">
+      <div class="metric timer-box" id="timer-container">
+        <div class="metric-title">剩余时间</div>
+        <div id="ui-time" class="metric-val val-warn">30.0</div>
+      </div>
       <div class="metric">
         <div class="metric-title">当前花费 (≤100)</div>
         <div id="ui-cost" class="metric-val val-ok">0</div>
@@ -156,13 +161,16 @@
       </div>
     </div>
     
-    <div id="ui-status" class="status-msg">请先挑选至少3种不同的零食哦！</div>
+    <div id="ui-status" class="status-msg">👉 准备好后，增减零食开始计时</div>
     
-    <button id="btn-solve" class="btn-magic">🤯 拼不过？一键呼叫大数据算法！</button>
+    <div class="btn-row">
+      <button id="btn-reset" class="btn-reset">↺ 重新尝试</button>
+      <button id="btn-solve" class="btn-magic">⚡ 呼叫大数据算法揭晓最优解</button>
+    </div>
     
     <div id="ai-result">
       <div class="ai-box">
-        <div class="ai-title">⚡ 算法已找到全局最优解！</div>
+        <div class="ai-title">⚡ 算法已在 1 毫秒内锁定全局最优解！</div>
         <div class="ai-list" id="ai-best-list"></div>
         <div style="display:flex; gap:16px; margin-top:10px;">
           <div>最优花费：<b class="val-ok" id="ai-cost">0</b> 元</div>
@@ -170,50 +178,166 @@
         </div>
       </div>
       
-      <div class="knowledge">
-        <b>💡 教授点评时间：</b><br>
-        刚才你在脑海里加加减减，尝试凑出一个好结果，这在计算机科学中叫做<strong>“启发式搜索”</strong>（凭经验试探）。<br><br>
-        但这道题背后是一个经典的<strong>“整数线性规划”</strong>问题。当商品种类变成几万种，约束条件变成几千个（比如美团外卖的路线调度、京东的物流装箱）时，人脑瞬间就会宕机。<br><br>
-        而<strong>数据科学与大数据专业</strong>要学的，就是如何设计出聪明的优化算法，在亿万种可能性中，瞬间锁定那个绝对的“最优解”，让效率起飞！
+      <div class="knowledge" id="prof-note">
+        <b>💡 教授点评：</b><br>
+        你在限时压力下进行的脑内计算，被称为<strong>“启发式搜索”</strong>。<br><br>
+        而这道题本质是<strong>“整数线性规划 (ILP)”</strong>。当面对超市里上万种商品、或双十一极其复杂的满减规则时，人类的大脑算力会瞬间被击穿。而<strong>数据科学与大数据技术</strong>专业，正是通过建立精确的数学模型（如分支定界法），让计算机在海量可能性中，瞬间找到那个绝对的“最优解”！
       </div>
     </div>
   </section>
 </main>
 
 <script>
-  // 1. 定义商品数据
-  const items = [
-    { id: 'chips', name: '🥔 薯片', price: 10, sat: 3, qty: 0 },
-    { id: 'cola',  name: '🥤 可乐', price: 8,  sat: 2, qty: 0 },
-    { id: 'choco', name: '🍫 巧克力', price: 15, sat: 5, qty: 0 },
-    { id: 'fruit', name: '🍎 鲜切水果', price: 20, sat: 4, qty: 0 }
-  ];
+  /* =========================================================
+     PRNG (伪随机数生成) - 绑定每日日期
+  ========================================================= */
+  let currentSeed = 1;
+  function seededRandom() {
+    let x = Math.sin(currentSeed++) * 10000;
+    return x - Math.floor(x);
+  }
+
+  function initDailySeed() {
+    const today = new Date();
+    // 今天的年、月、日作为种子
+    currentSeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+  }
+
+  /* =========================================================
+     游戏状态与数据
+  ========================================================= */
   const BUDGET = 100;
   const MIN_KINDS = 3;
+  let items = [
+    { id: 'chips', name: '🥔 薯片', price: 0, sat: 0, qty: 0 },
+    { id: 'cola',  name: '🥤 可乐', price: 0, sat: 0, qty: 0 },
+    { id: 'choco', name: '🍫 巧克力', price: 0, sat: 0, qty: 0 },
+    { id: 'fruit', name: '🍎 鲜切水果', price: 0, sat: 0, qty: 0 }
+  ];
 
-  // 2. 渲染商品列表
-  const container = document.getElementById('items-container');
-  items.forEach((item, index) => {
-    const row = document.createElement('div');
-    row.className = 'item-row';
-    row.innerHTML = `
-      <div class="item-info">
-        <div class="item-name">${item.name}</div>
-        <div class="item-desc">${item.price}元/份 | 满意度 +${item.sat}</div>
-      </div>
-      <div class="stepper">
-        <button class="btn-step" onclick="changeQty(${index}, -1)">-</button>
-        <div class="qty" id="qty-${index}">0</div>
-        <button class="btn-step" onclick="changeQty(${index}, 1)">+</button>
-      </div>
-    `;
-    container.appendChild(row);
-  });
+  // 计时器变量
+  let timerInterval = null;
+  let timeLeft = 30.0;
+  const MAX_TIME = 30.0;
+  let isTimerRunning = false;
+  let isGameOver = false;
 
-  // 3. 处理玩家操作
+  /* =========================================================
+     初始化与渲染
+  ========================================================= */
+  function initGame() {
+    initDailySeed();
+    
+    // 每日随机生成物价 (价格: 5~18元, 满意度: 2~8点)
+    items.forEach(item => {
+      item.price = 5 + Math.floor(seededRandom() * 14); 
+      item.sat = 2 + Math.floor(seededRandom() * 7);
+      item.qty = 0;
+    });
+
+    // 重置状态
+    isGameOver = false;
+    stopTimer();
+    timeLeft = MAX_TIME;
+    updateTimerUI(true);
+    
+    document.getElementById('ai-result').style.display = 'none';
+    document.getElementById('btn-solve').disabled = false;
+    
+    renderItems();
+    updatePlayerStatus();
+  }
+
+  function renderItems() {
+    const container = document.getElementById('items-container');
+    container.innerHTML = ''; // 清空
+    
+    items.forEach((item, index) => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.innerHTML = `
+        <div class="item-info">
+          <div class="item-name">${item.name}</div>
+          <div class="item-desc">单价: ${item.price}元 | 满意度: +${item.sat}</div>
+        </div>
+        <div class="stepper">
+          <button class="btn-step btn-minus" onclick="changeQty(${index}, -1)">-</button>
+          <div class="qty" id="qty-${index}">0</div>
+          <button class="btn-step btn-plus" onclick="changeQty(${index}, 1)">+</button>
+        </div>
+      `;
+      container.appendChild(row);
+    });
+  }
+
+  /* =========================================================
+     计时器逻辑
+  ========================================================= */
+  function startTimer() {
+    if(isTimerRunning || isGameOver) return;
+    isTimerRunning = true;
+    
+    document.getElementById('ui-status').innerText = "⏳ 紧张计算中...";
+    document.getElementById('ui-status').className = 'status-msg';
+
+    timerInterval = setInterval(() => {
+      timeLeft -= 0.1;
+      if(timeLeft <= 0) {
+        timeLeft = 0;
+        stopTimer();
+        isGameOver = true;
+        lockInputs(); // 时间到，冻结输入
+        
+        document.getElementById('ui-status').className = 'status-msg error';
+        document.getElementById('ui-status').innerText = '⏰ 时间到！你的最终战绩已锁定。看看算法怎么选吧！';
+      }
+      updateTimerUI(false);
+    }, 100);
+  }
+
+  function stopTimer() {
+    isTimerRunning = false;
+    clearInterval(timerInterval);
+  }
+
+  function updateTimerUI(isReset) {
+    const valEl = document.getElementById('ui-time');
+    const boxEl = document.getElementById('timer-container');
+    valEl.innerText = timeLeft.toFixed(1);
+
+    if (isReset) {
+      valEl.className = 'metric-val val-warn';
+      boxEl.className = 'metric timer-box';
+    } else if (timeLeft <= 5 && timeLeft > 0) {
+      valEl.className = 'metric-val val-bad';
+      boxEl.className = 'metric timer-box danger';
+    } else if (timeLeft <= 0) {
+      boxEl.className = 'metric timer-box'; 
+    }
+  }
+
+  function lockInputs() {
+    document.querySelectorAll('.btn-step').forEach(btn => btn.disabled = true);
+  }
+
+  /* =========================================================
+     玩家操作逻辑
+  ========================================================= */
   function changeQty(index, delta) {
+    if (isGameOver) return;
+    if (!isTimerRunning) startTimer(); // 第一下点击触发倒计时
+
     let newQty = items[index].qty + delta;
     if (newQty < 0) newQty = 0;
+    
+    // 如果还没超预算，允许加；如果超了，只允许减
+    if (delta > 0) {
+      let currentCost = items.reduce((sum, it) => sum + it.price * it.qty, 0);
+      if (currentCost + items[index].price > BUDGET) {
+        // 给个超支的视觉反馈但不阻止他们瞎点，增加慌乱感
+      }
+    }
+
     items[index].qty = newQty;
     document.getElementById(`qty-${index}`).innerText = newQty;
     updatePlayerStatus();
@@ -237,36 +361,54 @@
     uiCost.innerText = cost;
     uiSat.innerText = sat;
 
-    // 状态判定
+    if (!isTimerRunning && !isGameOver && cost === 0) {
+       uiStatus.className = 'status-msg';
+       uiStatus.innerText = '👉 准备好后，增减零食开始计时';
+       uiCost.className = 'metric-val val-ok';
+       uiSat.className = 'metric-val';
+       return;
+    }
+
     if (cost > BUDGET) {
       uiCost.className = 'metric-val val-bad';
       uiSat.className = 'metric-val val-bad';
-      uiSat.innerText = '无效解';
-      uiStatus.className = 'status-msg error';
-      uiStatus.innerText = '🚫 超出100元预算啦，快退掉一点！';
+      uiSat.innerText = '无效';
+      if(!isGameOver) {
+        uiStatus.className = 'status-msg error';
+        uiStatus.innerText = '🚫 超出100元预算啦！';
+      }
     } else if (kinds < MIN_KINDS) {
       uiCost.className = 'metric-val val-ok';
       uiSat.className = 'metric-val';
-      uiStatus.className = 'status-msg';
-      uiStatus.innerText = `还差 ${MIN_KINDS - kinds} 种不同的零食哦！`;
+      if(!isGameOver) {
+        uiStatus.className = 'status-msg';
+        uiStatus.innerText = `还差 ${MIN_KINDS - kinds} 种不同的零食！`;
+      }
     } else {
       uiCost.className = 'metric-val val-ok';
       uiSat.className = 'metric-val val-warn';
-      uiStatus.className = 'status-msg success';
-      uiStatus.innerText = '✅ 完美符合规则！你能凑出更高的满意度吗？';
+      if(!isGameOver) {
+        uiStatus.className = 'status-msg success';
+        uiStatus.innerText = '✅ 预算和种类均合规！抓紧时间冲刺更高满意度！';
+      }
     }
   }
 
-  // 4. 算法求解（背后隐藏的暴力枚举/分支定界思想）
+  /* =========================================================
+     全局最优算法 (ILP 暴力枚举)
+  ========================================================= */
   document.getElementById('btn-solve').addEventListener('click', () => {
+    stopTimer(); // 算法接管，停止计时
+    isGameOver = true;
+    lockInputs();
+    document.getElementById('btn-solve').disabled = true;
+
     let bestSat = -1;
     let bestCost = 0;
     let bestCombo = null;
 
-    // 获取每种商品的最大可能购买量
     const limits = items.map(it => Math.floor(BUDGET / it.price));
 
-    // 多重循环枚举所有可能性
     for(let i0=0; i0<=limits[0]; i0++) {
       for(let i1=0; i1<=limits[1]; i1++) {
         for(let i2=0; i2<=limits[2]; i2++) {
@@ -288,16 +430,19 @@
               bestSat = sat;
               bestCost = cost;
               bestCombo = [i0, i1, i2, i3];
+            } else if (sat === bestSat && cost < bestCost) {
+              // 相同满意度下，花费越少越好
+              bestCost = cost;
+              bestCombo = [i0, i1, i2, i3];
             }
           }
         }
       }
     }
 
-    // 5. 展示结果
+    // 展示结果
     const aiResult = document.getElementById('ai-result');
     const aiBestList = document.getElementById('ai-best-list');
-    const btnSolve = document.getElementById('btn-solve');
 
     let listHtml = '';
     bestCombo.forEach((qty, idx) => {
@@ -310,9 +455,27 @@
     document.getElementById('ai-cost').innerText = bestCost;
     document.getElementById('ai-sat').innerText = bestSat;
     
-    btnSolve.style.display = 'none';
     aiResult.style.display = 'block';
   });
+
+  // 重新开始按钮
+  document.getElementById('btn-reset').addEventListener('click', () => {
+    // 重玩当天关卡（不清空物价，只清空购物车和倒计时）
+    items.forEach(item => item.qty = 0);
+    isGameOver = false;
+    stopTimer();
+    timeLeft = MAX_TIME;
+    updateTimerUI(true);
+    
+    document.getElementById('ai-result').style.display = 'none';
+    document.getElementById('btn-solve').disabled = false;
+    
+    renderItems();
+    updatePlayerStatus();
+  });
+
+  // 启动游戏
+  initGame();
 
 </script>
 </body>
