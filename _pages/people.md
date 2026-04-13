@@ -20,15 +20,15 @@ author_profile: false
 * **Qi Lyu** (MS@MSU 2021) — Software Engineer, Benefits Science Technologies → Chief Technology Officer, Mathos AI
 * **Ningyu Sha** (Ph.D.@MSU 2021, co-advisor: Yuying Xie) → Applied Scientist, Amazon
 * **Yao Li** (Ph.D.@MSU 2022) → Research Scientist, Huawei
-* [**Xiaorui Liu**](https://sites.google.com/ncsu.edu/xiaorui/) (Ph.D. 2022@MSU, advisor: Jiliang Tang) → Assistant Professor, North Carolina State University
+* [**Xiaorui Liu**](https://sites.google.com/ncsu.edu/xiaorui/) (Ph.D.@MSU 2022, advisor: Jiliang Tang) → Assistant Professor, North Carolina State University
 * **Zhuoqing Song** (Math@Fudan, advisor: Lei Shi)
 
 ---
 
 ## Previous Postdocs
 
-* **Zhi Li** (Postdoc 2016-2019) → Professor, East China Normal University
-* **Zhishen Huang** (Postdoc 2021-2022) → Research Scientist, Amazon
+* **Zhi Li** (Postdoc@MSU 2016-2019) → Professor, East China Normal University
+* **Zhishen Huang** (Postdoc@MSU 2021-2022) → Research Scientist, Amazon
 
 ---
 
