@@ -27,8 +27,8 @@ author_profile: false
 
 ## Previous Postdocs
 
-* **Zhi Li** (Postdoc 2016-2019) → Assistant Professor at East China Normal University
-* **Zhishen Huang** (Postdoc 2021-2022) → Research Scientist at Amazon
+* **Zhi Li** (Postdoc 2016-2019) → Professor, East China Normal University
+* **Zhishen Huang** (Postdoc 2021-2022) → Research Scientist, Amazon
 
 ---
 
