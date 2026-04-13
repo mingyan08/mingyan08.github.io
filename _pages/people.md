@@ -18,17 +18,17 @@ author_profile: false
 ## Previous Graduate Students
 
 * **Qi Lyu** (MS 2021) — Software Engineer, Benefits Science Technologies → Chief Technology Officer, Mathos AI
-* **Ningyu Sha** (Ph.D. 2021, co-advisor: Yuying Xie) — Applied Scientist, Amazon
-* **Yao Li** (Ph.D. 2022) — Research Scientist, Huawei
-* [**Xiaorui Liu**](https://sites.google.com/ncsu.edu/xiaorui/) (Ph.D. 2022, advisor: Jiliang Tang) — Assistant Professor, North Carolina State University
+* **Ningyu Sha** (Ph.D. 2021, co-advisor: Yuying Xie) → Applied Scientist, Amazon
+* **Yao Li** (Ph.D. 2022) → Research Scientist, Huawei
+* [**Xiaorui Liu**](https://sites.google.com/ncsu.edu/xiaorui/) (Ph.D. 2022, advisor: Jiliang Tang) → Assistant Professor, North Carolina State University
 * **Zhuoqing Song** (Math@Fudan, advisor: Lei Shi)
 
 ---
 
 ## Previous Postdocs
 
-* **Zhi Li** (Postdoc 2016-2019) — Assistant Professor at East China Normal University
-* **Zhishen Huang** (Postdoc 2021-2022) — Research Scientist at Amazon
+* **Zhi Li** (Postdoc 2016-2019) → Assistant Professor at East China Normal University
+* **Zhishen Huang** (Postdoc 2021-2022) → Research Scientist at Amazon
 
 ---
 
