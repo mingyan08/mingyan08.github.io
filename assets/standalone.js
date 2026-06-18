@@ -7,8 +7,8 @@
   let navLinks = [];
   const homeLink = document.querySelector("[data-home-link]");
   const navIds = ["about", "research", "teaching", "people", "join"];
-  const sectionOrder = ["about", "research", "publications", "teaching", "people", "join", "support"];
-  const bandSections = new Set(["about", "publications", "teaching"]);
+  const sectionOrder = ["about", "research", "teaching", "people", "join", "support"];
+  const bandSections = new Set(["about", "teaching"]);
   const cardSections = new Set(["about", "research", "people", "teaching", "join"]);
   const topicClasses = {
     Distributed: "topic-distributed",
@@ -30,11 +30,11 @@
     }
 
     const labels = {
-      about: ["About", "简介"],
-      research: ["Research", "研究"],
-      teaching: ["Teaching", "教学"],
-      people: ["People", "团队"],
-      join: ["Join Us", "加入课题组"],
+      about: ["About", "About"],
+      research: ["Research", "Research"],
+      teaching: ["Teaching", "Teaching"],
+      people: ["People", "People"],
+      join: ["Join Us", "Join Us"],
     };
 
     mainNav.innerHTML = navIds
@@ -296,6 +296,24 @@
       </div>
     `;
   }
+
+  function renderResearchPublications(section) {
+    if (!section.publications) {
+      return "";
+    }
+
+    const intro = renderBlocks(section.publications.lines.filter((line) => !/^\s*-\s+/.test(line)));
+    return `
+      <div class="research-publications" id="publications-${section.language}" data-section-id="publications">
+        <div class="research-subsection-heading">
+          <h3>${inlineMarkdown(section.publications.title)}</h3>
+          ${intro}
+        </div>
+        ${renderPublications(section.publications.lines)}
+      </div>
+    `;
+  }
+
   function renderSponsorLogos() {
     return "";
   }
@@ -324,6 +342,9 @@
           join: "opportunity-grid",
         }[section.id] || "card-grid";
       bodyHtml = `<div class="${gridClass}">${cards.map((card) => renderCard(section.id, card)).join("")}</div>`;
+      if (section.id === "research") {
+        bodyHtml += renderResearchPublications(section);
+      }
     } else if (section.id !== "support") {
       bodyHtml = renderBlocks(section.lines);
     }
@@ -348,11 +369,23 @@
       map[section.id] = section;
       return map;
     }, {});
-    return languageSections.map((section) => {
+    const publicationSection = languageSections.find((section) => section.id === "publications");
+    const sharedPublications = sharedById.publications;
+
+    return languageSections.filter((section) => section.id !== "publications").map((section) => {
       const shared = sharedById[section.id];
+      const publications =
+        section.id === "research" && publicationSection
+          ? {
+              title: publicationSection.title,
+              lines: sharedPublications ? [...publicationSection.lines, "", ...sharedPublications.lines] : publicationSection.lines,
+            }
+          : null;
+
       return {
         ...section,
         language,
+        publications,
         lines: shared ? [...section.lines, "", ...shared.lines] : section.lines,
       };
     });
@@ -440,7 +473,7 @@
     root.lang = nextLanguage === "zh" ? "zh-CN" : "en";
     root.dataset.lang = nextLanguage;
     body.dataset.lang = nextLanguage;
-    document.title = nextLanguage === "zh" ? "严明 | Ming Yan" : "Ming Yan | 严明";
+    document.title = nextLanguage === "zh" ? "Ming Yan" : "Ming Yan";
     localStorage.setItem("site-language", nextLanguage);
 
     buttons.forEach((button) => {
