@@ -10,15 +10,6 @@
   const sectionOrder = ["about", "research", "publications", "teaching", "people", "join", "support"];
   const bandSections = new Set(["about", "publications", "teaching"]);
   const cardSections = new Set(["about", "research", "people", "teaching", "join"]);
-  const sponsorLogos = [
-    { src: "images/nsfc.png", alt: "National Natural Science Foundation of China" },
-    { src: "images/Guangdong.png", alt: "Department of Science and Technology of Guangdong Province" },
-    { src: "images/Shenzhen.png", alt: "Shenzhen Science and Technology Innovation Commission" },
-    { src: "images/SZNSF.png", alt: "Shenzhen Natural Science Foundation" },
-    { src: "images/NSF.png", alt: "U.S. National Science Foundation" },
-    { src: "images/FORD.png", alt: "Ford Motor Company" },
-    { src: "images/Facebook.png", alt: "Meta" },
-  ];
   const topicClasses = {
     Distributed: "topic-distributed",
     PINN: "topic-pinns",
@@ -306,11 +297,7 @@
     `;
   }
   function renderSponsorLogos() {
-    return `
-      <div class="logo-strip" aria-label="Funding agency logos">
-        ${sponsorLogos.map((logo) => `<img src="${logo.src}" alt="${escapeHtml(logo.alt)}">`).join("")}
-      </div>
-    `;
+    return "";
   }
 
   function renderSection(section) {
