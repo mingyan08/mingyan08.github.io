@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>100元零食大挑战：限时寻优</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121a33;
+      --text:#eaf0ff;
+      --muted:#a9b4d6;
+      --accent:#7c5cff;
+      --accent2:#37d67a;
+      --warn:#ffcc66;
+      --bad:#ff5c7a;
+      --line:rgba(255,255,255,.10);
+      --sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:var(--sans); line-height:1.5;
+      background-image: radial-gradient(1200px 700px at 20% 10%, rgba(124,92,255,.15), transparent 50%),
+                        radial-gradient(900px 600px at 80% 20%, rgba(55,214,122,.10), transparent 55%);
+    }
+    header{ padding:40px 20px 20px; text-align: center; max-width:900px; margin:0 auto; }
+    h1{ margin:0 0 10px; font-size:28px; letter-spacing:1px; }
+    .sub{ color:var(--muted); font-size:16px; }
+    
+    main{
+      max-width:1000px; margin:0 auto; padding:10px 20px 50px;
+      display:grid; grid-template-columns: 1fr 1.1fr; gap:24px;
+    }
+    @media (max-width: 768px){ main{grid-template-columns:1fr;} }
+    
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--line); border-radius:16px; padding:24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    }
+    h2{ margin-top:0; font-size:20px; color:#fff; border-bottom:1px solid var(--line); padding-bottom:12px;}
+    
+    /* 商品行 */
+    .item-row{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:16px; margin-bottom:12px;
+      background:rgba(0,0,0,.2); border-radius:12px; border:1px solid var(--line);
+    }
+    .item-info{ display:flex; flex-direction:column; gap:4px; }
+    .item-name{ font-size:18px; font-weight:bold; }
+    .item-desc{ font-size:14px; color:var(--warn); font-weight:600; }
+    .stepper{ display:flex; align-items:center; gap:12px; }
+    .btn-step{
+      width:36px; height:36px; border-radius:50%; border:none;
+      background:rgba(255,255,255,.1); color:#fff; font-size:20px; font-weight:bold;
+      cursor:pointer; transition:0.2s;
+    }
+    .btn-step:hover:not(:disabled){ background:rgba(255,255,255,.2); }
+    .btn-step:active:not(:disabled){ transform:scale(0.95); }
+    .btn-step:disabled{ opacity:0.3; cursor:not-allowed; }
+    .qty{ font-size:20px; font-weight:bold; width:24px; text-align:center; }
+    
+    /* 计分板 (改为3列以容纳倒计时) */
+    .score-board{
+      display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px; margin-bottom:20px;
+    }
+    .metric{
+      background:rgba(0,0,0,.2); padding:16px 10px; border-radius:12px; text-align:center;
+      border:1px solid var(--line); position: relative; overflow: hidden;
+    }
+    .metric-title{ font-size:13px; color:var(--muted); margin-bottom:8px; }
+    .metric-val{ font-size:26px; font-weight:900; font-variant-numeric:tabular-nums; }
+    
+    /* 颜色状态 */
+    .val-ok{ color:var(--accent2); }
+    .val-bad{ color:var(--bad); }
+    .val-warn{ color:var(--warn); }
+    
+    /* 倒计时特效 */
+    .timer-box { border-color: var(--warn); background: rgba(255,204,102,0.05); }
+    .timer-box.danger { border-color: var(--bad); background: rgba(255,92,122,0.1); animation: pulse 1s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,92,122,0.4); } 70% { box-shadow: 0 0 0 10px rgba(255,92,122,0); } 100% { box-shadow: 0 0 0 0 rgba(255,92,122,0); } }
+
+    /* 状态提示 */
+    .status-msg{
+      text-align:center; padding:12px; border-radius:8px; font-weight:bold; margin-bottom:20px;
+      background:rgba(255,255,255,.05); color:var(--text); border:1px solid var(--line); transition:0.3s;
+    }
+    .status-msg.success{ background:rgba(55,214,122,.1); color:var(--accent2); border-color:rgba(55,214,122,.3); }
+    .status-msg.error{ background:rgba(255,92,122,.1); color:var(--bad); border-color:rgba(255,92,122,.3); }
+    
+    /* 按钮 */
+    .btn-row{ display:flex; gap:10px; margin-bottom: 24px; }
+    .btn-magic{
+      flex:2; padding:16px; border-radius:12px; border:none; cursor:pointer;
+      background: linear-gradient(135deg, var(--accent), #9b8cff);
+      color:#fff; font-size:16px; font-weight:bold;
+      box-shadow: 0 8px 20px rgba(124,92,255,.3); transition:0.3s;
+    }
+    .btn-magic:hover:not(:disabled){ transform:translateY(-2px); box-shadow: 0 12px 25px rgba(124,92,255,.4); }
+    .btn-magic:disabled{ opacity:0.5; cursor:not-allowed; box-shadow:none; }
+    
+    .btn-reset{
+      flex:1; padding:16px; border-radius:12px; border:none; cursor:pointer;
+      background: rgba(255,255,255,0.1); color: #fff; font-size:16px; font-weight:bold;
+      border: 1px solid var(--line); transition:0.2s;
+    }
+    .btn-reset:hover{ background: rgba(255,255,255,0.15); }
+
+    /* 算法揭秘区 */
+    #ai-result{ display:none; animation: fadeIn 0.5s ease-out; }
+    .ai-box{
+      background:linear-gradient(135deg, rgba(55,214,122,.1), transparent);
+      border:1px solid var(--accent2); border-radius:12px; padding:20px;
+    }
+    .ai-title{ color:var(--accent2); font-size:18px; font-weight:bold; margin-bottom:12px; }
+    .ai-list{ font-size:16px; line-height:1.8; margin-bottom:16px; }
+    .ai-list b{ color:#fff; }
+    
+    .knowledge{
+      margin-top:20px; padding:16px; background:rgba(0,0,0,.2); border-radius:8px;
+      border-left:4px solid var(--accent); font-size:14px; color:#d4dcff; line-height:1.6;
+    }
+    
+    @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  </style>
+</head>
+
+<body>
+<header>
+  <h1>🛒 100元零食大挑战：限时寻优</h1>
+  <div class="sub">
+    <b>规则：</b>预算最多 100 元，必须买至少 3 种不同的零食。寻找满意度最高的组合！<br>
+    <span style="color:var(--warn)">★ 每日盲盒：今天的“物价”和“满意度”已随机生成。点击加号，30秒倒计时立刻开始！</span>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <h2>1. 你的购物车 (点击开始)</h2>
+    <div id="items-container">
+      </div>
+  </section>
+
+  <section class="card">
+    <h2>2. 战况统计与算法比拼</h2>
+    
+    <div class="score-board">
+      <div class="metric timer-box" id="timer-container">
+        <div class="metric-title">剩余时间</div>
+        <div id="ui-time" class="metric-val val-warn">30.0</div>
+      </div>
+      <div class="metric">
+        <div class="metric-title">当前花费 (≤100)</div>
+        <div id="ui-cost" class="metric-val val-ok">0</div>
+      </div>
+      <div class="metric">
+        <div class="metric-title">获得满意度</div>
+        <div id="ui-sat" class="metric-val">0</div>
+      </div>
+    </div>
+    
+    <div id="ui-status" class="status-msg">👉 准备好后，增减零食开始计时</div>
+    
+    <div class="btn-row">
+      <button id="btn-reset" class="btn-reset">↺ 重新尝试</button>
+      <button id="btn-solve" class="btn-magic">⚡ 呼叫大数据算法揭晓最优解</button>
+    </div>
+    
+    <div id="ai-result">
+      <div class="ai-box">
+        <div class="ai-title">⚡ 算法已在 1 毫秒内锁定全局最优解！</div>
+        <div class="ai-list" id="ai-best-list"></div>
+        <div style="display:flex; gap:16px; margin-top:10px;">
+          <div>最优花费：<b class="val-ok" id="ai-cost">0</b> 元</div>
+          <div>极限满意度：<b class="val-warn" id="ai-sat" style="font-size:22px;">0</b></div>
+        </div>
+      </div>
+      
+      <div class="knowledge" id="prof-note">
+        <b>💡 教授点评：</b><br>
+        你在限时压力下进行的脑内计算，被称为<strong>“启发式搜索”</strong>。<br><br>
+        而这道题本质是<strong>“整数线性规划 (ILP)”</strong>。当面对超市里上万种商品、或双十一极其复杂的满减规则时，人类的大脑算力会瞬间被击穿。而<strong>数据科学与大数据技术</strong>专业，正是通过建立精确的数学模型，让计算机在海量可能性中，瞬间找到那个绝对的“最优解”！
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  /* =========================================================
+     PRNG (伪随机数生成) - 绑定每日日期
+  ========================================================= */
+  let currentSeed = 1;
+  function seededRandom() {
+    let x = Math.sin(currentSeed++) * 10000;
+    return x - Math.floor(x);
+  }
+
+  /* =========================================================
+     游戏状态与数据
+  ========================================================= */
+  const BUDGET = 100;
+  const MIN_KINDS = 3;
+  let items = [
+    { id: 'chips', name: '🥔 薯片', price: 0, sat: 0, qty: 0 },
+    { id: 'cola',  name: '🥤 可乐', price: 0, sat: 0, qty: 0 },
+    { id: 'choco', name: '🍫 巧克力', price: 0, sat: 0, qty: 0 },
+    { id: 'fruit', name: '🍎 鲜切水果', price: 0, sat: 0, qty: 0 }
+  ];
+
+  // 计时器变量
+  let timerInterval = null;
+  let timeLeft = 30.0;
+  const MAX_TIME = 30.0;
+  let isTimerRunning = false;
+  let isGameOver = false;
+
+  /* =========================================================
+     核心逻辑：提前预判并剔除无趣答案
+  ========================================================= */
+  // 仅在后台验证用的微型求解器，找出理论最高分组合
+  function getTrueOptimalCombo(testItems) {
+    let bestSat = -1;
+    let bestCost = 0;
+    let bestCombo = null;
+    const limits = testItems.map(it => Math.floor(BUDGET / it.price));
+
+    for(let i0=0; i0<=limits[0]; i0++) {
+      for(let i1=0; i1<=limits[1]; i1++) {
+        for(let i2=0; i2<=limits[2]; i2++) {
+          for(let i3=0; i3<=limits[3]; i3++) {
+            const cost = i0*testItems[0].price + i1*testItems[1].price + i2*testItems[2].price + i3*testItems[3].price;
+            if (cost > BUDGET) continue;
+            let kinds = (i0>0?1:0) + (i1>0?1:0) + (i2>0?1:0) + (i3>0?1:0);
+            if (kinds < MIN_KINDS) continue;
+
+            const sat = i0*testItems[0].sat + i1*testItems[1].sat + i2*testItems[2].sat + i3*testItems[3].sat;
+            // 记录最高分（如果分数相同，取花费更少的）
+            if (sat > bestSat || (sat === bestSat && cost < bestCost)) {
+              bestSat = sat;
+              bestCost = cost;
+              bestCombo = [i0, i1, i2, i3];
+            }
+          }
+        }
+      }
+    }
+    return bestCombo;
+  }
+
+  function generateSafePuzzle() {
+    const today = new Date();
+    // 基础种子：年月日
+    const baseSeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+    let offset = 0;
+    let puzzleFound = false;
+
+    // 循环测试，直到找到一个“最高分解里不会出现两个以上1”的题目
+    while(!puzzleFound && offset < 100) {
+      currentSeed = baseSeed + offset * 997; // 加上偏移量生成不同题目
+      
+      items.forEach(item => {
+        item.price = 5 + Math.floor(seededRandom() * 14); 
+        item.sat = 2 + Math.floor(seededRandom() * 7);
+        item.qty = 0;
+      });
+
+      let optimalCombo = getTrueOptimalCombo(items);
+      if (optimalCombo) {
+        let onesCount = 0;
+        optimalCombo.forEach(qty => { if(qty === 1) onesCount++; });
+        
+        // 关键过滤规则：如果真正的最优解中，数量为 1 的商品不到 2 个，说明题目符合审美，采纳它！
+        if (onesCount < 2) {
+          puzzleFound = true;
+        }
+      }
+      offset++;
+    }
+  }
+
+  /* =========================================================
+     初始化与渲染
+  ========================================================= */
+  function initGame() {
+    generateSafePuzzle(); // 生成安全的题目
+
+    isGameOver = false;
+    stopTimer();
+    timeLeft = MAX_TIME;
+    updateTimerUI(true);
+    
+    document.getElementById('ai-result').style.display = 'none';
+    document.getElementById('btn-solve').disabled = false;
+    
+    renderItems();
+    updatePlayerStatus();
+  }
+
+  function renderItems() {
+    const container = document.getElementById('items-container');
+    container.innerHTML = ''; 
+    
+    items.forEach((item, index) => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.innerHTML = `
+        <div class="item-info">
+          <div class="item-name">${item.name}</div>
+          <div class="item-desc">单价: ${item.price}元 | 满意度: +${item.sat}</div>
+        </div>
+        <div class="stepper">
+          <button class="btn-step btn-minus" onclick="changeQty(${index}, -1)">-</button>
+          <div class="qty" id="qty-${index}">0</div>
+          <button class="btn-step btn-plus" onclick="changeQty(${index}, 1)">+</button>
+        </div>
+      `;
+      container.appendChild(row);
+    });
+  }
+
+  /* =========================================================
+     计时器逻辑
+  ========================================================= */
+  function startTimer() {
+    if(isTimerRunning || isGameOver) return;
+    isTimerRunning = true;
+    
+    document.getElementById('ui-status').innerText = "⏳ 紧张计算中...";
+    document.getElementById('ui-status').className = 'status-msg';
+
+    timerInterval = setInterval(() => {
+      timeLeft -= 0.1;
+      if(timeLeft <= 0) {
+        timeLeft = 0;
+        stopTimer();
+        isGameOver = true;
+        lockInputs(); 
+        
+        document.getElementById('ui-status').className = 'status-msg error';
+        document.getElementById('ui-status').innerText = '⏰ 时间到！你的最终战绩已锁定。看看算法怎么选吧！';
+      }
+      updateTimerUI(false);
+    }, 100);
+  }
+
+  function stopTimer() {
+    isTimerRunning = false;
+    clearInterval(timerInterval);
+  }
+
+  function updateTimerUI(isReset) {
+    const valEl = document.getElementById('ui-time');
+    const boxEl = document.getElementById('timer-container');
+    valEl.innerText = timeLeft.toFixed(1);
+
+    if (isReset) {
+      valEl.className = 'metric-val val-warn';
+      boxEl.className = 'metric timer-box';
+    } else if (timeLeft <= 5 && timeLeft > 0) {
+      valEl.className = 'metric-val val-bad';
+      boxEl.className = 'metric timer-box danger';
+    } else if (timeLeft <= 0) {
+      boxEl.className = 'metric timer-box'; 
+    }
+  }
+
+  function lockInputs() {
+    document.querySelectorAll('.btn-step').forEach(btn => btn.disabled = true);
+  }
+
+  /* =========================================================
+     玩家操作逻辑
+  ========================================================= */
+  function changeQty(index, delta) {
+    if (isGameOver) return;
+    if (!isTimerRunning) startTimer(); 
+
+    let newQty = items[index].qty + delta;
+    if (newQty < 0) newQty = 0;
+    
+    items[index].qty = newQty;
+    document.getElementById(`qty-${index}`).innerText = newQty;
+    updatePlayerStatus();
+  }
+
+  function updatePlayerStatus() {
+    let cost = 0;
+    let sat = 0;
+    let kinds = 0;
+
+    items.forEach(item => {
+      cost += item.price * item.qty;
+      sat += item.sat * item.qty;
+      if (item.qty > 0) kinds++;
+    });
+
+    const uiCost = document.getElementById('ui-cost');
+    const uiSat = document.getElementById('ui-sat');
+    const uiStatus = document.getElementById('ui-status');
+
+    uiCost.innerText = cost;
+    uiSat.innerText = sat;
+
+    if (!isTimerRunning && !isGameOver && cost === 0) {
+       uiStatus.className = 'status-msg';
+       uiStatus.innerText = '👉 准备好后，增减零食开始计时';
+       uiCost.className = 'metric-val val-ok';
+       uiSat.className = 'metric-val';
+       return;
+    }
+
+    if (cost > BUDGET) {
+      uiCost.className = 'metric-val val-bad';
+      uiSat.className = 'metric-val val-bad';
+      uiSat.innerText = '无效';
+      if(!isGameOver) {
+        uiStatus.className = 'status-msg error';
+        uiStatus.innerText = '🚫 超出100元预算啦！';
+      }
+    } else if (kinds < MIN_KINDS) {
+      uiCost.className = 'metric-val val-ok';
+      uiSat.className = 'metric-val';
+      if(!isGameOver) {
+        uiStatus.className = 'status-msg';
+        uiStatus.innerText = `还差 ${MIN_KINDS - kinds} 种不同的零食！`;
+      }
+    } else {
+      uiCost.className = 'metric-val val-ok';
+      uiSat.className = 'metric-val val-warn';
+      if(!isGameOver) {
+        uiStatus.className = 'status-msg success';
+        uiStatus.innerText = '✅ 预算和种类均合规！抓紧时间冲刺更高满意度！';
+      }
+    }
+  }
+
+  /* =========================================================
+     显示全局最优解
+  ========================================================= */
+  document.getElementById('btn-solve').addEventListener('click', () => {
+    stopTimer(); 
+    isGameOver = true;
+    lockInputs();
+    document.getElementById('btn-solve').disabled = true;
+
+    // 因为前面出题阶段已经保证了真正的最优解是“美观的”，
+    // 这里直接大大方方地算出真理答案即可。
+    let bestCombo = getTrueOptimalCombo(items);
+    
+    let bestCost = 0;
+    let bestSat = 0;
+    let listHtml = '';
+    
+    bestCombo.forEach((qty, idx) => {
+      if(qty > 0) {
+        bestCost += qty * items[idx].price;
+        bestSat += qty * items[idx].sat;
+        listHtml += `<div>购买 <b>${qty}</b> 份 ${items[idx].name}</div>`;
+      }
+    });
+
+    // 展示结果
+    const aiResult = document.getElementById('ai-result');
+    const aiBestList = document.getElementById('ai-best-list');
+
+    aiBestList.innerHTML = listHtml;
+    document.getElementById('ai-cost').innerText = bestCost;
+    document.getElementById('ai-sat').innerText = bestSat;
+    
+    aiResult.style.display = 'block';
+  });
+
+  // 重新开始按钮
+  document.getElementById('btn-reset').addEventListener('click', () => {
+    items.forEach(item => item.qty = 0);
+    isGameOver = false;
+    stopTimer();
+    timeLeft = MAX_TIME;
+    updateTimerUI(true);
+    
+    document.getElementById('ai-result').style.display = 'none';
+    document.getElementById('btn-solve').disabled = false;
+    
+    renderItems();
+    updatePlayerStatus();
+  });
+
+  // 启动游戏
+  initGame();
+
+</script>
+</body>
+</html>
