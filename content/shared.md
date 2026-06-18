@@ -2,7 +2,7 @@
 
 This file is used in both English and Chinese versions. Edit repeated content here once.
 
-## Publications {#publications}
+## Publications 
 
 - **PINN** | **2025** C. Si and M. Yan, [Initialization-enhanced physics-informed neural network with domain decomposition (IDPINN)](http://doi.org/10.1016/j.jcp.2025.113914), *Journal of Computational Physics*, 530, 113914.
 - **Distributed** | **2024** Z. Song, L. Shi, S. Pu, and M. Yan, [Provably accelerated decentralized gradient method over unbalanced directed graphs](https://doi.org/10.1137/22M148570X), *SIAM Journal on Optimization*, 34, 1131-1156.
