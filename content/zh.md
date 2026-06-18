@@ -64,9 +64,9 @@
 
 我们关注如何利用机器学习、深度网络和强化学习来设计自适应算法，并为数学、优化和反问题构建高效求解器。
 
-## Selected Publications {#publications}
+## 部分论文 {#publications}
 
-A full list is also available on [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ).
+完整列表见 [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ).
 
 ## 团队 {#people}
 
