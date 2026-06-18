@@ -3,11 +3,12 @@
   const body = document.body;
   const contentRoot = document.getElementById("content-root");
   const buttons = Array.from(document.querySelectorAll("[data-set-lang]"));
-  const navLinks = Array.from(document.querySelectorAll(".main-nav a[data-section]"));
+  const mainNav = document.querySelector(".main-nav");
+  let navLinks = [];
   const homeLink = document.querySelector("[data-home-link]");
   const navIds = ["about", "research", "teaching", "people", "join"];
-  const sectionOrder = ["about", "research", "teaching", "people", "join", "support"];
-  const bandSections = new Set(["about", "research", "teaching"]);
+  const sectionOrder = ["about", "research", "publications", "teaching", "people", "join", "support"];
+  const bandSections = new Set(["about", "publications", "teaching"]);
   const cardSections = new Set(["about", "research", "people", "teaching", "join"]);
   const sponsorLogos = [
     { src: "images/nsfc.png", alt: "National Natural Science Foundation of China" },
@@ -31,6 +32,33 @@
     "AI for Mathematical and Optimization Problems": "topic-ai-math",
   };
   let observer = null;
+
+  function syncNavShell() {
+    if (!mainNav) {
+      return;
+    }
+
+    const labels = {
+      about: ["About", "简介"],
+      research: ["Research", "研究"],
+      teaching: ["Teaching", "教学"],
+      people: ["People", "团队"],
+      join: ["Join Us", "加入课题组"],
+    };
+
+    mainNav.innerHTML = navIds
+      .map((id) => {
+        const label = labels[id] || [id, id];
+        return `
+          <a href="#${id}-en" data-section="${id}">
+            <span data-lang="en">${label[0]}</span>
+            <span data-lang="zh">${label[1]}</span>
+          </a>
+        `;
+      })
+      .join("");
+    navLinks = Array.from(mainNav.querySelectorAll("a[data-section]"));
+  }
 
   function escapeHtml(value) {
     return String(value)
@@ -277,26 +305,6 @@
       </div>
     `;
   }
-
-  function renderResearchPublications(section) {
-    if (!section.publications) {
-      return "";
-    }
-
-    const publicationTitle = section.publications.title || (section.language === "zh" ? "璁烘枃" : "Selected Publications");
-    const intro = renderBlocks(section.publications.lines.filter((line) => !/^\s*-\s+/.test(line)));
-    return `
-      <div class="research-publications">
-        <div class="section-heading wide compact">
-          <p class="eyebrow">${escapeHtml(publicationTitle)}</p>
-          <h3>${inlineMarkdown(publicationTitle)}</h3>
-          ${intro}
-        </div>
-        ${renderPublications(section.publications.lines)}
-      </div>
-    `;
-  }
-
   function renderSponsorLogos() {
     return `
       <div class="logo-strip" aria-label="Funding agency logos">
@@ -329,9 +337,6 @@
           join: "opportunity-grid",
         }[section.id] || "card-grid";
       bodyHtml = `<div class="${gridClass}">${cards.map((card) => renderCard(section.id, card)).join("")}</div>`;
-      if (section.id === "research") {
-        bodyHtml += renderResearchPublications(section);
-      }
     } else if (section.id !== "support") {
       bodyHtml = renderBlocks(section.lines);
     }
@@ -343,7 +348,6 @@
     return `
       <section class="${classNames.join(" ")}" id="${section.id}-${section.language}" data-section-id="${section.id}">
         <div class="section-heading wide">
-          <p class="eyebrow">${escapeHtml(section.title)}</p>
           <h2>${inlineMarkdown(section.title)}</h2>
           ${introHtml}
         </div>
@@ -357,29 +361,14 @@
       map[section.id] = section;
       return map;
     }, {});
-
-    const publicationSection = languageSections.find((section) => section.id === "publications");
-    const sharedPublications = sharedById.publications;
-
-    return languageSections
-      .filter((section) => section.id !== "publications")
-      .map((section) => {
-        const shared = sharedById[section.id];
-        const publications =
-          section.id === "research" && publicationSection
-            ? {
-                title: publicationSection.title,
-                lines: sharedPublications ? [...publicationSection.lines, "", ...sharedPublications.lines] : publicationSection.lines,
-              }
-            : null;
-
-        return {
-          ...section,
-          language,
-          publications,
-          lines: shared ? [...section.lines, "", ...shared.lines] : section.lines,
-        };
-      });
+    return languageSections.map((section) => {
+      const shared = sharedById[section.id];
+      return {
+        ...section,
+        language,
+        lines: shared ? [...section.lines, "", ...shared.lines] : section.lines,
+      };
+    });
   }
 
   function renderLanguagePage(parsed, language) {
@@ -519,6 +508,8 @@
       </section>
     `;
   }
+
+  syncNavShell();
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => setLanguage(button.dataset.setLang));
