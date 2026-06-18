@@ -342,11 +342,12 @@
           join: "opportunity-grid",
         }[section.id] || "card-grid";
       bodyHtml = `<div class="${gridClass}">${cards.map((card) => renderCard(section.id, card)).join("")}</div>`;
-      if (section.id === "research") {
-        bodyHtml += renderResearchPublications(section);
-      }
     } else if (section.id !== "support") {
       bodyHtml = renderBlocks(section.lines);
+    }
+
+    if (section.id === "research") {
+      bodyHtml += renderResearchPublications(section);
     }
 
     if (section.id === "support") {
@@ -371,14 +372,24 @@
     }, {});
     const publicationSection = languageSections.find((section) => section.id === "publications");
     const sharedPublications = sharedById.publications;
+    const publicationLines = sharedPublications
+      ? [...(publicationSection ? publicationSection.lines : []), "", ...sharedPublications.lines]
+      : publicationSection
+        ? publicationSection.lines
+        : [];
+    const publicationTitle = publicationSection
+      ? publicationSection.title
+      : language === "zh"
+        ? "论文"
+        : "Selected Publications";
 
     return languageSections.filter((section) => section.id !== "publications").map((section) => {
       const shared = sharedById[section.id];
       const publications =
-        section.id === "research" && publicationSection
+        section.id === "research" && publicationLines.length
           ? {
-              title: publicationSection.title,
-              lines: sharedPublications ? [...publicationSection.lines, "", ...sharedPublications.lines] : publicationSection.lines,
+              title: publicationTitle,
+              lines: publicationLines,
             }
           : null;
 
