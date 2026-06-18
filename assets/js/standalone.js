@@ -5,14 +5,13 @@
   const buttons = Array.from(document.querySelectorAll("[data-set-lang]"));
   const navLinks = Array.from(document.querySelectorAll(".main-nav a[data-section]"));
   const homeLink = document.querySelector("[data-home-link]");
-  const navIds = ["about", "research", "publications", "people", "teaching", "join"];
+  const navIds = ["about", "research", "teaching", "people", "join"];
   const bandSections = new Set(["about", "publications", "teaching"]);
-  const cardSections = new Set(["about", "research", "people", "teaching", "join"]);
+  const cardSections = new Set(["about", "research", "teaching", "people", "join"]);
   const sponsorLogos = [
     { src: "images/nsfc.png", alt: "National Natural Science Foundation of China" },
     { src: "images/Guangdong.png", alt: "Department of Science and Technology of Guangdong Province" },
     { src: "images/Shenzhen.png", alt: "Shenzhen Science and Technology Innovation Commission" },
-    { src: "images/SZNSF.png", alt: "Shenzhen Natural Science Foundation" },
     { src: "images/NSF.png", alt: "U.S. National Science Foundation" },
     { src: "images/FORD.png", alt: "Ford Motor Company" },
     { src: "images/Facebook.png", alt: "Meta" },
