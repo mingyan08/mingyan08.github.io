@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Polar Master: Custom Bounds</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; height: 100vh; background: #f8f9fa; }
+    .sidebar { width: 440px; padding: 25px; background: white; box-shadow: 2px 0 15px rgba(0,0,0,0.1); overflow-y: auto; }
+    #plot-container { flex-grow: 1; padding: 20px; }
+    #plot { width: 100%; height: 100%; background: white; border-radius: 12px; }
+    .input-group { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+    label { font-weight: bold; font-size: 0.85rem; color: #2c3e50; display: block; margin-bottom: 8px; }
+    .var-label { font-family: 'serif'; font-style: italic; color: #555; font-size: 0.95rem; }
+    select, input { width: 100%; padding: 10px; border: 1px solid #ccd1d9; border-radius: 6px; margin-bottom: 5px; }
+    .curve-box { padding: 12px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #eee; }
+    .curve-1 { border-left: 6px solid #d32f2f; background: #fff8f8; }
+    .curve-2 { border-left: 6px solid #1976d2; background: #f8fbff; }
+    .cheat-sheet { background: #fff9db; border-left: 5px solid #fcc419; padding: 12px; margin: 15px 0; font-size: 0.85rem; }
+    button { width: 100%; padding: 12px; background: #2c3e50; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    .hidden { display: none; }
+    .row { display: flex; gap: 10px; align-items: center; margin-bottom: 5px; }
+    .row div { flex: 1; }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>Polar Explorer</h2>
+  
+  <div class="input-group">
+    <label>Explorer Mode</label>
+    <select id="appMode" onchange="toggleMode()">
+      <option value="function">Compare $r_1$ and $r_2$</option>
+      <option value="region">Integration Region $R$</option>
+    </select>
+  </div>
+
+  <div id="functionControls">
+    <div class="curve-box curve-1">
+      <label class="var-label">$r_1(\theta)$ Equation</label>
+      <input type="text" id="eq1" value="2 * (1 + cos(theta))" oninput="updatePlot()">
+      <div class="row">
+        <div><span class="var-label">$\theta_{start}$</span><input type="text" id="t1_start" value="0" oninput="updatePlot()"></div>
+        <div><span class="var-label">$\theta_{end}$</span><input type="text" id="t1_end" value="2*pi" oninput="updatePlot()"></div>
+      </div>
+    </div>
+
+    <div class="curve-box curve-2">
+      <label class="var-label">$r_2(\theta)$ Equation</label>
+      <input type="text" id="eq2" value="3 * cos(theta)" oninput="updatePlot()">
+      <div class="row">
+        <div><span class="var-label">$\theta_{start}$</span><input type="text" id="t2_start" value="0" oninput="updatePlot()"></div>
+        <div><span class="var-label">$\theta_{end}$</span><input type="text" id="t2_end" value="2*pi" oninput="updatePlot()"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="regionControls" class="hidden">
+    <div class="input-group">
+      <label>Integration Bounds</label>
+      <div class="row">
+        <div><span class="var-label">$r_{min}$</span><input type="number" id="rmin" value="1" step="0.1" oninput="updatePlot()"></div>
+        <div><span class="var-label">$r_{max}$</span><input type="number" id="rmax" value="3" step="0.1" oninput="updatePlot()"></div>
+      </div>
+      <div class="row">
+        <div><span class="var-label">$\theta_{min} (\alpha)$</span><input type="text" id="tmin" value="0" oninput="updatePlot()"></div>
+        <div><span class="var-label">$\theta_{max} (\beta)$</span><input type="text" id="tmax" value="pi/2" oninput="updatePlot()"></div>
+      </div>
+    </div>
+  </div>
+
+  <button onclick="updatePlot(true)">Reset Viewport</button>
+
+  <div class="cheat-sheet">
+    <strong>Symmetry Tip:</strong><br>
+    Many curves repeat after $\pi$ or $2\pi$. Use the $\theta$ bounds to see how the curve "draws" itself.
+  </div>
+</div>
+
+<div id="plot-container">
+  <div id="plot"></div>
+</div>
+
+<script>
+let fixedRange = { x: [-6, 6], y: [-6, 6] };
+
+function toggleMode() {
+  const mode = document.getElementById('appMode').value;
+  document.getElementById('functionControls').classList.toggle('hidden', mode !== 'function');
+  document.getElementById('regionControls').classList.toggle('hidden', mode !== 'region');
+  updatePlot();
+}
+
+function updatePlot(resetCam = false) {
+  const mode = document.getElementById('appMode').value;
+  let traces = [];
+
+  if (mode === 'function') {
+    const config = [
+      { eqId: 'eq1', sId: 't1_start', eId: 't1_end', color: '#d32f2f', name: 'r₁' },
+      { eqId: 'eq2', sId: 't2_start', eId: 't2_end', color: '#1976d2', name: 'r₂' }
+    ];
+
+    config.forEach(c => {
+      let x = [], y = [];
+      const expr = document.getElementById(c.eqId).value;
+      let tStart, tEnd;
+      
+      try {
+        tStart = math.evaluate(document.getElementById(c.sId).value);
+        tEnd = math.evaluate(document.getElementById(c.eId).value);
+      } catch(e) { return; }
+
+      const steps = 800;
+      for (let i = 0; i <= steps; i++) {
+        let th = tStart + (tEnd - tStart) * (i / steps);
+        try {
+          let r = math.evaluate(expr, {theta: th});
+          if (typeof r === 'number' || (typeof r === 'object' && r.re !== undefined)) {
+            let val = typeof r === 'number' ? r : r.re;
+            x.push(val * Math.cos(th)); 
+            y.push(val * Math.sin(th));
+          }
+        } catch(e) {}
+      }
+      if(x.length > 0) {
+        traces.push({ x: x, y: y, mode: 'lines', line: {color: c.color, width: 3}, name: c.name });
+      }
+    });
+
+  } else {
+    const r1 = parseFloat(document.getElementById('rmin').value) || 0;
+    const r2 = parseFloat(document.getElementById('rmax').value) || 0;
+    let th1, th2;
+    try {
+      th1 = math.evaluate(document.getElementById('tmin').value);
+      th2 = math.evaluate(document.getElementById('tmax').value);
+    } catch(e) { return; }
+    
+    let rx = [], ry = [];
+    const steps = 100;
+    for(let i=0; i<=steps; i++) {
+      let t = th1 + (th2-th1)*(i/steps);
+      rx.push(r2 * Math.cos(t)); ry.push(r2 * Math.sin(t));
+    }
+    for(let i=steps; i>=0; i--) {
+      let t = th1 + (th2-th1)*(i/steps);
+      rx.push(r1 * Math.cos(t)); ry.push(r1 * Math.sin(t));
+    }
+    traces.push({ x: rx, y: ry, fill: 'toself', fillcolor: 'rgba(44, 62, 80, 0.15)', line: {color: '#2c3e50', width: 2}, name: 'Region R' });
+  }
+
+  const layout = {
+    xaxis: { range: fixedRange.x, zeroline: true, scaleanchor: "y", title: 'x' },
+    yaxis: { range: fixedRange.y, zeroline: true, title: 'y' },
+    uirevision: 'constant', showlegend: true,
+    margin: { t: 40, b: 40, l: 60, r: 40 }
+  };
+
+  if(resetCam) layout.uirevision = Date.now().toString();
+  Plotly.react('plot', traces, layout);
+}
+
+window.onload = () => updatePlot(true);
+</script>
+</body>
+</html>
