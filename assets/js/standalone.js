@@ -6,12 +6,14 @@
   const navLinks = Array.from(document.querySelectorAll(".main-nav a[data-section]"));
   const homeLink = document.querySelector("[data-home-link]");
   const navIds = ["about", "research", "teaching", "people", "join"];
-  const bandSections = new Set(["about", "publications", "teaching"]);
-  const cardSections = new Set(["about", "research", "teaching", "people", "join"]);
+  const sectionOrder = ["about", "research", "teaching", "people", "join", "support"];
+  const bandSections = new Set(["about", "research", "teaching"]);
+  const cardSections = new Set(["about", "research", "people", "teaching", "join"]);
   const sponsorLogos = [
     { src: "images/nsfc.png", alt: "National Natural Science Foundation of China" },
     { src: "images/Guangdong.png", alt: "Department of Science and Technology of Guangdong Province" },
     { src: "images/Shenzhen.png", alt: "Shenzhen Science and Technology Innovation Commission" },
+    { src: "images/SZNSF.png", alt: "Shenzhen Natural Science Foundation" },
     { src: "images/NSF.png", alt: "U.S. National Science Foundation" },
     { src: "images/FORD.png", alt: "Ford Motor Company" },
     { src: "images/Facebook.png", alt: "Meta" },
@@ -234,7 +236,6 @@
           <aside class="profile-panel" aria-label="Profile">
             <img src="Yan3.JPG" alt="Portrait of Ming Yan" width="308" height="450">
             <div>
-              <p class="profile-name">Ming Yan · 严明</p>
               <p>${language === "zh" ? "中国广东省深圳市，518172" : "Shenzhen, Guangdong 518172, China"}</p>
               <p><a href="mailto:yanming@cuhk.edu.cn">yanming@cuhk.edu.cn</a></p>
             </div>
@@ -277,6 +278,25 @@
     `;
   }
 
+  function renderResearchPublications(section) {
+    if (!section.publications) {
+      return "";
+    }
+
+    const publicationTitle = section.publications.title || (section.language === "zh" ? "璁烘枃" : "Selected Publications");
+    const intro = renderBlocks(section.publications.lines.filter((line) => !/^\s*-\s+/.test(line)));
+    return `
+      <div class="research-publications">
+        <div class="section-heading wide compact">
+          <p class="eyebrow">${escapeHtml(publicationTitle)}</p>
+          <h3>${inlineMarkdown(publicationTitle)}</h3>
+          ${intro}
+        </div>
+        ${renderPublications(section.publications.lines)}
+      </div>
+    `;
+  }
+
   function renderSponsorLogos() {
     return `
       <div class="logo-strip" aria-label="Funding agency logos">
@@ -309,6 +329,9 @@
           join: "opportunity-grid",
         }[section.id] || "card-grid";
       bodyHtml = `<div class="${gridClass}">${cards.map((card) => renderCard(section.id, card)).join("")}</div>`;
+      if (section.id === "research") {
+        bodyHtml += renderResearchPublications(section);
+      }
     } else if (section.id !== "support") {
       bodyHtml = renderBlocks(section.lines);
     }
@@ -335,21 +358,41 @@
       return map;
     }, {});
 
-    return languageSections.map((section) => {
-      const shared = sharedById[section.id];
-      return {
-        ...section,
-        language,
-        lines: shared ? [...section.lines, "", ...shared.lines] : section.lines,
-      };
-    });
+    const publicationSection = languageSections.find((section) => section.id === "publications");
+    const sharedPublications = sharedById.publications;
+
+    return languageSections
+      .filter((section) => section.id !== "publications")
+      .map((section) => {
+        const shared = sharedById[section.id];
+        const publications =
+          section.id === "research" && publicationSection
+            ? {
+                title: publicationSection.title,
+                lines: sharedPublications ? [...publicationSection.lines, "", ...sharedPublications.lines] : publicationSection.lines,
+              }
+            : null;
+
+        return {
+          ...section,
+          language,
+          publications,
+          lines: shared ? [...section.lines, "", ...shared.lines] : section.lines,
+        };
+      });
   }
 
   function renderLanguagePage(parsed, language) {
+    const sectionsById = parsed.sections.reduce((map, section) => {
+      map[section.id] = section;
+      return map;
+    }, {});
+    const orderedSections = sectionOrder.map((id) => sectionsById[id]).filter(Boolean);
+
     return `
       <div class="language-page" data-page-lang="${language}">
         ${renderHero(parsed.hero, language)}
-        ${parsed.sections.map(renderSection).join("")}
+        ${orderedSections.map(renderSection).join("")}
       </div>
     `;
   }
