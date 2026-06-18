@@ -388,8 +388,8 @@ function renderDocument(en, zh) {
   <meta name="description" content="Ming Yan, Associate Professor and Assistant Dean at CUHK-Shenzhen. Research in optimization, machine learning, and scientific computing.">
   <title>Ming Yan | 严明</title>
   <link rel="preload" href="Yan3.JPG" as="image">
-  <link rel="stylesheet" href="assets/css/standalone.css">
-  <script src="assets/js/standalone.js" defer></script>
+  <link rel="stylesheet" href="assets/standalone.css">
+  <script src="assets/standalone.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
