@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>强对偶大挑战</title>
+  <style>
+    :root {
+      --bg: #0b1020; --card: #121a33; --text: #eaf0ff; --muted: #a9b4d6;
+      --accent: #7c5cff; --accent2: #37d67a; --warn: #ffcc66; --bad: #ff5c7a;
+      --line: rgba(255,255,255,.10);
+      --sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: var(--sans); line-height: 1.5;
+      background-image: radial-gradient(circle at 50% 0%, rgba(124,92,255,0.15), transparent 50%);
+    }
+    header { text-align: center; padding: 40px 20px 20px; max-width: 900px; margin: 0 auto; }
+    h1 { margin: 0 0 10px; font-size: 28px; letter-spacing: 1px; }
+    .sub { color: var(--muted); font-size: 15px; }
+    
+    /* 核心天平区域 */
+    .balance-section {
+      max-width: 1000px; margin: 0 auto 20px; text-align: center;
+      background: rgba(0,0,0,0.3); padding: 20px; border-radius: 16px; border: 1px solid var(--line);
+    }
+    .balance-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: var(--muted); }
+    .vs-container { display: flex; justify-content: center; align-items: center; gap: 40px; }
+    .vs-box { font-size: 42px; font-weight: 900; font-variant-numeric: tabular-nums; width: 150px; }
+    .vs-primal { color: var(--accent); }
+    .vs-dual { color: var(--accent2); }
+    .vs-center { font-size: 24px; font-weight: bold; color: var(--muted); }
+    
+    #aha-moment {
+      margin-top: 15px; padding: 12px; border-radius: 8px; font-size: 18px; font-weight: bold;
+      background: rgba(55,214,122,0.15); color: var(--accent2); border: 1px solid var(--accent2);
+      display: none; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes popIn { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+    main {
+      max-width: 1000px; margin: 0 auto; padding: 0 20px 50px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    @media (max-width: 768px){ main{ grid-template-columns: 1fr; } .vs-container{ gap: 15px; } }
+    
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid var(--line); border-radius: 16px; padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    }
+    .card-primal { border-top: 4px solid var(--accent); }
+    .card-dual { border-top: 4px solid var(--accent2); }
+    h2 { margin-top: 0; font-size: 20px; color: #fff; border-bottom: 1px solid var(--line); padding-bottom: 12px;}
+
+    /* 信息看板 (配方与规则) */
+    .info-board {
+      background: rgba(0,0,0,0.25); border: 1px solid var(--line);
+      border-radius: 10px; padding: 15px; margin-bottom: 20px;
+      font-size: 14px; line-height: 1.6;
+    }
+    .info-board b { color: #fff; }
+    .info-board .highlight-p { color: var(--accent); font-weight: bold; }
+    .info-board .highlight-d { color: var(--accent2); font-weight: bold; }
+    
+    /* 控制滑块区 */
+    .control-group { margin-bottom: 20px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; }
+    .control-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: bold; }
+    input[type=range] { width: 100%; cursor: pointer; accent-color: var(--accent); }
+    .dual-slider { accent-color: var(--accent2) !important; }
+    
+    /* 进度条/约束状态 */
+    .status-bar-bg { width: 100%; height: 12px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin-top: 5px; }
+    .status-bar-fill { height: 100%; background: var(--accent); transition: width 0.3s, background 0.3s; }
+    .status-text { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-top: 4px; }
+    
+    /* 警告信息 */
+    .warning { color: var(--bad); font-size: 13px; font-weight: bold; margin-top: 5px; display: none; }
+    .warning.active { display: block; animation: shake 0.4s; }
+    @keyframes shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-5px);} 75%{transform:translateX(5px);} }
+
+    .knowledge {
+      grid-column: 1 / -1; margin-top: 10px; padding: 20px; background: rgba(0,0,0,.2); 
+      border-left: 4px solid var(--warn); border-radius: 8px; font-size: 15px; color: #d4dcff; line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚖️ 强对偶大挑战：谁能最快揪出那个隐藏的“完美平衡点”？</h1>
+  <div class="sub">左边是想赚最多钱的<b>摊主</b>，右边是想花最少钱收购的<b>霸道总裁</b>。<br>他们能在市场上达成完美的平衡吗？</div>
+</header>
+
+<div class="balance-section">
+  <div class="balance-title">总利润 vs 总收购成本</div>
+  <div class="vs-container">
+    <div class="vs-box vs-primal" id="ui-profit">0</div>
+    <div class="vs-center" id="ui-sign">≤</div>
+    <div class="vs-box vs-dual" id="ui-cost">0.0</div>
+  </div>
+  <div id="aha-moment">🎉 强对偶奇迹发生！最大利润 = 最小成本 = 11</div>
+</div>
+
+<main>
+  <section class="card card-primal">
+    <h2>🍰 原始问题：摊主的产能分配</h2>
+    
+    <div class="info-board">
+      <div style="margin-bottom: 6px; border-bottom: 1px dashed var(--line); padding-bottom: 6px;">
+        <b>📦 仓库总库存：</b>面粉 <span class="highlight-p">10</span> 斤 | 鸡蛋 <span class="highlight-p">6</span> 筐
+      </div>
+      <div><b>🍰 蛋糕配方：</b>耗 2斤面粉 + 2筐鸡蛋 &nbsp;👉&nbsp; 赚 <span class="highlight-p">3</span> 元/个</div>
+      <div><b>🍞 面包配方：</b>耗 2斤面粉 + 1筐鸡蛋 &nbsp;👉&nbsp; 赚 <span class="highlight-p">2</span> 元/个</div>
+    </div>
+    
+    <div class="control-group">
+      <div class="control-header"><span>做几个蛋糕？</span> <span id="val-cake" class="highlight-p">0</span></div>
+      <input type="range" id="slider-cake" min="0" max="5" step="1" value="0">
+    </div>
+    <div class="control-group">
+      <div class="control-header"><span>做几个面包？</span> <span id="val-bread" class="highlight-p">0</span></div>
+      <input type="range" id="slider-bread" min="0" max="6" step="1" value="0">
+    </div>
+
+    <div style="margin-top: 20px; font-weight:bold; border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:15px;">实时消耗监控</div>
+    
+    <div style="margin-bottom: 15px;">
+      <div class="status-text"><span>面粉 (最多10斤)</span> <span id="text-flour">0 / 10 斤</span></div>
+      <div class="status-bar-bg"><div class="status-bar-fill" id="bar-flour" style="width: 0%;"></div></div>
+      <div class="warning" id="warn-flour">🚫 面粉超标！此方案无效。</div>
+    </div>
+    
+    <div>
+      <div class="status-text"><span>鸡蛋 (最多6筐)</span> <span id="text-egg">0 / 6 筐</span></div>
+      <div class="status-bar-bg"><div class="status-bar-fill" id="bar-egg" style="width: 0%;"></div></div>
+      <div class="warning" id="warn-egg">🚫 鸡蛋超标！此方案无效。</div>
+    </div>
+  </section>
+
+  <section class="card card-dual">
+    <h2>💼 对偶问题：霸总的收购报价</h2>
+    
+    <div class="info-board">
+      <div style="margin-bottom: 6px; border-bottom: 1px dashed var(--line); padding-bottom: 6px;">
+        <b>🎯 总裁目标：</b>打包买走 10斤面粉 和 6筐鸡蛋，总价<span class="highlight-d">最低</span>。
+      </div>
+      <div><b>⚖️ 收购蛋糕原料的底线：</b>2×面粉价 + 2×鸡蛋价 &nbsp;≥&nbsp; <span class="highlight-d">3</span> 元</div>
+      <div style="margin-top:4px;"><b>⚖️ 收购面包原料的底线：</b>2×面粉价 + 1×鸡蛋价 &nbsp;≥&nbsp; <span class="highlight-d">2</span> 元</div>
+    </div>
+    
+    <div class="control-group">
+      <div class="control-header"><span>面粉出价 (元/斤)</span> <span id="val-p-flour" class="highlight-d">0.0</span></div>
+      <input type="range" class="dual-slider" id="slider-p-flour" min="0" max="3" step="0.1" value="0">
+    </div>
+    <div class="control-group">
+      <div class="control-header"><span>鸡蛋出价 (元/筐)</span> <span id="val-p-egg" class="highlight-d">0.0</span></div>
+      <input type="range" class="dual-slider" id="slider-p-egg" min="0" max="3" step="0.1" value="0">
+    </div>
+
+    <div style="margin-top: 20px; font-weight:bold; border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:15px;">防套利检测 (对偶约束)</div>
+    
+    <div style="margin-bottom: 15px; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+      <div class="status-text" style="color:#fff;">
+        <span>收购做1个蛋糕的原料，你出了：</span> 
+        <span id="text-cost-cake">0.0 元</span>
+      </div>
+      <div class="warning" id="warn-p-cake">👎 蛋糕原料出价 < 3元！摊主拒绝出售。</div>
+    </div>
+
+    <div style="background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+      <div class="status-text" style="color:#fff;">
+        <span>收购做1个面包的原料，你出了：</span> 
+        <span id="text-cost-bread">0.0 元</span>
+      </div>
+      <div class="warning" id="warn-p-bread">👎 面包原料出价 < 2元！摊主拒绝出售。</div>
+    </div>
+  </section>
+<div class="knowledge">
+    <b>💡 教授点评：这 11 块钱背后，藏着商业世界的终极机密！</b><br><br>
+    大家刚才亲自验证了：无论摊主怎么拼命凑配方（极限赚 11 元），还是总裁怎么精打细算压价（极限花 11 元），双方最终会死死咬在 <b>11</b> 这个数字上。这就是运筹学中最奇妙的<strong>“强对偶定理” (Strong Duality)</strong>。<br><br>
+    更神奇的是总裁定出的那个收购价：<b>面粉 0.5 元/斤，鸡蛋 1.0 元/筐</b>。这在数据科学中被称为资源的<strong>“影子价格” (Shadow Price)</strong>，它就是这批物资的“真实商业底牌”！<br><br>
+    <b>🔥 这个结论对企业有什么用？</b><br>
+    假如现在有个小贩路过，推销说：“面粉打折，0.4元一斤卖你！”摊主该买吗？<br>
+    答案是：<b>闭着眼睛买！</b>因为算法（影子价格）告诉我们，在这个摊位的生产体系里，每多 1 斤面粉，总利润就能多 0.5 元。花 0.4 买进，净赚 0.1！反之，如果小贩卖 0.6 元，买了立刻就会亏损效率。<br><br>
+    这就是<strong>数据科学与大数据技术专业</strong>的杀手锏。现实商业中，没有只有面粉和鸡蛋的小摊，只有涉及几万个SKU的生鲜超市、上千万包裹的京东物流网络。我们的工作，就是写出强大的智能算法，一秒钟算出庞大系统里所有资源的“影子价格”，用上帝视角指挥巨头企业：该抢什么货、该怎么定价、该舍弃什么订单！
+  </div>
+
+</main>
+
+<script>
+  const sCake = document.getElementById('slider-cake');
+  const sBread = document.getElementById('slider-bread');
+  const spFlour = document.getElementById('slider-p-flour');
+  const spEgg = document.getElementById('slider-p-egg');
+
+  const vCake = document.getElementById('val-cake');
+  const vBread = document.getElementById('val-bread');
+  const vpFlour = document.getElementById('val-p-flour');
+  const vpEgg = document.getElementById('val-p-egg');
+
+  const uiProfit = document.getElementById('ui-profit');
+  const uiCost = document.getElementById('ui-cost');
+  const uiSign = document.getElementById('ui-sign');
+  const ahaMoment = document.getElementById('aha-moment');
+
+  function update() {
+    // --- Primal Logic (Left) ---
+    const x1 = parseInt(sCake.value);
+    const x2 = parseInt(sBread.value);
+    
+    vCake.innerText = x1;
+    vBread.innerText = x2;
+
+    const flourUsed = 2*x1 + 2*x2;
+    const eggUsed = 2*x1 + 1*x2;
+    const profit = 3*x1 + 2*x2;
+
+    document.getElementById('text-flour').innerText = `${flourUsed} / 10 斤`;
+    document.getElementById('text-egg').innerText = `${eggUsed} / 6 筐`;
+    
+    const flourPct = Math.min((flourUsed/10)*100, 100);
+    const eggPct = Math.min((eggUsed/6)*100, 100);
+    
+    const barFlour = document.getElementById('bar-flour');
+    const barEgg = document.getElementById('bar-egg');
+    barFlour.style.width = flourPct + '%';
+    barEgg.style.width = eggPct + '%';
+
+    let primalFeasible = true;
+    if (flourUsed > 10) {
+      barFlour.style.background = 'var(--bad)';
+      document.getElementById('warn-flour').classList.add('active');
+      primalFeasible = false;
+    } else {
+      barFlour.style.background = 'var(--accent)';
+      document.getElementById('warn-flour').classList.remove('active');
+    }
+
+    if (eggUsed > 6) {
+      barEgg.style.background = 'var(--bad)';
+      document.getElementById('warn-egg').classList.add('active');
+      primalFeasible = false;
+    } else {
+      barEgg.style.background = 'var(--accent)';
+      document.getElementById('warn-egg').classList.remove('active');
+    }
+
+    if (!primalFeasible) {
+      uiProfit.innerText = "违规";
+      uiProfit.style.color = 'var(--bad)';
+    } else {
+      uiProfit.innerText = profit;
+      uiProfit.style.color = 'var(--accent)';
+    }
+
+    // --- Dual Logic (Right) ---
+    const y1 = parseFloat(spFlour.value);
+    const y2 = parseFloat(spEgg.value);
+    
+    vpFlour.innerText = y1.toFixed(1);
+    vpEgg.innerText = y2.toFixed(1);
+
+    const costCake = 2*y1 + 2*y2;
+    const costBread = 2*y1 + 1*y2;
+    const totalCost = 10*y1 + 6*y2;
+
+    document.getElementById('text-cost-cake').innerText = `${costCake.toFixed(1)} 元`;
+    document.getElementById('text-cost-bread').innerText = `${costBread.toFixed(1)} 元`;
+
+    let dualFeasible = true;
+    if (costCake < 3) {
+      document.getElementById('warn-p-cake').classList.add('active');
+      document.getElementById('text-cost-cake').style.color = 'var(--bad)';
+      dualFeasible = false;
+    } else {
+      document.getElementById('warn-p-cake').classList.remove('active');
+      document.getElementById('text-cost-cake').style.color = '#fff';
+    }
+
+    if (costBread < 2) {
+      document.getElementById('warn-p-bread').classList.add('active');
+      document.getElementById('text-cost-bread').style.color = 'var(--bad)';
+      dualFeasible = false;
+    } else {
+      document.getElementById('warn-p-bread').classList.remove('active');
+      document.getElementById('text-cost-bread').style.color = '#fff';
+    }
+
+    if (!dualFeasible) {
+      uiCost.innerText = "出价过低";
+      uiCost.style.color = 'var(--bad)';
+    } else {
+      uiCost.innerText = totalCost.toFixed(1);
+      uiCost.style.color = 'var(--accent2)';
+    }
+
+    // --- Center Balance Logic ---
+    if (primalFeasible && dualFeasible) {
+      if (Math.abs(profit - totalCost) < 0.01) {
+        uiSign.innerText = "=";
+        uiSign.style.color = '#fff';
+        ahaMoment.style.display = 'block';
+      } else {
+        uiSign.innerText = "≤";
+        uiSign.style.color = 'var(--muted)';
+        ahaMoment.style.display = 'none';
+      }
+    } else {
+      uiSign.innerText = "VS";
+      uiSign.style.color = 'var(--muted)';
+      ahaMoment.style.display = 'none';
+    }
+  }
+
+  // Event Listeners
+  sCake.addEventListener('input', update);
+  sBread.addEventListener('input', update);
+  spFlour.addEventListener('input', update);
+  spEgg.addEventListener('input', update);
+
+  // Initial render
+  update();
+</script>
+</body>
+</html>
