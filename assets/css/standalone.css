@@ -410,23 +410,6 @@ h3 {
   font-weight: 750;
 }
 
-.research-publications {
-  max-width: 920px;
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--line);
-}
-
-.section-heading.compact {
-  margin-bottom: 1.1rem;
-}
-
-.section-heading.compact h3 {
-  margin-bottom: 0.65rem;
-  color: var(--ink);
-  font-size: clamp(1.35rem, 2vw, 1.75rem);
-}
-
 .list-card h3 {
   color: var(--green-dark);
 }
