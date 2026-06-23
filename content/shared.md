@@ -9,8 +9,6 @@ This file is used in both English and Chinese versions. Edit repeated content he
 - **Distributed** | **2024** Z. Song, L. Shi, S. Pu, and M. Yan, [Optimal gradient tracking for decentralized optimization](http://doi.org/10.1007/s10107-023-01997-7), *Mathematical Programming*, 207, 1-53.
 - **Distributed** | **2019** Z. Li, W. Shi, and M. Yan, [A decentralized proximal-gradient method with network independent step-sizes and separated convergence rates](http://doi.org/10.1109/TSP.2019.2926022), *IEEE Transactions on Signal Processing*, 67, 4494-4506. ([Code](https://github.com/mingyan08/NIDS))
 - **Primal-Dual** | **2018** M. Yan, [A new primal-dual algorithm for minimizing the sum of three functions with a linear operator](http://doi.org/10.1007/s10915-018-0680-3), *Journal of Scientific Computing*, 76, 1698-1717. ([Code](https://github.com/mingyan08/PD3O))
-- **Distributed** | **2016** Z. Peng, Y. Xu, M. Yan, and W. Yin, [ARock: An algorithmic framework for asynchronous parallel coordinate updates](http://dx.doi.org/10.1137/15M1024950), *SIAM Journal on Scientific Computing*, 38, A2851-A2879.
-- **Sparse** | **2013** M. Yan, [Restoration of images corrupted by impulse noise and mixed Gaussian impulse noise using blind inpainting](http://dx.doi.org/10.1137/12087178X), *SIAM Journal on Imaging Sciences*, 6, 1227-1245.
 
 ## People {#people}
 
