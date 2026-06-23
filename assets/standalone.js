@@ -15,7 +15,7 @@
     PINN: "topic-pinns",
     "Primal-Dual": "topic-primal-dual",
     Sparse: "topic-sparse",
-    "AI for Math": "topic-ai-math",
+    AI: "topic-ai-math",
     "Distributed Optimization Algorithms": "topic-distributed",
     "Physics-Informed Neural Networks": "topic-pinns",
     "Primal-Dual Algorithms": "topic-primal-dual",
