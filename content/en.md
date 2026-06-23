@@ -40,7 +40,7 @@ B.S. and M.S. in Mathematics
 
 My group studies algorithms at the intersection of optimization, machine learning, and scientific computing. We care about both proof and performance: why an algorithm works, how fast it works, and what new problems it enables people to solve.
 
-### Distributed Algorithms
+### **Distributed** Algorithms
 
 We design centralized and decentralized methods for large-scale learning over networks, with an emphasis on communication-efficient and computation-efficient algorithms. Topics include gradient tracking, compressed communication, directed network topologies, and federated or decentralized training.
 
@@ -50,13 +50,13 @@ We design centralized and decentralized methods for large-scale learning over ne
 
 We develop optimization perspectives, model architectures, and regularization tools for physics-informed neural networks. The goal is to make neural methods more accurate, stable, and efficient for differential equations and scientific simulation.
 
-### Primal-Dual Algorithms
+### **Primal-Dual** Algorithms
 
 We study splitting methods for structured convex and nonconvex optimization, including PD3O and related primal-dual frameworks. These methods are useful in imaging, inverse problems, signal processing, and distributed learning.
 
 [Slides: Primal-Dual Algorithms](https://mingyan08.github.io/Slides/PD3O.pdf)
 
-### Sparse Optimization and Signal Processing
+### **Sparse** Optimization and Signal Processing
 
 We work on sparse modeling, nonconvex regularization, robust PCA, low-rank recovery, image reconstruction, denoising, and compressive sensing. These problems connect optimization theory with concrete computational tools.
 
