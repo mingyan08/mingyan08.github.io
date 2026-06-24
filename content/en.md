@@ -64,7 +64,7 @@ We work on sparse modeling, nonconvex regularization, robust PCA, low-rank recov
 
 We are interested in using machine learning, deep networks, and reinforcement learning to design adaptive algorithms and efficient solvers for mathematical, optimization, and inverse problems.
 
-## Selected Recent Publications {#publications}
+## Selected Representative Publications {#publications}
 
 A full list is also available on [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ).
 
