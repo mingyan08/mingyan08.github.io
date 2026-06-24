@@ -4,8 +4,6 @@ This file is used in both English and Chinese versions. Edit repeated content he
 
 ## Publications {#publications}
 
-- **PINN** | **2025** C. Si and M. Yan, [Initialization-enhanced physics-informed neural network with domain decomposition (IDPINN)](http://doi.org/10.1016/j.jcp.2025.113914), *Journal of Computational Physics*, 530, 113914.
-- **Distributed** | **2024** Z. Song, L. Shi, S. Pu, and M. Yan, [Provably accelerated decentralized gradient method over unbalanced directed graphs](https://doi.org/10.1137/22M148570X), *SIAM Journal on Optimization*, 34, 1131-1156.
 - **Distributed** | **2024** Z. Song, L. Shi, S. Pu, and M. Yan, [Optimal gradient tracking for decentralized optimization](http://doi.org/10.1007/s10107-023-01997-7), *Mathematical Programming*, 207, 1-53.
 - **Distributed** | **2019** Z. Li, W. Shi, and M. Yan, [A decentralized proximal-gradient method with network independent step-sizes and separated convergence rates](http://doi.org/10.1109/TSP.2019.2926022), *IEEE Transactions on Signal Processing*, 67, 4494-4506. ([Code](https://github.com/mingyan08/NIDS))
 - **Primal-Dual** | **2018** M. Yan, [A new primal-dual algorithm for minimizing the sum of three functions with a linear operator](http://doi.org/10.1007/s10915-018-0680-3), *Journal of Scientific Computing*, 76, 1698-1717. ([Code](https://github.com/mingyan08/PD3O))
