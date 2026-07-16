@@ -3,7 +3,7 @@
 This file is used in both English and Chinese versions. Edit repeated content here once.
 
 ## Publications {#publications}
-- | **2026** J. Pan, [Fast projection onto the top-k-sum constraint](http://doi.org/10.1080/10556788.2026.2692466), *Optimization Methods and Software*. ([slides](https://mingyan08.github.io/Slides/Topk.pdf))
+- **Optimization** | **2026** J. Pan, [Fast projection onto the top-k-sum constraint](http://doi.org/10.1080/10556788.2026.2692466), *Optimization Methods and Software*. ([slides](https://mingyan08.github.io/Slides/Topk.pdf))
 - **Distributed** | **2024** Z. Song, L. Shi, S. Pu, and M. Yan, [Optimal gradient tracking for decentralized optimization](http://doi.org/10.1007/s10107-023-01997-7), *Mathematical Programming*, 207, 1-53.
 - **Distributed** | **2019** Z. Li, W. Shi, and M. Yan, [A decentralized proximal-gradient method with network independent step-sizes and separated convergence rates](http://doi.org/10.1109/TSP.2019.2926022), *IEEE Transactions on Signal Processing*, 67, 4494-4506. ([Code](https://github.com/mingyan08/NIDS))
 - **Primal-Dual** | **2018** M. Yan, [A new primal-dual algorithm for minimizing the sum of three functions with a linear operator](http://doi.org/10.1007/s10915-018-0680-3), *Journal of Scientific Computing*, 76, 1698-1717. ([Code](https://github.com/mingyan08/PD3O))
