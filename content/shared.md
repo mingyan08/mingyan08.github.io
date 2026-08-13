@@ -17,6 +17,8 @@ This file is used in both English and Chinese versions. Edit repeated content he
 - **Chenhao Si** (DS@CUHK-SZ)
 - **Sirong Dai** (DS@CUHK-SZ, joint with Yunbin Zhao)
 - **Anjie Dong** (CS@CUHK-SZ)
+- **Chen Lu** (MPhil-DS@CUHK-SZ)
+- **Kaixin Du** (PhD@Tongji U.)
 
 ### Previous Graduate Students / 往届研究生
 
@@ -25,7 +27,7 @@ This file is used in both English and Chinese versions. Edit repeated content he
 - **Yao Li** (Ph.D.@MSU 2022) - Research Scientist, Huawei
 - [**Xiaorui Liu**](https://sites.google.com/ncsu.edu/xiaorui/) (Ph.D.@MSU 2022, advisor: Jiliang Tang) - Assistant Professor, North Carolina State University
 - **Zhuoqing Song** (Math@Fudan, advisor: Lei Shi)
-- **Zhengyang Tang** (CIE@CUHK-SZ 2026, advisor: Benyou Wang)
+- **Zhengyang Tang** (PhD@CUHK-SZ 2026, advisor: Benyou Wang) - Research Scientist, Tencent 
 
 ### Previous Postdocs / 往届博士后
 
