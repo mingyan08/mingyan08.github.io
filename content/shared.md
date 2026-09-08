@@ -38,6 +38,7 @@ This file is used in both English and Chinese versions. Edit repeated content he
 
 ### The Chinese University of Hong Kong, Shenzhen
 
+- DDA 1000: Freshmen Induction and Academic Planning - Fall 2026
 - [MAT 1002: Calculus II](https://mingyan08.github.io/Teaching/MAT1002/Sequence.html) - Spring 2023, Spring 2024, Spring 2025, Spring 2026
 - MAT 3007: Optimization - Summer 2022, Fall 2023
 
