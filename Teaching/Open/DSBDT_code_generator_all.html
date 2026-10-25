@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b1020">
+<title>三位数字挑战编号 · 三个游戏通用</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{background:radial-gradient(circle at 15% 0%,#232047,transparent 65%),#0b1020;color:#eef2ff;font:16px/1.65 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin:0;padding:20px}main{max-width:710px;margin:5vh auto;background:#15213a;border:1px solid #344462;border-radius:18px;padding:clamp(18px,4vw,30px)}h1{font-size:clamp(22px,5vw,29px);margin:0 0 7px}p{color:#b5c4df;margin:0 0 18px}button{background:#8c75ff;border:0;color:white;min-height:46px;padding:9px 16px;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer;margin:5px 6px 5px 0}.secondary{background:#354360}#code{letter-spacing:5px;font-size:clamp(32px,7vw,55px);font-weight:850;text-align:center;padding:25px 6px;border-radius:12px;background:#0b1329;word-break:break-all}small{display:block;color:#b9c6db;margin-top:14px}#message{color:#45d58b;min-height:25px;font-size:13px}.links{display:grid;gap:11px}.link-card{background:#111b32;border:1px solid #344462;border-radius:11px;padding:12px 14px}.link-card strong{display:block}.link-card a{display:block;color:#bbaaff;overflow-wrap:anywhere;font-size:13px;margin:4px 0}.link-card button{font-size:13px;min-height:38px;margin:4px 0 0}#notice{color:#b9c6db;font-size:12px}
+</style></head><body><main>
+<h1>🎲 三位数字比赛编号</h1>
+<p>三个挑战可以共用同一个 <strong>3 位数字编号</strong>。公布编号后再统一发令，各页面在点击开始后才会显示该编号对应的题目；每个游戏均为 60 秒。</p>
+<div id="code" aria-live="polite">尚未生成</div>
+<button id="generate" type="button">生成新编号</button><button class="secondary" id="copy" type="button">复制编号</button>
+<div id="message" role="status"></div>
+<h2 style="font-size:18px;margin:20px 0 10px">三个挑战入口</h2>
+<div class="links">
+<div class="link-card"><strong>🛒 100元零食大挑战</strong><a id="link1" href="https://mingyan08.github.io/Teaching/Open/DSBDT_app1_offline_v2.html" target="_blank" rel="noopener noreferrer">打开零食挑战</a><button class="secondary" data-copy="link1">复制网址</button></div>
+<div class="link-card"><strong>🛵 外卖路线大挑战</strong><a id="link2" href="https://mingyan08.github.io/Teaching/Open/DSBDT_app2_offline_v2.html" target="_blank" rel="noopener noreferrer">打开路线挑战</a><button class="secondary" data-copy="link2">复制网址</button></div>
+<div class="link-card"><strong>⚖️ 强对偶大挑战</strong><a id="link3" href="https://mingyan08.github.io/Teaching/Open/DSBDT_app3_offline_v2.html" target="_blank" rel="noopener noreferrer">打开强对偶挑战</a><button class="secondary" data-copy="link3">复制网址</button></div>
+</div>
+<small>编号只保存在当前浏览器。每次新挑战建议生成不同编号。三个游戏互相独立，同一编号在不同游戏中对应不同题目。当前网页无后台，不提供跨设备计分或防篡改验证。</small>
+<p id="notice">上述链接须在对应 HTML 文件上传至 GitHub Pages 后才会生效。</p>
+</main><script>
+(()=>{'use strict';const $=id=>document.getElementById(id),KEY='dsbdt-three-game-v1:code';
+function render(c){$('code').textContent=c||'尚未生成'}
+try{render(localStorage.getItem(KEY))}catch(_){}
+$('generate').onclick=()=>{let c;do{const data=new Uint32Array(1);crypto.getRandomValues(data);c=String(100+(data[0]%900))}while(c===$('code').textContent);render(c);try{localStorage.setItem(KEY,c)}catch(_){}$('message').textContent='已生成三位数字编号。'};
+async function copy(s){if(!s){$('message').textContent='请先生成编号。';return}try{await navigator.clipboard.writeText(s);$('message').textContent='复制成功。'}catch(_){$('message').textContent='复制失败，请手动选取并复制。'}}
+$('copy').onclick=()=>copy($('code').textContent==='尚未生成'?'':$('code').textContent);
+document.querySelectorAll('[data-copy]').forEach(btn=>btn.onclick=()=>copy($(btn.dataset.copy).href));
+})();
+</script></body></html>

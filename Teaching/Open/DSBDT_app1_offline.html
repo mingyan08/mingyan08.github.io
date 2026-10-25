@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <title>100元零食大挑战｜讲座编号现场版（无需云端）</title>
+  <style>
+    :root {
+      --bg:#0b1020; --panel:#141d36; --text:#eef2ff; --sub:#aab5d4;
+      --line:rgba(255,255,255,.12); --violet:#8c75ff; --green:#45d58b;
+      --yellow:#ffce74; --red:#ff7189;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; background: radial-gradient(900px 520px at 15% 0%, #252047 0%, transparent 60%),
+      radial-gradient(900px 500px at 100% 15%, #143b38 0%, transparent 55%), var(--bg);
+      color:var(--text);font-family:system-ui,-apple-system,"PingFang SC","Microsoft Yahei",sans-serif;line-height:1.55; }
+    button,input { font:inherit; }
+    button { cursor:pointer; min-height:44px; touch-action:manipulation; }
+    button:disabled { cursor:not-allowed; opacity:.42; }
+    .container{max-width:1000px;margin:auto;padding:24px 18px 54px;}
+    .hero{text-align:center;padding:16px 0 22px;}
+    .eyebrow {display:inline-flex; align-items:center;gap:7px; font-size:12px; padding:5px 12px; color:#ddd6ff;background:rgba(140,117,255,.14);border:1px solid rgba(140,117,255,.35);border-radius:50px;}
+    h1 {font-size:clamp(25px,5vw,35px); margin:14px 0 6px;letter-spacing:.2px;}
+    .subtitle{color:var(--sub);font-size:14px;max-width:640px;margin:0 auto;}
+    .layout{display:grid; grid-template-columns:1fr 1fr;gap:18px;align-items:start;}
+    .quickbar {display:none;}
+    .quickbar button {min-height:36px;border:0;border-radius:9px;padding:7px 13px;background:var(--green);color:#092014;font-weight:800;}
+    .quickbar strong {font-variant-numeric:tabular-nums;font-size:17px;color:white;}
+    .card{background:linear-gradient(165deg,rgba(255,255,255,.075),rgba(255,255,255,.027));border:1px solid var(--line);border-radius:18px;padding:21px;box-shadow:0 14px 32px rgba(0,0,0,.16);}
+    .card h2{font-size:19px;margin:0 0 14px;}
+    .eyeline{color:var(--sub);font-size:12px;margin-bottom:9px;}
+    .label{font-size:13px;color:var(--sub);}
+    .input{width:100%;min-height:46px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.21);padding:11px 13px;border-radius:11px;color:var(--text);outline:none;}
+    .input:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(140,117,255,.15);}
+    .instructions{background:rgba(140,117,255,.11);border:1px solid rgba(140,117,255,.25);padding:11px 13px;border-radius:12px;font-size:14px;margin-bottom:14px;}
+    .start{display:block;width:100%;font-size:18px;font-weight:760;border:0;border-radius:12px;background:linear-gradient(95deg,#6f57ed,#9784ff);color:white;min-height:55px;}
+    .start:focus-visible,.action:focus-visible,.step:focus-visible{outline:3px solid white;outline-offset:3px;}
+    .small{font-size:12px;color:var(--sub);}
+    .round{padding:7px 11px;border-radius:10px;background:rgba(255,255,255,.07);font-weight:650;display:inline-block;word-break:break-all;}
+    .items{display:grid;gap:10px;}
+    .item{padding:13px; background:rgba(0,0,0,.16);border:1px solid var(--line);border-radius:12px;display:flex;justify-content:space-between;gap:8px;align-items:center;}
+    .itemname{font-weight:700;font-size:17px;}
+    .info{font-size:13px;color:var(--yellow);font-weight:600;margin-top:1px;}
+    .quantity{display:flex;align-items:center;gap:10px;}
+    .step{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.13);color:white;border-radius:11px;width:43px;height:43px;font-size:25px;line-height:1;}
+    .qty{min-width:19px;text-align:center;font-weight:750;font-variant-numeric:tabular-nums;font-size:20px;}
+    .countgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:14px;}
+    .stat{text-align:center;background:rgba(0,0,0,.2);padding:12px 5px;border:1px solid var(--line);border-radius:13px;}
+    .value{font-variant-numeric:tabular-nums;font-weight:800;font-size:clamp(21px,4vw,30px);line-height:1.28;}
+    .timer{color:var(--yellow);}
+    .good{color:var(--green);}.bad{color:var(--red);}
+    .status{padding:11px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:13px;min-height:48px;margin-bottom:12px;}
+    .buttons{display:grid;gap:10px;}
+    .action{border:0;border-radius:12px;padding:12px 14px;font-weight:750;background:var(--green);color:#0a1b14;}
+    .secondary{background:rgba(255,255,255,.09);border:1px solid var(--line);color:var(--text);}
+    .result{margin-top:13px;background:rgba(69,213,139,.08);border:1px solid rgba(69,213,139,.38);padding:15px;border-radius:13px;}
+    .result.error{background:rgba(255,113,137,.09);border-color:rgba(255,113,137,.38);}
+    .result h3{margin:0 0 10px;font-size:18px;}
+    .resultgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+    .resultmetric{padding:8px 10px;background:rgba(0,0,0,.16);border-radius:10px;}
+    .resultmetric .value{font-size:24px;}
+    .optimal{background:rgba(140,117,255,.1);border:1px solid rgba(140,117,255,.35);padding:14px;border-radius:13px;margin-top:12px;}
+    .compare{margin-top:18px;padding:16px 18px;background:rgba(255,206,116,.06);border:1px solid rgba(255,206,116,.25);border-radius:15px;font-size:14px;}
+    .footer{font-size:12px;color:var(--sub);margin-top:18px;line-height:1.7;}
+    .hide{display:none!important;}
+    details{margin-top:12px;color:var(--sub);font-size:12px;}
+    summary{cursor:pointer;}
+    .warn{display:block;margin-top:8px;color:var(--red);font-size:12px;}
+    #btn-next{min-height:44px;}
+    #challenge-code{letter-spacing:4px;font-weight:800;font-variant-numeric:tabular-nums;}
+    .input + .label{display:block;margin-top:16px;}
+    @media(max-width:780px){
+      .quickbar:not(.hide){display:flex;align-items:center;justify-content:space-between;gap:7px;position:sticky;top:0;z-index:20;
+        margin:0 0 12px;padding:9px 10px;background:#202b45;border:1px solid rgba(140,117,255,.6);
+        border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.5);font-size:13px;}
+      .quickbar strong{font-size:18px;}
+      .layout{grid-template-columns:1fr;}.container{padding:14px 12px 35px;}.card{padding:16px;}.item{padding:11px 9px;}.info{font-size:12px;}.quantity{gap:8px;}.step{width:42px;height:46px;}.hero{padding:10px 0 17px;}}
+    @media(max-width:390px){.itemname{font-size:15px;}.qty{font-size:17px;min-width:16px;}.countgrid{gap:6px;}.stat{padding:10px 4px;}.label{font-size:11px;}}
+  </style>
+</head>
+<body>
+<div class="container">
+  <header class="hero">
+    <div class="eyebrow">🎯 现场挑战版 · 3 位数字编号 · 无需服务器</div>
+    <h1>🛒 100 元零食大挑战</h1>
+    <p class="subtitle">现场公布 3 位数字比赛编号并统一发令；同一编号对应相同题目，每次挑战限时 60 秒，刷新不重新计时。</p>
+  </header>
+  <div id="quickbar" class="quickbar hide" aria-label="手机快捷计时栏">
+    <span>⏱ <strong id="quick-time">60.0</strong>s</span>
+    <span>💰 <strong id="quick-cost">0</strong></span>
+    <span>⭐ <strong id="quick-score">0</strong></span>
+    <button id="btn-quick-finish" type="button" disabled>交卷</button>
+  </div>
+  <main class="layout">
+    <section class="card" aria-label="现场挑战">
+      <div id="wait-panel">
+        <div class="eyeline">现场挑战 · 等待开始</div>
+        <h2>准备挑战</h2>
+        <div class="instructions">
+          请提前扫码进入本页面。<strong>等现场公布比赛编号后</strong>填写编号；统一发令「3、2、1，开始！」时再点击开始。
+          <strong>题目只会在计时开始后显示。</strong>
+        </div>
+        <label for="challenge-code" class="label">比赛编号（现场公布）</label>
+        <input id="challenge-code" class="input" type="text" maxlength="3" pattern="[0-9]{3}" placeholder="例如：527" autocomplete="off" spellcheck="false" inputmode="numeric" aria-describedby="code-help" />
+        <p id="code-help" class="small">请输入现场公布的 3 位数字（例如 527）。</p>
+        <label for="nickname" class="label">昵称（可选，仅展示在这台手机）</label>
+        <input id="nickname" class="input" maxlength="18" placeholder="例如：数学探索者" autocomplete="off" />
+        <button id="btn-start" class="start" type="button">▶ 统一发令后：开始挑战</button>
+        <p class="small">点击开始后立即计时 60 秒；刷新只会恢复本场剩余时间，不会重置倒计时。</p>
+      </div>
+      <div id="play-panel" class="hide">
+        <div class="eyeline">比赛编号 <span id="active-code" class="round"></span></div>
+        <h2>1. 选择零食组合</h2>
+        <div class="items" id="items-container"></div>
+        <p class="small" style="margin-bottom:0">点击 ＋／－ 调整数目；花费不得超过 100 元，且至少选择 3 种零食。可以提前交卷，60 秒到时自动结束。</p>
+      </div>
+      <div id="locked-panel" class="hide">
+        <h2>📱 本场成绩已锁定</h2>
+        <p class="small">本机已保留比赛编号 <strong id="locked-code"></strong> 的成绩。刷新页面不会获得第二次计时。</p>
+        <button id="btn-next" class="action secondary" type="button" style="width:100%;margin-top:10px">使用新编号进入另一轮</button>
+      </div>
+    </section>
+    <section class="card" aria-label="计时与成绩">
+      <h2>2. 计时与成绩</h2>
+      <div class="countgrid">
+        <div class="stat"><div class="label">剩余时间</div><div id="time-left" class="value timer">60.0</div><div class="label">秒</div></div>
+        <div class="stat"><div class="label">当前花费</div><div id="cost" class="value good">0</div><div class="label">元 / 100 元</div></div>
+        <div class="stat"><div class="label">满意度</div><div id="score" class="value">0</div><div class="label">分</div></div>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite">等待公布比赛编号和开始指令。</div>
+      <div id="finish-section" class="buttons hide">
+        <button id="btn-finish" class="action" type="button" disabled>✓ 完成挑战 · 停止计时</button>
+        <div class="small">只有满足规则时才能提前提交，60 秒到时会自动锁定当前购物车。</div>
+      </div>
+      <div id="result" class="result hide" aria-live="polite">
+        <h3 id="result-heading">挑战结束</h3>
+        <div class="resultgrid">
+          <div class="resultmetric"><div class="label">最终满意度</div><div id="final-score" class="value">—</div></div>
+          <div class="resultmetric"><div class="label">完成用时</div><div id="final-time" class="value">—</div></div>
+          <div class="resultmetric"><div class="label">最终花费</div><div id="final-cost" class="value">—</div></div>
+          <div class="resultmetric"><div class="label">零食种类</div><div id="final-kinds" class="value">—</div></div>
+        </div>
+        <p id="result-caption" class="small" style="margin:11px 0 0"></p>
+      </div>
+      <div id="reveal-section" class="hide" style="margin-top:12px">
+        <button id="btn-solve" class="action secondary" type="button" style="width:100%">⚡ 统一公布后查看算法最优解</button>
+        <div id="optimal" class="optimal hide"></div>
+      </div>
+    </section>
+  </main>
+  <div class="compare">
+    <strong>🏆 现场如何比较？</strong> 请保留手机的最终成绩画面。先比「有效满意度」，同分再比「用时」；超预算或少于 3 种零食均为无效成绩。统一公布后，再点击查看算法最优解。
+  </div>
+</div>
+<script>
+(() => {
+  'use strict';
+  // 纯静态页面，无需任何外部脚本、网络请求或后台服务。
+  const BUDGET=100, MIN_KINDS=3, LIMIT_MS=60000, VERSION=5;
+  const ACTIVE_KEY='snack-lecture-v5:active';
+  const RECORD_PREFIX='snack-lecture-v5:round:';
+  const LEGACY_RECORD_PREFIX='snack-lecture-v4:round:';
+  const names=['🥔 薯片','🥤 可乐','🍫 巧克力','🍎 鲜切水果'];
+  const $=id=>document.getElementById(id);
+  let code='', items=[], optimal=null;
+  let state={phase:'waiting',startedAt:0,wallOnResume:0,monoOnResume:0,qty:[0,0,0,0],nickname:'',result:null};
+  let ticker=0,lastPersistedAt=0;
+  function normalizeCode(v){return String(v||'').replace(/[^0-9]/g,'').slice(0,3);}
+  function validCode(v){return typeof v==='string' && /^[0-9]{3}$/.test(v);}
+  function keyFor(v){return RECORD_PREFIX+v;}
+  function getSaved(k){try{return JSON.parse(localStorage.getItem(k)||'null');}catch(_){return null;}}
+  function setSaved(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch(_){return false;}}
+  function setActive(v){try{localStorage.setItem(ACTIVE_KEY,v);return true;}catch(_){return false;}}
+  function warn(msg){$('storage-warning').textContent=msg;$('storage-warning').classList.remove('hide');}
+  function hash(str){let h=2166136261;for(let i=0;i<str.length;i++)h=Math.imul(h^str.charCodeAt(i),16777619)>>>0;return h||1;}
+  function rng(seed){let a=seed>>>0;return ()=>{a=(a+0x6d2b79f5)>>>0;let t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;};}
+  // 与原版相同：求解预算与至少 3 种零食约束下的整数规划。
+  function getOptimal(xs){
+    const dp=Array.from({length:101},()=>Array(16).fill(null));
+    dp[0][0]={score:0,combo:[0,0,0,0]};
+    for(let i=0;i<4;i++){
+      for(let cost=xs[i].price;cost<=100;cost++){
+        for(let mask=0;mask<16;mask++){
+          const prev=dp[cost-xs[i].price][mask];if(!prev)continue;
+          const newMask=mask|(1<<i),newScore=prev.score+xs[i].sat;
+          if(!dp[cost][newMask]||newScore>dp[cost][newMask].score){
+            const combo=prev.combo.slice();combo[i]++;
+            dp[cost][newMask]={score:newScore,combo};
+          }
+        }
+      }
+    }
+    let best={score:-1,cost:101,combo:null};
+    for(let cost=0;cost<=100;cost++)for(let mask=0;mask<16;mask++){
+      if(mask.toString(2).replace(/0/g,'').length<MIN_KINDS)continue;
+      const v=dp[cost][mask];
+      if(v&&(v.score>best.score||(v.score===best.score&&cost<best.cost)))best={score:v.score,cost,combo:v.combo};
+    }
+    return best;
+  }
+  function makePuzzle(round){
+    const base=hash('snack-lecture-v4:'+round);let last=null;
+    for(let attempt=0;attempt<100;attempt++){
+      const random=rng((base+Math.imul(attempt,997))>>>0);
+      const xs=names.map(name=>({name,price:5+Math.floor(random()*14),sat:2+Math.floor(random()*7),qty:0}));
+      const opt=getOptimal(xs);
+      last={items:xs,optimal:opt};
+      if(opt.combo&&opt.combo.filter(n=>n===1).length<2)break;
+    }
+    return last;
+  }
+  function chooseRound(round){
+    code=round;
+    const puzzle=makePuzzle(round);items=puzzle.items;optimal=puzzle.optimal;
+    $('active-code').textContent=round;$('locked-code').textContent=round;
+    state.qty=[0,0,0,0];
+  }
+  function totals(qty=state.qty){
+    let cost=0,score=0,kinds=0;
+    qty.forEach((q,i)=>{cost+=q*items[i].price;score+=q*items[i].sat;if(q>0)kinds++;});
+    return {cost,score,kinds,valid:cost<=BUDGET&&kinds>=MIN_KINDS};
+  }
+  function renderItems(){
+    const target=$('items-container');target.replaceChildren();
+    items.forEach((item,i)=>{
+      const row=document.createElement('div');row.className='item';
+      const left=document.createElement('div');
+      const nm=document.createElement('div');nm.className='itemname';nm.textContent=item.name;
+      const info=document.createElement('div');info.className='info';info.textContent=`单价 ${item.price} 元 · 满意度 +${item.sat}`;
+      left.append(nm,info);
+      const controls=document.createElement('div');controls.className='quantity';
+      const minus=document.createElement('button');minus.className='step';minus.type='button';minus.textContent='−';minus.setAttribute('aria-label',`减少${item.name}`);
+      const number=document.createElement('span');number.className='qty';number.textContent=state.qty[i];
+      const plus=document.createElement('button');plus.className='step';plus.type='button';plus.textContent='+';plus.setAttribute('aria-label',`增加${item.name}`);
+      minus.addEventListener('click',()=>change(i,-1,number));
+      plus.addEventListener('click',()=>change(i,1,number));
+      controls.append(minus,number,plus);row.append(left,controls);target.appendChild(row);
+    });
+  }
+  function runningSnapshot(){
+    return {v:VERSION,code,phase:'running',startedAt:state.startedAt,qty:state.qty.slice(),nickname:state.nickname,lastSeenAt:Date.now()};
+  }
+  function saveRunning(){
+    if(state.phase!=='running')return;
+    if(!setSaved(keyFor(code),runningSnapshot()))warn('⚠️ 当前浏览器未能保存最新购物车；请勿刷新页面。');
+    lastPersistedAt=Date.now();
+  }
+  function elapsedMs(){
+    if(state.phase!=='running')return LIMIT_MS;
+    // 单次打开时使用单调时钟；跨刷新则依赖保存的原始墙上时钟。
+    // 如手机被人为更改系统时钟，纯离线网页无法作可靠的反作弊验证。
+    const wall=Date.now()-state.startedAt;
+    const mono=state.wallOnResume+(performance.now()-state.monoOnResume);
+    return Math.min(LIMIT_MS,Math.max(0,wall,mono));
+  }
+  function refreshTotals(){
+    if(state.phase!=='running')return;
+    const t=totals();
+    $('cost').textContent=t.cost;$('score').textContent=t.score;
+    $('quick-cost').textContent=t.cost;$('quick-score').textContent=t.score;
+    $('cost').className='value '+(t.cost<=BUDGET?'good':'bad');
+    $('score').className='value '+(t.valid?'good':'');
+    $('btn-finish').disabled=!t.valid;$('btn-quick-finish').disabled=!t.valid;
+    if(t.cost>BUDGET)$('status').textContent='🚫 超过 100 元预算，请减少数量！';
+    else if(t.kinds<MIN_KINDS)$('status').textContent=`还需要选择 ${MIN_KINDS-t.kinds} 种不同的零食。`;
+    else $('status').textContent='✅ 当前组合有效！继续优化，或点击「完成挑战」锁定成绩。';
+  }
+  function change(i,delta,number){
+    if(state.phase!=='running')return;
+    if(elapsedMs()>=LIMIT_MS){finish(true);return;}
+    state.qty[i]=Math.max(0,Math.min(100,state.qty[i]+delta));
+    number.textContent=state.qty[i];
+    saveRunning();refreshTotals();
+  }
+  function tick(){
+    if(state.phase!=='running')return;
+    const elapsed=elapsedMs();
+    $('time-left').textContent=((LIMIT_MS-elapsed)/1000).toFixed(1);
+    $('quick-time').textContent=((LIMIT_MS-elapsed)/1000).toFixed(1);
+    $('time-left').className='value '+(elapsed>55000?'bad':'timer');
+    if(elapsed>=LIMIT_MS){finish(true);return;}
+    if(Date.now()-lastPersistedAt>1100)saveRunning();
+  }
+  function showRunning(recovered=false){
+    state.phase='running';
+    $('wait-panel').classList.add('hide');$('locked-panel').classList.add('hide');
+    $('play-panel').classList.remove('hide');$('quickbar').classList.remove('hide');
+    $('finish-section').classList.remove('hide');
+    $('result').classList.add('hide');$('reveal-section').classList.add('hide');$('optimal').classList.add('hide');
+    renderItems();refreshTotals();tick();
+    if(!ticker)ticker=setInterval(tick,100);
+    if(recovered && state.phase==='running'){
+      $('status').textContent='🔄 已恢复本场挑战，倒计时没有重置。请继续！';
+    }
+  }
+  function tryStart(){
+    if(state.phase!=='waiting')return;
+    const round=normalizeCode($('challenge-code').value);
+    if(!validCode(round)){
+      $('status').textContent='请输入现场公布的 3 位数字比赛编号。';
+      $('challenge-code').focus();return;
+    }
+    const old=getSaved(keyFor(round));
+    if(old && old.v===VERSION && old.code===round){
+      if(!setActive(round))warn('无法保存比赛编号，刷新后可能无法自动恢复。');
+      restoreRecord(old);return;
+    }
+    const prior=getSaved(LEGACY_RECORD_PREFIX+round);
+    if(prior&&prior.v===4){
+      $('status').textContent='此编号已在旧版挑战中使用过，请选择新编号开始本轮 60 秒挑战。';
+      return;
+    }
+    const now=Date.now();
+    const nickname=$('nickname').value.trim().slice(0,18);
+    const first={v:VERSION,code:round,phase:'running',startedAt:now,qty:[0,0,0,0],nickname,lastSeenAt:now};
+    // 必须先持久化起点，才能解锁试题和计时，阻止普通刷新重开。
+    if(!setSaved(keyFor(round),first)||!setActive(round)){
+      $('status').textContent='⚠️ 当前浏览器无法保存正式挑战；请关闭无痕浏览并重试。';
+      return;
+    }
+    chooseRound(round);
+    state.startedAt=now;state.wallOnResume=0;state.monoOnResume=performance.now();
+    state.nickname=nickname;state.result=null;state.phase='running';
+    showRunning(false);
+  }
+  function finish(timeout=false){
+    if(state.phase!=='running')return;
+    let elapsed=elapsedMs();
+    if(timeout||elapsed>=LIMIT_MS){timeout=true;elapsed=LIMIT_MS;}
+    const t=totals();
+    const result={
+      v:VERSION,code,phase:'finished',startedAt:state.startedAt,
+      qty:state.qty.slice(),nickname:state.nickname,elapsedMs:Math.round(elapsed),
+      valid:t.valid,score:t.valid?t.score:0,cost:t.cost,kinds:t.kinds,
+      timeout:!!timeout,finishedAt:new Date().toISOString()
+    };
+    state.phase='finished';state.result=result;
+    clearInterval(ticker);ticker=0;
+    if(!setSaved(keyFor(code),result))warn('⚠️ 无法写入本机最终成绩，请保留屏幕截图。');
+    showResult(result);
+  }
+  function showResult(r){
+    state.phase='finished';state.result=r;
+    $('wait-panel').classList.add('hide');$('play-panel').classList.add('hide');
+    $('locked-panel').classList.remove('hide');$('quickbar').classList.add('hide');
+    $('finish-section').classList.add('hide');$('result').classList.remove('hide');
+    $('reveal-section').classList.remove('hide');$('optimal').classList.add('hide');$('btn-solve').disabled=false;
+    $('time-left').textContent=((LIMIT_MS-r.elapsedMs)/1000).toFixed(1);
+    $('time-left').className='value '+(r.timeout?'bad':'timer');
+    $('cost').textContent=r.cost;$('score').textContent=r.valid?r.score:'无效';
+    $('cost').className='value '+(r.cost<=BUDGET?'good':'bad');
+    $('score').className='value '+(r.valid?'good':'bad');
+    $('result').classList.toggle('error',!r.valid);
+    $('result-heading').textContent=r.valid?'✅ 挑战完成！':'⏰ 挑战结束 · 无效成绩';
+    $('final-score').textContent=r.valid?`${r.score} 分`:'无效';
+    $('final-time').textContent=`${(r.elapsedMs/1000).toFixed(2)} 秒`;
+    $('final-cost').textContent=`${r.cost} 元`;
+    $('final-kinds').textContent=`${r.kinds} 种`;
+    $('result-caption').textContent=`${r.nickname?r.nickname+' · ':''}编号 ${r.code} · ${r.timeout?'60 秒自动结束':'提前完成并锁定'}`;
+    $('status').textContent=r.valid?'成绩已锁定，请保持此页面以便现场比较。':'本场未满足预算或种类要求，请保留此页面。';
+  }
+  function validQty(q){return Array.isArray(q)&&q.length===4&&q.every(n=>Number.isInteger(n)&&n>=0&&n<=100);}
+  function restoreRecord(rec){
+    if(!rec||rec.v!==VERSION||!validCode(rec.code)||!validQty(rec.qty))return false;
+    chooseRound(rec.code);
+    state.qty=rec.qty.slice();state.nickname=typeof rec.nickname==='string'?rec.nickname.slice(0,18):'';
+    if(rec.phase==='finished'&&typeof rec.elapsedMs==='number'&&rec.elapsedMs>=0&&rec.elapsedMs<=LIMIT_MS){
+      const t=totals();
+      // 屏幕数据以题目和购物车重新计算；不改变已经锁定的用时。
+      const r={...rec,elapsedMs:Math.round(rec.elapsedMs),valid:t.valid,score:t.valid?t.score:0,cost:t.cost,kinds:t.kinds};
+      showResult(r);return true;
+    }
+    if(rec.phase==='running'&&Number.isFinite(rec.startedAt)&&rec.startedAt>0){
+      state.phase='running';state.startedAt=rec.startedAt;
+      state.wallOnResume=Math.max(0,Date.now()-rec.startedAt);
+      state.monoOnResume=performance.now();
+      if(Number.isFinite(rec.lastSeenAt) && Date.now()+3000 < rec.lastSeenAt){
+        // 时钟显著倒拨时无法可信地恢复倒计时；按超时结束处理。
+        finish(true);$('status').textContent='检测到本机时间变化，本场已按超时锁定。';return true;
+      }
+      if(Date.now()-rec.startedAt>=LIMIT_MS){finish(true);return true;}
+      showRunning(true);return true;
+    }
+    return false;
+  }
+  function goNextRound(){
+    if(state.phase!=='finished')return;
+    try{localStorage.removeItem(ACTIVE_KEY);}catch(_){}
+    code='';items=[];optimal=null;
+    state={phase:'waiting',startedAt:0,wallOnResume:0,monoOnResume:0,qty:[0,0,0,0],nickname:'',result:null};
+    $('wait-panel').classList.remove('hide');$('play-panel').classList.add('hide');$('locked-panel').classList.add('hide');
+    $('result').classList.add('hide');$('reveal-section').classList.add('hide');$('finish-section').classList.add('hide');
+    $('quickbar').classList.add('hide');$('challenge-code').value='';$('nickname').value='';
+    $('time-left').textContent='60.0';$('cost').textContent='0';$('score').textContent='0';
+    $('status').textContent='等待公布新比赛编号和开始口令。旧场次成绩仍保存在本机。';
+    $('challenge-code').focus();
+  }
+  $('btn-start').addEventListener('click',tryStart);
+  $('btn-finish').addEventListener('click',()=>finish(false));
+  $('btn-quick-finish').addEventListener('click',()=>finish(false));
+  $('btn-next').addEventListener('click',goNextRound);
+  $('challenge-code').addEventListener('input',e=>{e.target.value=normalizeCode(e.target.value);});
+  $('btn-solve').addEventListener('click',()=>{
+    if(state.phase!=='finished'||!optimal)return;
+    const b=optimal;
+    const description=b.combo.map((n,i)=>n>0?`${items[i].name} × ${n}`:'').filter(Boolean).join('、');
+    const ratio=state.result.valid&&b.score>0?`你的最优率：${(100*state.result.score/b.score).toFixed(1)}%`:'你的成绩不符合比赛规则';
+    $('optimal').replaceChildren();
+    const heading=document.createElement('strong');heading.textContent=`⚡ 全局最优满意度：${b.score} 分`;
+    const line1=document.createElement('div');line1.textContent=`最优花费：${b.cost} 元`;line1.style.marginTop='8px';
+    const line2=document.createElement('div');line2.textContent=`最优组合：${description}`;
+    const line3=document.createElement('div');line3.textContent=ratio;line3.style.marginTop='8px';
+    $('optimal').append(heading,line1,line2,line3);
+    $('optimal').classList.remove('hide');$('btn-solve').disabled=true;
+  });
+  // 后台停留、切换应用、恢复标签页时立即检查超时，不依赖浏览器定时器持续执行。
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick();});
+  window.addEventListener('pageshow',()=>tick());
+  window.addEventListener('focus',()=>tick());
+  if(!ticker)ticker=setInterval(tick,100);
+  try{
+    const test='snack-lecture-v3:storage-check';
+    localStorage.setItem(test,'1');localStorage.removeItem(test);
+  }catch(_){warn('⚠️ 此浏览器禁用了本地存储。正式挑战需要允许网站保存数据（不要用无痕模式）。');}
+  try{
+    const active=localStorage.getItem(ACTIVE_KEY);
+    if(validCode(active)){
+      const rec=getSaved(keyFor(active));
+      if(rec&&rec.code===active&&rec.v===VERSION)restoreRecord(rec);
+    }
+  }catch(_){/* 等待输入比赛编号。 */}
+})();
+</script>
+</body>
+</html>

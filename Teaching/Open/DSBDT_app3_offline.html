@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<title>强对偶大挑战｜三位数字现场版</title>
+<style>
+:root{--bg:#0b1020;--card:#121a33;--text:#eaf0ff;--muted:#a9b4d6;--accent:#7c5cff;--accent2:#37d67a;--warn:#ffcc66;--bad:#ff5c7a;--line:rgba(255,255,255,.13)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 45% 0%,rgba(124,92,255,.17),transparent 45%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.5}button,input{font:inherit}button{cursor:pointer;min-height:44px;touch-action:manipulation}button:disabled{opacity:.42;cursor:not-allowed}
+header{text-align:center;padding:28px 15px 14px;max-width:930px;margin:auto}header h1{font-size:clamp(24px,5vw,32px);margin:10px 0}header p{color:var(--muted);font-size:14px;margin:7px auto}.chip{display:inline-block;font-size:12px;padding:5px 12px;border-radius:24px;background:rgba(124,92,255,.14);color:#ddd4ff;border:1px solid rgba(124,92,255,.3)}
+.shell{max-width:1050px;margin:auto;padding:0 14px 36px}.start-card,.balance,.card,.result-card,.knowledge,.footerbox{background:linear-gradient(165deg,rgba(255,255,255,.065),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 10px 25px rgba(0,0,0,.17)}.start-card{max-width:650px;margin:15px auto 25px}.start-card h2{font-size:21px;margin:0 0 12px}.intro{background:rgba(124,92,255,.11);border:1px solid rgba(124,92,255,.26);padding:13px;border-radius:11px;font-size:14px}
+label{display:block;margin:16px 0 7px;color:var(--muted);font-size:14px;font-weight:700}.field{display:block;width:100%;min-height:48px;background:#111a31;color:#fff;border-radius:10px;border:1px solid rgba(255,255,255,.24);padding:10px 13px;font-weight:800;font-size:21px;letter-spacing:5px}.field:focus-visible{outline:3px solid rgba(124,92,255,.3)}
+.btn{border:0;border-radius:10px;color:#fff;background:linear-gradient(120deg,#6e53ec,#9784ff);padding:11px 15px;font-weight:800}.btn.alt{background:rgba(255,255,255,.09);border:1px solid var(--line)}.btn.good{background:#37d67a;color:#0a2014}.btn.wide{width:100%;font-size:17px;min-height:53px;margin-top:15px}.btn:focus-visible{outline:3px solid white;outline-offset:3px}.small{font-size:12px;color:var(--muted);line-height:1.65}
+.balance{text-align:center;margin-bottom:16px}.balance-title{font-size:15px;color:var(--muted);font-weight:750}.vs{display:flex;align-items:center;justify-content:center;gap:clamp(8px,5vw,40px);margin:10px 0}.vs div strong{font-size:clamp(24px,5vw,42px);font-variant-numeric:tabular-nums}.purple{color:var(--accent)}.green{color:var(--accent2)}.red{color:var(--bad)}.vs-sign{font-size:24px;font-weight:800;color:var(--muted)}.aha{padding:9px 12px;background:rgba(55,214,122,.1);border:1px solid rgba(55,214,122,.3);border-radius:10px;color:var(--accent2);font-weight:750}.timing{display:flex;justify-content:space-between;align-items:center;gap:9px;flex-wrap:wrap;padding:8px 0 0;color:var(--muted);font-size:14px}.timing strong{color:var(--warn);font-size:24px;font-variant-numeric:tabular-nums}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card h2{margin:0 0 13px;font-size:19px;padding-bottom:12px;border-bottom:1px solid var(--line)}.card.primal{border-top:4px solid var(--accent)}.card.dual{border-top:4px solid var(--accent2)}.info-board{padding:13px;margin-bottom:14px;font-size:13px;line-height:1.85;background:rgba(0,0,0,.24);border:1px solid var(--line);border-radius:10px}.info-board strong{color:#fff}.control{padding:12px;border-radius:12px;background:rgba(0,0,0,.20);margin-bottom:13px}.control-line{display:flex;justify-content:space-between;gap:10px;font-size:14px;font-weight:650}.control-line strong{font-variant-numeric:tabular-nums}.control input[type=range]{width:100%;height:28px;cursor:pointer;accent-color:var(--accent);margin-top:8px}.dual .control input{accent-color:var(--accent2)}.subheading{margin:14px 0 9px;padding-bottom:8px;border-bottom:1px solid var(--line);font-weight:700;font-size:14px}.monitor{margin:9px 0}.monitor-line{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--muted)}.bar{height:10px;border-radius:8px;background:rgba(255,255,255,.09);margin-top:6px;overflow:hidden}.fill{height:100%;background:var(--accent);width:0}.warning{font-size:12px;color:var(--bad);font-weight:700;margin:5px 0}.hide{display:none!important}
+.actions{margin:17px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions button{min-height:51px}.status{padding:11px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:11px;font-size:13px;min-height:48px}.result-card h2{font-size:20px;margin:0 0 12px}.resgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.resmetric{padding:12px 8px;border-radius:10px;background:rgba(0,0,0,.2);text-align:center}.resmetric small{color:var(--muted)}.resmetric strong{display:block;margin-top:2px;font-size:clamp(16px,3vw,24px);font-variant-numeric:tabular-nums}.optimal{margin-top:12px;padding:13px;border:1px solid rgba(55,214,122,.35);background:rgba(55,214,122,.08);border-radius:10px;font-size:14px;line-height:1.75}.knowledge{margin-top:15px;border-left:4px solid var(--warn);color:#d4dcff;font-size:14px;line-height:1.8}.footerbox{margin-top:17px;font-size:13px;color:var(--muted)}.footerbox strong{color:var(--text)}.quickbar{display:none}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.shell{padding:0 11px 28px}.card{padding:16px}.balance{padding:14px}.start-card{padding:17px}.quickbar:not(.hide){display:flex;position:sticky;top:0;z-index:30;justify-content:space-between;align-items:center;gap:8px;background:#1b2c4a;padding:9px 10px;border:1px solid rgba(124,92,255,.6);border-radius:12px;margin:0 0 10px;box-shadow:0 9px 22px #0007;font-size:12px}.quickbar b{font-size:19px;color:var(--warn)}}@media(max-width:380px){.resgrid{grid-template-columns:1fr 1fr}.vs{gap:7px}}
+</style>
+</head>
+<body>
+<header><span class="chip">⚖️ 三位数字编号 · 本地计时 · 无云端</span><h1>强对偶大挑战</h1><p>调整生产数量与资源报价，尝试让最大利润与最低收购成本达成完美平衡。</p></header>
+<div class="shell">
+ <section class="start-card" id="wait-panel"><h2>准备挑战</h2><div class="intro">输入现场公布的 <strong>3 位数字比赛编号</strong>。听到统一发令后再点击「开始挑战」，届时才会出现这一轮的库存与配方。</div><label for="challenge-code">比赛编号</label><input id="challenge-code" type="text" class="field" maxlength="3" pattern="[0-9]{3}" inputmode="numeric" autocomplete="off" placeholder="例如：527"><button id="btn-start" class="btn wide">▶ 发令后：开始挑战</button><p class="small">60 秒内尝试使原始和对偶问题都满足约束，且两边差距尽可能小。刷新不会重置计时。</p></section>
+ <section class="start-card hide" id="locked-panel"><h2>📱 成绩已锁定</h2><p class="small">编号 <strong id="locked-code"></strong> 的这一轮已经结束。刷新后仍显示原成绩。</p><button id="btn-next" class="btn alt wide">输入新编号开始另一轮</button></section>
+ <div id="quickbar" class="quickbar hide"><span>⏱ <b id="quick-time">60.0</b>s</span><span>差距 <b id="quick-gap">—</b></span><button id="quick-finish" class="btn good" disabled>完成</button></div>
+ <div id="game" class="hide">
+  <section class="balance"><div class="balance-title">当前利润 vs 当前收购成本 <span id="active-code" style="font-size:12px;color:#d6cfff"></span></div><div class="vs"><div><small>🍰 利润</small><br><strong class="purple" id="ui-profit">0</strong></div><span id="ui-sign" class="vs-sign">VS</span><div><small>💼 成本</small><br><strong class="green" id="ui-cost">0</strong></div></div><div id="aha" class="aha hide">🎉 找到强对偶的平衡点！</div><div class="timing"><span>剩余时间 <strong id="time-left">60.0</strong> 秒</span><span>两边差距：<b id="gap-text">—</b></span></div></section>
+  <main class="layout">
+   <section class="card primal"><h2>🍰 原始问题：产能分配</h2><div class="info-board">📦 库存：面粉 <strong id="cap-flour">—</strong> 斤，鸡蛋 <strong id="cap-egg">—</strong> 筐。<br>🍰 每个蛋糕：用 2 斤面粉、2 筐鸡蛋，利润 <strong id="profit-cake">—</strong> 元。<br>🍞 每个面包：用 2 斤面粉、1 筐鸡蛋，利润 <strong id="profit-bread">—</strong> 元。</div>
+    <div class="control"><div class="control-line"><span>蛋糕数量</span><strong id="val-cake" class="purple">0</strong></div><input id="slider-cake" type="range" min="0" max="5" step="1" value="0"></div>
+    <div class="control"><div class="control-line"><span>面包数量</span><strong id="val-bread" class="purple">0</strong></div><input id="slider-bread" type="range" min="0" max="6" step="1" value="0"></div>
+    <div class="subheading">实时资源消耗</div>
+    <div class="monitor"><div class="monitor-line"><span>面粉</span><span id="text-flour">0 / —</span></div><div class="bar"><div class="fill" id="bar-flour"></div></div><div id="warn-flour" class="warning hide">🚫 面粉超出库存，当前方案无效。</div></div>
+    <div class="monitor"><div class="monitor-line"><span>鸡蛋</span><span id="text-egg">0 / —</span></div><div class="bar"><div class="fill" id="bar-egg"></div></div><div id="warn-egg" class="warning hide">🚫 鸡蛋超出库存，当前方案无效。</div></div>
+   </section>
+   <section class="card dual"><h2>💼 对偶问题：收购报价</h2><div class="info-board">🎯 收购全部 <strong id="dual-flour">—</strong> 斤面粉和 <strong id="dual-egg">—</strong> 筐鸡蛋，希望总成本最低。<br>⚖️ 蛋糕约束：2×面粉价 + 2×鸡蛋价 ≥ <strong id="dual-cake">—</strong> 元。<br>⚖️ 面包约束：2×面粉价 + 1×鸡蛋价 ≥ <strong id="dual-bread">—</strong> 元。</div>
+    <div class="control"><div class="control-line"><span>面粉报价（元/斤）</span><strong class="green" id="val-p-flour">0.0</strong></div><input id="slider-p-flour" type="range" min="0" max="3.5" step="0.1" value="0"></div>
+    <div class="control"><div class="control-line"><span>鸡蛋报价（元/筐）</span><strong class="green" id="val-p-egg">0.0</strong></div><input id="slider-p-egg" type="range" min="0" max="3.5" step="0.1" value="0"></div>
+    <div class="subheading">防套利检查</div><div class="monitor"><div class="monitor-line"><span>蛋糕原料报价</span><span id="text-cost-cake">0.0</span></div><div id="warn-p-cake" class="warning hide">🚫 蛋糕原料报价过低。</div></div><div class="monitor"><div class="monitor-line"><span>面包原料报价</span><span id="text-cost-bread">0.0</span></div><div id="warn-p-bread" class="warning hide">🚫 面包原料报价过低。</div></div>
+   </section>
+  </main>
+  <div class="actions" id="action-panel"><div id="status" class="status" role="status" aria-live="polite">开始后滑动数值，使两边方案符合约束。</div><button id="btn-finish" class="btn good" disabled>✓ 完成挑战 · 停止计时</button></div>
+  <section id="result" class="result-card hide" aria-live="polite"><h2 id="result-title">挑战结束</h2><div class="resgrid"><div class="resmetric"><small>对偶差距</small><strong id="final-gap">—</strong></div><div class="resmetric"><small>完成用时</small><strong id="final-time">—</strong></div><div class="resmetric"><small>结果有效性</small><strong id="final-valid">—</strong></div></div><p class="small" id="result-description"></p><button id="btn-solve" class="btn alt" style="width:100%">⚡ 查看理论最优值与影子价格</button><div id="optimal" class="optimal hide"></div></section>
+  <section id="knowledge" class="knowledge hide"><strong>💡 为什么这是强对偶？</strong><p>当生产方案满足资源约束，资源报价满足“防套利”约束时，利润始终不大于收购成本（弱对偶）。如果找到两者相等的方案，就同时找到了原始问题和对偶问题的最优解。这里特意构造了可由整数数量达到最优值的实例。</p><p>最优的资源报价也称为<strong>影子价格</strong>，反映增加一单位资源的边际价值。更复杂的物流、供应链和资源配置问题也会用到这类思想。</p></section>
+ </div>
+ <div class="footerbox"><strong>🏁 比较规则：</strong>只有原始与对偶方案都满足约束时才算有效。有效方案按<strong>对偶差距越小越好</strong>比较；差距相同再比完成用时。<br></div>
+ <p id="storage-warning" class="small red hide" role="alert"></p>
+</div>
+<script>
+(()=>{'use strict';
+const $=s=>document.getElementById(s),LIMIT=60000,VERSION=2;
+const ACTIVE_KEY='dsbdt-duality-offline-v2:active',PREFIX='dsbdt-duality-offline-v2:round:';
+let code='',puzzle=null,values=[0,0,0,0],startedAt=0,lastSeenAt=0,monoOnResume=0,elapsedOnResume=0,ticker=0,phase='waiting',result=null;
+const LEGACY_PREFIX='dsbdt-duality-offline-v1:round:';
+const sliderIds=['slider-cake','slider-bread','slider-p-flour','slider-p-egg'];
+const getSaved=k=>{try{return JSON.parse(localStorage.getItem(k)||'null')}catch(_){return null}};
+const setSaved=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));return true}catch(_){return false}};
+const key=()=>PREFIX+code;const validCode=s=>typeof s==='string'&&/^\d{3}$/.test(s);
+const normalizeCode=s=>String(s||'').replace(/[^0-9]/g,'').slice(0,3);
+const warn=s=>{$('storage-warning').textContent=s;$('storage-warning').classList.remove('hide')};
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++)h=Math.imul(h^s.charCodeAt(i),16777619)>>>0;return h||1}
+function rng(seed){let a=seed>>>0;return()=>{a=(a+0x6d2b79f5)>>>0;let t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296}}
+function makePuzzle(c){const r=rng(hash('dsbdt-duality:'+c));const a=1+Math.floor(r()*4),b=2+Math.floor(r()*5);const priceF=(1+Math.floor(r()*5))/2,priceE=1+Math.floor(r()*3);const F=2*(a+b),E=2*a+b,profitCake=2*priceF+2*priceE,profitBread=2*priceF+priceE;const optimum=a*profitCake+b*profitBread;
+ return {a,b,F,E,profitCake,profitBread,priceF,priceE,optimum};}
+function configure(c){code=c;puzzle=makePuzzle(c);values=[0,0,0,0];$('active-code').textContent=' · 编号 '+c;$('locked-code').textContent=c;
+ const p=puzzle;$('cap-flour').textContent=p.F;$('cap-egg').textContent=p.E;$('profit-cake').textContent=p.profitCake;$('profit-bread').textContent=p.profitBread;$('dual-flour').textContent=p.F;$('dual-egg').textContent=p.E;$('dual-cake').textContent=p.profitCake;$('dual-bread').textContent=p.profitBread;
+ $('slider-cake').max=p.a+p.b;$('slider-bread').max=p.a+p.b;applyValues();}
+function applyValues(){sliderIds.forEach((id,i)=>$(id).value=i<2?values[i]:(values[i]/10).toFixed(1))}
+function validValues(v){return Array.isArray(v)&&v.length===4&&v.every((x,i)=>Number.isInteger(x)&&x>=0&&(i<2?x<=puzzle.a+puzzle.b:x<=35))}
+function metrics(){const p=puzzle,[x,y,fy,ey]=values;const priceF=fy/10,priceE=ey/10,flour=2*x+2*y,eggs=2*x+y,profit=x*p.profitCake+y*p.profitBread,cost=p.F*priceF+p.E*priceE,cakeCost=2*priceF+2*priceE,breadCost=2*priceF+priceE;const pvalid=flour<=p.F&&eggs<=p.E,dvalid=cakeCost+1e-8>=p.profitCake&&breadCost+1e-8>=p.profitBread;const valid=pvalid&&dvalid;return {flour,eggs,profit,cost,cakeCost,breadCost,pvalid,dvalid,valid,gap:valid?Math.max(0,cost-profit):null}}
+function elapsed(){if(phase!=='running')return LIMIT;const wall=Date.now()-startedAt,mono=elapsedOnResume+performance.now()-monoOnResume;return Math.min(LIMIT,Math.max(0,wall,mono))}
+function persist(){if(phase!=='running')return;lastSeenAt=Date.now();if(!setSaved(key(),{v:VERSION,code,phase:'running',startedAt,lastSeenAt,values:values.slice()}))warn('本机保存失败，建议不要刷新页面。')}
+function render(){if(!puzzle)return;const m=metrics(),p=puzzle;
+ $('val-cake').textContent=values[0];$('val-bread').textContent=values[1];$('val-p-flour').textContent=(values[2]/10).toFixed(1);$('val-p-egg').textContent=(values[3]/10).toFixed(1);
+ $('text-flour').textContent=`${m.flour} / ${p.F}`;$('text-egg').textContent=`${m.eggs} / ${p.E}`;
+ $('bar-flour').style.width=(Math.min(100,m.flour/p.F*100))+'%';$('bar-egg').style.width=(Math.min(100,m.eggs/p.E*100))+'%';
+ $('bar-flour').style.background=m.flour>p.F?'var(--bad)':'var(--accent)';$('bar-egg').style.background=m.eggs>p.E?'var(--bad)':'var(--accent)';
+ $('warn-flour').classList.toggle('hide',m.flour<=p.F);$('warn-egg').classList.toggle('hide',m.eggs<=p.E);
+ $('text-cost-cake').textContent=m.cakeCost.toFixed(1)+' 元';$('text-cost-bread').textContent=m.breadCost.toFixed(1)+' 元';
+ $('warn-p-cake').classList.toggle('hide',m.cakeCost+1e-8>=p.profitCake);$('warn-p-bread').classList.toggle('hide',m.breadCost+1e-8>=p.profitBread);
+ $('ui-profit').textContent=m.pvalid?m.profit.toFixed(1):'违规';$('ui-cost').textContent=m.dvalid?m.cost.toFixed(1):'出价过低';
+ $('ui-profit').className=m.pvalid?'purple':'red';$('ui-cost').className=m.dvalid?'green':'red';
+ const perfect=m.valid&&m.gap<0.05;$('aha').classList.toggle('hide',!perfect);$('ui-sign').textContent=m.valid?(perfect?'=':'≤'):'VS';
+ $('gap-text').textContent=m.valid?m.gap.toFixed(1):'—';$('quick-gap').textContent=m.valid?m.gap.toFixed(1):'—';
+ $('btn-finish').disabled=phase!=='running'||!m.valid;$('quick-finish').disabled=phase!=='running'||!m.valid;
+ if(phase==='running')$('status').textContent=perfect?'🎉 已找到完美平衡！可以立即完成。':!m.pvalid?'🚫 生产方案超过资源限制。':!m.dvalid?'🚫 资源出价还没满足全部底线。':'✅ 两边都合规；继续缩小对偶差距，或提前完成。';
+}
+function showRun(recovered=false){phase='running';$('wait-panel').classList.add('hide');$('locked-panel').classList.add('hide');$('game').classList.remove('hide');$('quickbar').classList.remove('hide');$('action-panel').classList.remove('hide');$('result').classList.add('hide');$('knowledge').classList.add('hide');sliderIds.forEach(id=>$(id).disabled=false);applyValues();render();tick();if(!ticker)ticker=setInterval(tick,100);if(recovered&&phase==='running')$('status').textContent='🔄 已恢复滑块位置与剩余时间，计时没有重置。'}
+function start(){if(phase!=='waiting')return;const c=normalizeCode($('challenge-code').value);if(!validCode(c)){$('wait-panel').querySelector('.intro').textContent='请输入三位数字比赛编号。';$('challenge-code').focus();return}
+ const old=getSaved(PREFIX+c);if(old&&old.v===VERSION&&old.code===c){setSaved(ACTIVE_KEY,c);return restore(old)}
+ const prior=getSaved(LEGACY_PREFIX+c);if(prior&&prior.v===1){$('wait-panel').querySelector('.intro').textContent='此编号已用于旧版挑战，请使用新编号开始本轮 60 秒挑战。';return}
+ const now=Date.now(),first={v:VERSION,code:c,phase:'running',startedAt:now,lastSeenAt:now,values:[0,0,0,0]};if(!setSaved(PREFIX+c,first)||!setSaved(ACTIVE_KEY,c)){warn('⚠️ 需要允许本网站保存本地数据，才能正式挑战。');return}
+ configure(c);startedAt=now;elapsedOnResume=0;monoOnResume=performance.now();result=null;showRun(false)}
+function tick(){if(phase!=='running')return;const e=elapsed();$('time-left').textContent=((LIMIT-e)/1000).toFixed(1);$('quick-time').textContent=((LIMIT-e)/1000).toFixed(1);$('time-left').className=e>=55000?'red':'';if(e>=LIMIT){finish(true);return}if(Date.now()-lastSeenAt>900)persist()}
+function finish(timeout=false){if(phase!=='running')return;let duration=elapsed();if(timeout||duration>=LIMIT){duration=LIMIT;timeout=true}else if(!metrics().valid)return;
+ result={v:VERSION,code,phase:'finished',startedAt,values:values.slice(),elapsedMs:Math.round(duration),timeout:!!timeout,finishedAt:new Date().toISOString()};phase='finished';clearInterval(ticker);ticker=0;setSaved(key(),result);showFinished(result)}
+function showFinished(r){phase='finished';result=r;values=r.values.slice();applyValues();sliderIds.forEach(id=>$(id).disabled=true);$('wait-panel').classList.add('hide');$('locked-panel').classList.remove('hide');$('game').classList.remove('hide');$('quickbar').classList.add('hide');$('action-panel').classList.add('hide');$('result').classList.remove('hide');$('knowledge').classList.add('hide');$('optimal').classList.add('hide');$('btn-solve').disabled=false;
+ render();const m=metrics();$('result-title').textContent=m.valid?'✅ 挑战完成':'⏰ 挑战结束 · 当前方案无效';$('final-gap').textContent=m.valid?m.gap.toFixed(1):'无效';$('final-time').textContent=(r.elapsedMs/1000).toFixed(2)+' 秒';$('final-valid').textContent=m.valid?'有效':'无效';$('result-description').textContent=m.valid?`编号 ${code} · 当前利润 ${m.profit.toFixed(1)} 元，收购成本 ${m.cost.toFixed(1)} 元；${r.timeout?'60 秒结束':'提前完成'}。`:`编号 ${code} · 生产和报价都需要合规，当前方案未达成全部约束。`;$('time-left').textContent=((LIMIT-r.elapsedMs)/1000).toFixed(1);$('gap-text').textContent=m.valid?m.gap.toFixed(1):'—';$('status').textContent=m.valid?'已锁定本轮成绩。':'当前方案无效，成绩已锁定。';$('btn-finish').disabled=true;$('quick-finish').disabled=true}
+function restore(rec){if(!rec||rec.v!==VERSION||!validCode(rec.code))return false;configure(rec.code);if(!validValues(rec.values))return false;values=rec.values.slice();if(rec.phase==='finished'&&Number.isFinite(rec.elapsedMs)&&rec.elapsedMs>=0&&rec.elapsedMs<=LIMIT){showFinished(rec);return true}
+ if(rec.phase==='running'&&Number.isFinite(rec.startedAt)&&rec.startedAt>0){startedAt=rec.startedAt;lastSeenAt=rec.lastSeenAt||rec.startedAt;elapsedOnResume=Math.max(0,Date.now()-startedAt);monoOnResume=performance.now();phase='running';if(Date.now()+3000<lastSeenAt||Date.now()-startedAt>=LIMIT){finish(true);return true}showRun(true);return true}return false}
+function another(){if(phase!=='finished')return;try{localStorage.removeItem(ACTIVE_KEY)}catch(_){ }phase='waiting';code='';puzzle=null;result=null;values=[0,0,0,0];clearInterval(ticker);ticker=0;$('wait-panel').classList.remove('hide');$('locked-panel').classList.add('hide');$('game').classList.add('hide');$('quickbar').classList.add('hide');$('challenge-code').value='';$('challenge-code').focus()}
+function solve(){if(phase!=='finished'||!puzzle)return;const p=puzzle,m=metrics();$('optimal').replaceChildren();const title=document.createElement('strong');title.textContent='⚡ 理论最优利润 = 最低收购成本 = '+p.optimum.toFixed(1)+' 元';const q1=document.createElement('p');q1.textContent=`一种最优产量：蛋糕 ${p.a} 个、面包 ${p.b} 个。`;const q2=document.createElement('p');q2.textContent=`对应影子价格：面粉 ${p.priceF.toFixed(1)} 元/斤，鸡蛋 ${p.priceE.toFixed(1)} 元/筐。`;const q3=document.createElement('p');q3.textContent=m.valid?`本轮对偶差距 ${m.gap.toFixed(1)} 元，${m.gap<0.05?'已经达到理论最优。':'还可以进一步缩小。'}`:'本轮没有得到同时满足约束的方案。';$('optimal').append(title,q1,q2,q3);$('optimal').classList.remove('hide');$('knowledge').classList.remove('hide');$('btn-solve').disabled=true}
+sliderIds.forEach((id,i)=>$(id).addEventListener('input',e=>{if(phase!=='running')return;if(elapsed()>=LIMIT){finish(true);return}values[i]=i<2?Number(e.target.value):Math.round(Number(e.target.value)*10);persist();render()}));
+$('btn-start').addEventListener('click',start);$('challenge-code').addEventListener('input',e=>e.target.value=normalizeCode(e.target.value));$('btn-finish').addEventListener('click',()=>finish(false));$('quick-finish').addEventListener('click',()=>finish(false));$('btn-solve').addEventListener('click',solve);$('btn-next').addEventListener('click',another);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()});window.addEventListener('pageshow',tick);window.addEventListener('focus',tick);
+try{const k='dsbdt-duality-offline-v2:test';localStorage.setItem(k,'1');localStorage.removeItem(k)}catch(_){warn('⚠️ 当前浏览器不允许保存本地数据，请关闭无痕模式并重试。')}
+try{const active=getSaved(ACTIVE_KEY);if(validCode(active)){const rec=getSaved(PREFIX+active);if(rec)restore(rec)}}catch(_){ }
+})();
+</script>
+</body>
+</html>
