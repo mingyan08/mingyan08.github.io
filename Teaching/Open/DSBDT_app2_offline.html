@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<title>外卖路线大挑战｜三位数字现场版</title>
+<style>
+:root{--bg:#0b1020;--card:#121a33;--text:#eaf0ff;--muted:#a9b4d6;--accent:#7c5cff;--accent2:#37d67a;--warn:#ffcc66;--bad:#ff5c7a;--line:rgba(255,255,255,.13)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 12% 16%,rgba(124,92,255,.15),transparent 40%),radial-gradient(circle at 88% 80%,rgba(55,214,122,.08),transparent 43%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"PingFang SC","Microsoft Yahei",sans-serif;line-height:1.5}
+button,input,select{font:inherit}button{cursor:pointer;min-height:44px;touch-action:manipulation}button:disabled{opacity:.42;cursor:not-allowed}
+header{max-width:1060px;margin:auto;text-align:center;padding:30px 16px 10px}header h1{font-size:clamp(24px,5vw,32px);margin:10px 0}header p{margin:7px auto;color:var(--muted);max-width:800px;font-size:14px}
+.chip{display:inline-block;font-size:12px;color:#ddd4ff;background:rgba(124,92,255,.17);padding:5px 12px;border-radius:24px;border:1px solid rgba(124,92,255,.4)}
+.shell{max-width:1060px;margin:12px auto;padding:0 16px 42px}.start-card,.map-card,.side,.footerbox{border:1px solid var(--line);background:linear-gradient(165deg,rgba(255,255,255,.06),rgba(255,255,255,.025));border-radius:16px;padding:22px;box-shadow:0 11px 27px rgba(0,0,0,.18)}
+.start-card{max-width:650px;margin:20px auto}.start-card h2{margin:4px 0 12px;font-size:21px}.intro{padding:14px;background:rgba(124,92,255,.1);border:1px solid rgba(124,92,255,.25);border-radius:12px;font-size:14px;margin-bottom:14px}
+label{font-weight:650;display:block;margin:14px 0 7px;color:var(--muted);font-size:14px}.field{width:100%;background:#111a31;color:white;border:1px solid rgba(255,255,255,.26);border-radius:10px;min-height:47px;padding:10px 12px}.field:focus-visible{outline:3px solid rgba(124,92,255,.4)}#challenge-code{letter-spacing:5px;font-weight:800;font-size:20px}
+.btn{border:0;border-radius:11px;padding:11px 16px;font-weight:760;color:white;background:linear-gradient(135deg,#7056ef,#9886ff)}.btn.alt{background:rgba(255,255,255,.10);border:1px solid var(--line)}.btn.good{background:#37d67a;color:#061b0f}.btn.danger{background:rgba(255,92,122,.15);color:#ff8da1;border:1px solid rgba(255,92,122,.35)}.btn:focus-visible{outline:3px solid white;outline-offset:3px}
+.wide{width:100%;margin-top:15px;min-height:54px;font-size:17px}.small{font-size:12px;color:var(--muted);line-height:1.6}
+.game{display:grid;grid-template-columns:minmax(0,1fr) 335px;gap:18px;align-items:start}.map-card{padding:12px}.mapcard-title{padding:6px 9px 10px;display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:13px;flex-wrap:wrap}
+canvas{display:block;width:100%;height:auto;aspect-ratio:720/500;background:rgba(0,0,0,.22);border-radius:12px;touch-action:manipulation}.maptip{margin:9px 4px 0;font-size:13px;color:var(--warn)}
+.side{display:flex;flex-direction:column;gap:11px;padding:17px}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.metric{padding:14px 8px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.18);text-align:center}.metric small{color:var(--muted)}.metric b{display:block;font-size:clamp(22px,5vw,30px);font-variant-numeric:tabular-nums}.yellow{color:var(--warn)}.green{color:var(--accent2)}.red{color:var(--bad)}
+.actions{display:flex;gap:10px}.actions .btn{flex:1}.status{padding:10px 12px;min-height:48px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.05);font-size:13px}
+.result{padding:15px;border:1px solid rgba(55,214,122,.4);background:rgba(55,214,122,.08);border-radius:12px}.result.invalid{background:rgba(255,92,122,.07);border-color:rgba(255,92,122,.35)}.result h3{margin:0 0 9px}.resgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.resgrid>div{background:rgba(0,0,0,.2);padding:9px;border-radius:9px}.resgrid strong{font-size:21px;display:block;font-variant-numeric:tabular-nums}
+.optimal{background:rgba(124,92,255,.13);padding:12px;border:1px solid rgba(124,92,255,.32);border-radius:10px;font-size:13px;line-height:1.8}.locked{padding:10px 0}.locked h2{margin:0 0 8px}.footerbox{margin:18px 0 0;padding:16px 20px;font-size:13px;color:var(--muted)}.footerbox strong{color:var(--text)}
+.quickbar{display:none}.hide{display:none!important}.code-tag{font-size:13px;font-weight:750;color:#e6dcff;border:1px solid rgba(124,92,255,.4);background:rgba(124,92,255,.12);padding:4px 9px;border-radius:8px}
+@media(max-width:830px){.game{grid-template-columns:minmax(0,1fr)}.side{padding:14px}.shell{padding:0 11px 30px}.map-card{padding:9px}.start-card{padding:18px}.quickbar:not(.hide){display:flex;position:sticky;top:0;z-index:30;margin:0 0 10px;background:#203050;padding:8px 10px;border:1px solid rgba(124,92,255,.65);border-radius:11px;justify-content:space-between;align-items:center;gap:8px;box-shadow:0 10px 20px #0007;font-size:12px}.quickbar b{font-size:18px;color:var(--warn)}}
+</style>
+</head>
+<body>
+<header><div class="chip">🛵 三位数字编号 · 本地计时 · 无云端</div><h1>外卖路线大挑战</h1><p>从红色餐厅出发，访问所有蓝色订单点，最终返回餐厅；路线越短越好。60 秒内完成即可锁定成绩。</p></header>
+<div class="shell">
+  <section id="wait-panel" class="start-card">
+    <h2>准备挑战</h2><div class="intro">先输入现场公布的 <strong>3 位数字比赛编号</strong>，听到统一发令后再点击「开始挑战」。地图只会在开始计时后出现。</div>
+    <label for="challenge-code">比赛编号</label><input id="challenge-code" class="field" type="text" inputmode="numeric" maxlength="3" pattern="[0-9]{3}" autocomplete="off" placeholder="例如：527">
+    <label for="difficulty">本轮难度（同一场请统一选择）</label><select id="difficulty" class="field"><option value="6">入门：5 个订单</option><option value="15">进阶：14 个订单</option><option value="30">挑战：29 个订单</option></select>
+    <button id="btn-start" class="btn wide" type="button">▶ 发令后：开始挑战</button>
+    <p class="small">倒计时 60 秒；中途刷新只恢复剩余时间和路线，不会重新开始。同一编号和难度只能记录本机一轮成绩。</p>
+  </section>
+  <section id="locked-panel" class="start-card hide locked"><h2>📱 成绩已锁定</h2><p class="small">比赛编号 <strong id="locked-code"></strong> 的挑战已结束。刷新不会重新计时。</p><button class="btn alt wide" id="btn-next">使用新编号进入另一轮</button></section>
+  <div id="quickbar" class="quickbar hide"><span>⏱ <b id="quick-time">60.0</b>s</span><span>📍 <b id="quick-visits">0</b> / <span id="quick-total">5</span></span><button id="quick-finish" class="btn good" type="button" disabled>完成</button></div>
+  <main id="game" class="game hide">
+    <section class="map-card"><div class="mapcard-title"><span>📍 订单路线 · <span id="active-difficulty">5</span> 单</span><span id="active-code" class="code-tag"></span></div><canvas id="mapCanvas" width="720" height="500" aria-label="路线地图：选择蓝色订单点" role="img"></canvas><div id="map-tip" class="maptip">点击蓝色订单点连接路线。路径最后会自动回到红色餐厅。</div></section>
+    <section class="side">
+      <div class="metrics"><div class="metric"><small>剩余时间（秒）</small><b id="time-left" class="yellow">60.0</b></div><div class="metric"><small>已访问订单</small><b id="visit-count">0 / 5</b></div><div class="metric"><small>当前路线长度</small><b id="route-length">0.0</b></div><div class="metric"><small>算法参考距离</small><b id="optimal-length" class="green">???</b></div></div>
+      <div id="status" class="status" role="status" aria-live="polite">等待开始。</div>
+      <div id="edit-actions" class="actions"><button id="btn-undo" class="btn alt" type="button">↶ 撤销一步</button><button id="btn-clear" class="btn danger" type="button">清空当前路线</button></div>
+      <button id="btn-finish" class="btn good" type="button" disabled>✓ 完成挑战 · 停止计时</button>
+      <div id="result" class="result hide" aria-live="polite"><h3 id="result-title">挑战结束</h3><div class="resgrid"><div><small>有效路线距离</small><strong id="final-distance">—</strong></div><div><small>完成用时</small><strong id="final-time">—</strong></div><div><small>访问订单数</small><strong id="final-visits">—</strong></div><div><small>挑战状态</small><strong id="final-valid">—</strong></div></div><p id="result-caption" class="small"></p></div>
+      <button id="btn-solve" class="btn alt hide" type="button">⚡ 查看算法推荐路线</button>
+      <div id="optimal" class="optimal hide"></div>
+    </section>
+  </main>
+  <div class="footerbox"><strong>🏁 比较规则：</strong>路线必须访问所有订单点并返回餐厅，有效成绩中<strong>总距离越短越好</strong>；若距离相同，再比较完成用时。入门/进阶关卡可以计算精确最短路线，挑战关卡显示启发式参考路线。<br></div>
+  <p id="storage-warning" class="small red hide" role="alert"></p>
+</div>
+<script>
+(()=>{'use strict';
+const $=s=>document.getElementById(s),LIMIT=60000,VERSION=2;
+const ACTIVE_KEY='dsbdt-route-offline-v2:active', PREFIX='dsbdt-route-offline-v2:round:';
+const LEGACY_PREFIX='dsbdt-route-offline-v1:round:';
+const W=720,H=500;
+let code='',n=6,points=[],path=[0],optimalPath=[],startedAt=0,lastSeenAt=0,monoOnResume=0,elapsedOnResume=0,ticker=0,phase='waiting',result=null;
+const KEY=()=>PREFIX+code+':'+n;
+const nCode=s=>String(s||'').replace(/[^0-9]/g,'').slice(0,3);
+const validCode=s=>typeof s==='string'&&/^\d{3}$/.test(s);
+const read=k=>{try{return JSON.parse(localStorage.getItem(k)||'null')}catch(_){return null}};
+const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));return true}catch(_){return false}};
+const warn=s=>{$('storage-warning').textContent=s;$('storage-warning').classList.remove('hide')};
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++)h=Math.imul(h^s.charCodeAt(i),16777619)>>>0;return h||1}
+function randomizer(seed){let a=seed>>>0;return()=>{a=(a+0x6d2b79f5)>>>0;let t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296}}
+function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
+function makeMap(c,level){
+ const random=randomizer(hash('dsbdt-route:'+c+':'+level)),out=[];
+ const minD=level<=6?110:level<=15?67:46;
+ for(let i=0;i<level;i++){
+  let candidate;
+  for(let attempt=0;attempt<1000;attempt++){
+    candidate={x:58+random()*(W-116),y:58+random()*(H-116)};
+    if(out.every(q=>distance(candidate,q)>=minD))break;
+  }
+  out.push(candidate);
+ }
+ return out;
+}
+function configure(c,level){code=c;n=level;points=makeMap(code,n);path=[0];optimalPath=[];$('active-code').textContent='编号 '+code;$('locked-code').textContent=code;$('active-difficulty').textContent=n-1;$('quick-total').textContent=n-1}
+function validPath(p){return Array.isArray(p)&&p.length>0&&p.length<=n&&p[0]===0&&p.every(i=>Number.isInteger(i)&&i>=0&&i<n)&&new Set(p).size===p.length}
+function routeDistance(p){if(p.length<2)return 0;let d=0;for(let i=1;i<p.length;i++)d+=distance(points[p[i-1]],points[p[i]]);if(p.length===n)d+=distance(points[p[p.length-1]],points[0]);return d}
+function snapshot(){return {v:VERSION,phase:'running',code,n,startedAt,lastSeenAt:Date.now(),path:path.slice()}}
+function persist(){if(phase!=='running')return;lastSeenAt=Date.now();if(!save(KEY(),snapshot()))warn('本机存储失败，请不要刷新页面。')}
+function elapsed(){if(phase!=='running')return LIMIT;const wall=Date.now()-startedAt;const mono=elapsedOnResume+(performance.now()-monoOnResume);return Math.min(LIMIT,Math.max(0,wall,mono))}
+function colorCircle(idx){return idx===0?'#ff5c7a':path.includes(idx)?'#686e86':'#7c5cff'}
+function draw(){const canvas=$('mapCanvas'),ctx=canvas.getContext('2d');ctx.clearRect(0,0,W,H);
+ const grd=ctx.createLinearGradient(0,0,W,H);grd.addColorStop(0,'#13203c');grd.addColorStop(1,'#0b152a');ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
+ ctx.strokeStyle='rgba(180,190,240,.06)';ctx.lineWidth=1;for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+ function drawRoute(p,c,w){if(p.length<2)return;ctx.beginPath();ctx.moveTo(points[p[0]].x,points[p[0]].y);for(let i=1;i<p.length;i++)ctx.lineTo(points[p[i]].x,points[p[i]].y);if(p.length===n)ctx.lineTo(points[0].x,points[0].y);ctx.strokeStyle=c;ctx.lineWidth=w;ctx.lineJoin='round';ctx.stroke()}
+ if(optimalPath.length)drawRoute(optimalPath,'rgba(55,214,122,.75)',6);
+ drawRoute(path,'#fff',3);
+ points.forEach((p,i)=>{ctx.beginPath();ctx.arc(p.x,p.y,i===0?16:12,0,Math.PI*2);ctx.fillStyle=colorCircle(i);ctx.fill();ctx.lineWidth=2;ctx.strokeStyle='#fff';ctx.stroke();ctx.fillStyle='#fff';ctx.font='bold 13px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(i===0?'店':String(i),p.x,p.y)});
+}
+function updateProgress(){const d=routeDistance(path),done=path.length===n;$('route-length').textContent=d.toFixed(1);$('visit-count').textContent=(path.length-1)+' / '+(n-1);$('quick-visits').textContent=path.length-1;$('btn-finish').disabled=!done;$('quick-finish').disabled=!done;
+ $('map-tip').textContent=done?'所有订单已访问，路线已自动返回餐厅；现在可以结束计时。':'点击紫色订单点继续连接路线，点编号圆点即可操作。';
+ $('status').textContent=done?'✅ 完整路线已形成，可提前交卷。':`还剩 ${n-path.length} 个订单点。`;
+ draw()}
+function showRun(recovered=false){phase='running';$('wait-panel').classList.add('hide');$('locked-panel').classList.add('hide');$('game').classList.remove('hide');$('quickbar').classList.remove('hide');$('edit-actions').classList.remove('hide');$('btn-finish').classList.remove('hide');$('result').classList.add('hide');$('btn-solve').classList.add('hide');$('btn-solve').disabled=false;$('optimal').classList.add('hide');$('optimal-length').textContent='???';updateProgress();tick();if(!ticker)ticker=setInterval(tick,100);if(recovered&&phase==='running')$('status').textContent='🔄 已恢复路线和剩余时间，计时没有重置。'}
+function start(){if(phase!=='waiting')return;const c=nCode($('challenge-code').value),level=Number($('difficulty').value);
+ if(!validCode(c)||![6,15,30].includes(level)){$('wait-panel').querySelector('.intro').textContent='请输入有效的三位数字编号并选择难度。';return}
+ const prev=read(PREFIX+c+':'+level);if(prev&&prev.v===VERSION&&prev.code===c&&prev.n===level){save(ACTIVE_KEY,{code:c,n:level});return restore(prev)}
+ const prior=read(LEGACY_PREFIX+c+':'+level);
+ if(prior&&prior.v===1){$('wait-panel').querySelector('.intro').textContent='此编号和难度已用于旧版挑战，请使用新编号开始本轮 60 秒挑战。';return}
+ const now=Date.now(),first={v:VERSION,phase:'running',code:c,n:level,path:[0],startedAt:now,lastSeenAt:now};
+ if(!save(PREFIX+c+':'+level,first)||!save(ACTIVE_KEY,{code:c,n:level})){warn('⚠️ 需要允许本网站保存本地数据，才能正式开始。');return}
+ configure(c,level);startedAt=now;monoOnResume=performance.now();elapsedOnResume=0;result=null;showRun(false)
+}
+function onPoint(i){if(phase!=='running')return;if(elapsed()>=LIMIT){finish(true);return}if(i===0||path.includes(i)||path.length===n)return;path.push(i);persist();updateProgress()}
+$('mapCanvas').addEventListener('pointerdown',e=>{if(phase!=='running')return;const r=e.currentTarget.getBoundingClientRect();const x=(e.clientX-r.left)/r.width*W,y=(e.clientY-r.top)/r.height*H;const i=points.findIndex((p,idx)=>idx>0&&Math.hypot(p.x-x,p.y-y)<33);if(i>0)onPoint(i)});
+$('btn-undo').addEventListener('click',()=>{if(phase!=='running'||elapsed()>=LIMIT){tick();return}if(path.length>1){path.pop();persist();updateProgress()}});
+$('btn-clear').addEventListener('click',()=>{if(phase!=='running'||elapsed()>=LIMIT){tick();return}path=[0];persist();updateProgress();$('status').textContent='路线已清空，但倒计时继续。'});
+function tick(){if(phase!=='running')return;const left=Math.max(0,(LIMIT-elapsed())/1000);$('time-left').textContent=left.toFixed(1);$('quick-time').textContent=left.toFixed(1);$('time-left').className=left<=5?'red':'yellow';if(left<=0){finish(true);return}if(Date.now()-lastSeenAt>900)persist()}
+function finish(timeout=false){if(phase!=='running')return;let duration=elapsed();if(timeout||duration>=LIMIT){timeout=true;duration=LIMIT}else if(path.length!==n)return;
+ result={v:VERSION,phase:'finished',code,n,path:path.slice(),startedAt,elapsedMs:Math.round(duration),timeout:!!timeout,finishedAt:new Date().toISOString()};phase='finished';clearInterval(ticker);ticker=0;save(KEY(),result);showFinished(result)}
+function showFinished(r){phase='finished';result=r;path=r.path.slice();$('wait-panel').classList.add('hide');$('locked-panel').classList.remove('hide');$('game').classList.remove('hide');$('quickbar').classList.add('hide');$('edit-actions').classList.add('hide');$('btn-finish').classList.add('hide');$('result').classList.remove('hide');$('btn-solve').classList.remove('hide');$('btn-solve').disabled=false;$('optimal').classList.add('hide');$('optimal-length').textContent='???';optimalPath=[];
+ const valid=path.length===n,dist=routeDistance(path);$('result').classList.toggle('invalid',!valid);$('result-title').textContent=valid?'✅ 路线挑战完成':'⏰ 挑战结束 · 路线未完成';$('final-distance').textContent=valid?dist.toFixed(1):'无效';$('final-time').textContent=(r.elapsedMs/1000).toFixed(2)+' 秒';$('final-visits').textContent=(path.length-1)+' / '+(n-1);$('final-valid').textContent=valid?'有效':'无效';$('result-caption').textContent=`编号 ${code} · ${n-1} 个订单 · ${r.timeout?'60 秒结束':'提前完成'}`;$('time-left').textContent=((LIMIT-r.elapsedMs)/1000).toFixed(1);updateProgress();$('btn-finish').disabled=true;$('quick-finish').disabled=true;$('status').textContent=valid?'请保留当前画面进行结果比较。':'未访问全部订单点，本轮成绩无效。';draw()}
+function restore(rec){if(!rec||rec.v!==VERSION||!validCode(rec.code)||![6,15,30].includes(rec.n))return false;configure(rec.code,rec.n);if(!validPath(rec.path))return false;path=rec.path.slice();if(rec.phase==='finished'&&Number.isFinite(rec.elapsedMs)&&rec.elapsedMs>=0&&rec.elapsedMs<=LIMIT){showFinished(rec);return true}
+ if(rec.phase==='running'&&Number.isFinite(rec.startedAt)&&rec.startedAt>0){startedAt=rec.startedAt;lastSeenAt=rec.lastSeenAt||rec.startedAt;elapsedOnResume=Math.max(0,Date.now()-startedAt);monoOnResume=performance.now();phase='running';if(Date.now()+3000<lastSeenAt||Date.now()-startedAt>=LIMIT){finish(true);return true}showRun(true);return true}return false}
+function another(){if(phase!=='finished')return;try{localStorage.removeItem(ACTIVE_KEY)}catch(_){ }phase='waiting';code='';result=null;clearInterval(ticker);ticker=0;path=[0];points=[];optimalPath=[];$('wait-panel').classList.remove('hide');$('locked-panel').classList.add('hide');$('game').classList.add('hide');$('quickbar').classList.add('hide');$('challenge-code').value='';$('challenge-code').focus()}
+function solve(){if(phase!=='finished')return;const N=points.length;
+ if(N<=15){ // Held–Karp 精确动态规划：只对 N-1 个订单构造子集
+  const k=N-1,S=1<<k;const dp=Array.from({length:S},()=>new Float64Array(k).fill(Infinity));const parent=Array.from({length:S},()=>new Int16Array(k).fill(-1));
+  for(let i=0;i<k;i++)dp[1<<i][i]=distance(points[0],points[i+1]);
+  for(let mask=1;mask<S;mask++)for(let i=0;i<k;i++){if(!(mask&(1<<i)))continue;const prev=mask^(1<<i);if(!prev)continue;for(let j=0;j<k;j++){if(!(prev&(1<<j)))continue;const val=dp[prev][j]+distance(points[i+1],points[j+1]);if(val<dp[mask][i]){dp[mask][i]=val;parent[mask][i]=j}}}
+  let best=Infinity,end=-1;for(let i=0;i<k;i++){const val=dp[S-1][i]+distance(points[i+1],points[0]);if(val<best){best=val;end=i}}
+  const rev=[];let mask=S-1;while(end>=0){rev.push(end+1);const p=parent[mask][end];mask^=1<<end;end=p}optimalPath=[0,...rev.reverse()];
+ }else{ // 多起点最近邻 + 2-opt 启发式，不宣称严格最优
+  let best=Infinity,bestRoute=[];for(let start=1;start<N;start++){
+   const left=new Set(Array.from({length:N-1},(_,i)=>i+1)),candidate=[0];let curr=0;
+   // 依次选最近点，第一步以不同起点开局
+   candidate.push(start);left.delete(start);curr=start;
+   while(left.size){let nxt=-1,min=Infinity;for(const j of left){const d=distance(points[curr],points[j]);if(d<min){min=d;nxt=j}}candidate.push(nxt);left.delete(nxt);curr=nxt}
+   let improved=true,passes=0;while(improved&&passes++<30){improved=false;for(let i=1;i<N-1;i++)for(let j=i+1;j<N;j++){
+    const a=candidate[i-1],b=candidate[i],c=candidate[j],d=candidate[(j+1)%N];
+    if(distance(points[a],points[c])+distance(points[b],points[d])+1e-7<distance(points[a],points[b])+distance(points[c],points[d])){
+      const reversed=candidate.slice(i,j+1).reverse();candidate.splice(i,reversed.length,...reversed);improved=true
+    }
+   }}const dist=routeDistance(candidate);if(dist<best){best=dist;bestRoute=candidate}}
+   optimalPath=bestRoute;
+ }
+ const alg=routeDistance(optimalPath);$('optimal-length').textContent=alg.toFixed(1);$('optimal').replaceChildren();const p=document.createElement('p');p.textContent=N<=15?'精确动态规划得到的全局最短路线：':'启发式搜索得到的参考路线（不保证全局最优）：';const p2=document.createElement('strong');p2.textContent=optimalPath.map(i=>i===0?'餐厅':String(i)).join(' → ')+' → 餐厅';const p3=document.createElement('p');p3.textContent=`算法路线长度：${alg.toFixed(1)}。${path.length===n?'你的距离：'+routeDistance(path).toFixed(1)+'。':'当前路线未完成。'}`;$('optimal').append(p,p2,p3);$('optimal').classList.remove('hide');$('btn-solve').disabled=true;draw()}
+$('btn-start').addEventListener('click',start);$('challenge-code').addEventListener('input',e=>e.target.value=nCode(e.target.value));$('btn-finish').addEventListener('click',()=>finish(false));$('quick-finish').addEventListener('click',()=>finish(false));$('btn-next').addEventListener('click',another);$('btn-solve').addEventListener('click',solve);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()});window.addEventListener('pageshow',tick);window.addEventListener('focus',tick);
+try{const k='dsbdt-route-offline-v2:test';localStorage.setItem(k,'1');localStorage.removeItem(k)}catch(_){warn('⚠️ 当前浏览器不允许保存本地数据，请关闭无痕模式并重试。')}
+try{const active=read(ACTIVE_KEY);if(active&&validCode(active.code)&&[6,15,30].includes(active.n)){const record=read(PREFIX+active.code+':'+active.n);if(record)restore(record)}}catch(_){ }
+})();
+</script>
+</body>
+</html>
