@@ -1,551 +1,157 @@
+/* Page interactions only. Markdown rendering is shared with tools/build-site.js. */
 (function () {
+  "use strict";
+
   const root = document.documentElement;
-  const body = document.body;
   const contentRoot = document.getElementById("content-root");
-  const buttons = Array.from(document.querySelectorAll("[data-set-lang]"));
+  if (!contentRoot) return;
   const mainNav = document.querySelector(".main-nav");
-  let navLinks = [];
+  const languageButtons = Array.from(document.querySelectorAll("[data-set-lang]"));
   const homeLink = document.querySelector("[data-home-link]");
-  const navIds = ["about", "research", "teaching", "people", "join"];
-  const sectionOrder = ["about", "research", "teaching", "people", "join", "support"];
-  const bandSections = new Set(["about", "teaching"]);
-  const cardSections = new Set(["about", "research", "people", "teaching", "join"]);
-  const topicClasses = {
-    Distributed: "topic-distributed",
-    PINN: "topic-pinns",
-    "Primal-Dual": "topic-primal-dual",
-    Sparse: "topic-sparse",
-    AI: "topic-ai-math",
-    "Distributed Optimization Algorithms": "topic-distributed",
-    "Physics-Informed Neural Networks": "topic-pinns",
-    "Primal-Dual Algorithms": "topic-primal-dual",
-    "Sparse Optimization and Signal Processing": "topic-sparse",
-    "AI for Mathematical and Optimization Problems": "topic-ai-math",
-  };
-  let observer = null;
+  const hadPrebuiltContent = contentRoot.dataset.contentReady === "true";
+  let navLinks = [];
+  let selectedTopic = "";
+  let scrollPending = false;
 
-  function syncNavShell() {
-    if (!mainNav) {
-      return;
-    }
-
-    const labels = {
-      about: ["About", "About"],
-      research: ["Research", "Research"],
-      teaching: ["Teaching", "Teaching"],
-      people: ["People", "People"],
-      join: ["Join Us", "Join Us"],
-    };
-
-    mainNav.innerHTML = navIds
-      .map((id) => {
-        const label = labels[id] || [id, id];
-        return `
-          <a href="#${id}-en" data-section="${id}">
-            <span data-lang="en">${label[0]}</span>
-            <span data-lang="zh">${label[1]}</span>
-          </a>
-        `;
-      })
-      .join("");
-    navLinks = Array.from(mainNav.querySelectorAll("a[data-section]"));
+  function hashTarget() {
+    try { return decodeURIComponent(window.location.hash.slice(1)); } catch (_) { return ""; }
   }
 
-  function escapeHtml(value) {
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#39;");
-  }
-
-  function slugify(value) {
-    return (
-      value
-        .toLowerCase()
-        .replace(/<[^>]+>/g, "")
-        .replace(/[^a-z0-9\u4e00-\u9fff]+/g, "-")
-        .replace(/^-+|-+$/g, "") || "section"
-    );
-  }
-
-  function topicClass(topic) {
-    return topicClasses[topic] || `topic-${slugify(topic)}`;
-  }
-
-  function parseHeading(rawTitle) {
-    const match = rawTitle.match(/^(.*?)\s*\{#([A-Za-z0-9_-]+)\}\s*$/);
-    if (!match) {
-      return { title: rawTitle.trim(), id: slugify(rawTitle) };
-    }
-    return { title: match[1].trim(), id: match[2] };
-  }
-
-  function inlineMarkdown(text) {
-    let html = escapeHtml(text.trim());
-    html = html.replace(/\[([^\]]+)]\(([^)]+)\)/g, function (_, label, href) {
-      const safeHref = href.trim().replace(/&amp;/g, "&");
-      const external = /^https?:\/\//i.test(safeHref);
-      const attrs = external ? ' target="_blank" rel="noopener"' : "";
-      return `<a href="${escapeHtml(safeHref)}"${attrs}>${label}</a>`;
-    });
-    html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
-    html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-    html = html.replace(/\*([^*]+)\*/g, "<em>$1</em>");
-    return html;
-  }
-
-  function collectParagraphs(lines) {
-    const paragraphs = [];
-    let buffer = [];
-
-    lines.forEach((line) => {
-      if (!line.trim()) {
-        flush();
-        return;
-      }
-      buffer.push(line.replace(/\s{2,}$/, ""));
-    });
-    flush();
-    return paragraphs;
-
-    function flush() {
-      if (!buffer.length) {
-        return;
-      }
-      paragraphs.push(buffer.join(" ").trim());
-      buffer = [];
-    }
-  }
-
-  function parseListLink(line) {
-    const match = line.trim().match(/^-\s+\[([^\]]+)]\(([^)]+)\)/);
-    return match ? { label: match[1], href: match[2] } : null;
-  }
-
-  function parseHero(lines) {
-    const titleIndex = lines.findIndex((line) => /^#\s+/.test(line));
-    const title = titleIndex >= 0 ? lines[titleIndex].replace(/^#\s+/, "").trim() : "Ming Yan · 严明";
-    const bodyLines = lines.slice(titleIndex + 1);
-    const actionLines = bodyLines.filter((line) => /^-\s+\[[^\]]+]\([^)]+\)/.test(line.trim()));
-    const textLines = bodyLines.filter((line) => !/^\s*-\s+/.test(line));
-    const paragraphs = collectParagraphs(textLines);
-    const role = paragraphs.shift() || "";
-    return { title, role, paragraphs, actions: actionLines.map(parseListLink).filter(Boolean) };
-  }
-
-  function parseMarkdown(markdown) {
-    const lines = markdown.replace(/\r\n/g, "\n").split("\n");
-    const heroLines = [];
-    const sections = [];
-    let current = null;
-
-    lines.forEach((line) => {
-      const sectionMatch = line.match(/^##\s+(.+)$/);
-      if (sectionMatch) {
-        const heading = parseHeading(sectionMatch[1]);
-        current = { id: heading.id, title: heading.title, lines: [] };
-        sections.push(current);
-        return;
-      }
-
-      if (current) {
-        current.lines.push(line);
-      } else {
-        heroLines.push(line);
-      }
-    });
-
-    return { hero: parseHero(heroLines), sections };
-  }
-
-  function splitIntroAndCards(lines) {
-    const intro = [];
-    const cards = [];
-    let current = null;
-
-    lines.forEach((line) => {
-      const cardMatch = line.match(/^###\s+(.+)$/);
-      if (cardMatch) {
-        current = { title: cardMatch[1].trim(), lines: [] };
-        cards.push(current);
-        return;
-      }
-
-      if (current) {
-        current.lines.push(line);
-      } else {
-        intro.push(line);
-      }
-    });
-
-    return { intro, cards };
-  }
-
-  function renderBlocks(lines) {
-    let html = "";
-    let paragraph = [];
-    let list = [];
-
-    lines.forEach((line) => {
-      const trimmed = line.trim();
-      if (!trimmed) {
-        flushParagraph();
-        flushList();
-        return;
-      }
-
-      if (/^-\s+/.test(trimmed)) {
-        flushParagraph();
-        list.push(trimmed.replace(/^-\s+/, ""));
-        return;
-      }
-
-      flushList();
-      paragraph.push(trimmed.replace(/\s{2,}$/, ""));
-    });
-
-    flushParagraph();
-    flushList();
-    return html;
-
-    function flushParagraph() {
-      if (!paragraph.length) {
-        return;
-      }
-      html += `<p>${inlineMarkdown(paragraph.join(" "))}</p>`;
-      paragraph = [];
-    }
-
-    function flushList() {
-      if (!list.length) {
-        return;
-      }
-      html += `<ul>${list.map((item) => `<li>${inlineMarkdown(item)}</li>`).join("")}</ul>`;
-      list = [];
-    }
-  }
-
-  function renderHero(hero, language) {
-    const titleParts = hero.title.split(/\s+[·路]\s+/);
-    const primaryName = titleParts[0] || hero.title;
-    const localName = titleParts.slice(1).join(" · ");
-    const actions = hero.actions
-      .map((action) => {
-        const external = /^https?:\/\//i.test(action.href);
-        const attrs = external ? ' target="_blank" rel="noopener"' : "";
-        return `<a href="${escapeHtml(action.href)}"${attrs}>${escapeHtml(action.label)}</a>`;
-      })
-      .join("");
-
-    return `
-      <section class="hero section" id="top-${language}">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">${language === "zh" ? "优化 · 机器学习 · 科学计算" : "Optimization · Machine Learning · Scientific Computing"}</p>
-            <h1>
-              <span class="hero-name-primary">${escapeHtml(primaryName)}</span>
-              ${localName ? `<span class="hero-name-local">${escapeHtml(localName)}</span>` : ""}
-            </h1>
-            ${hero.role ? `<p class="hero-role">${inlineMarkdown(hero.role)}</p>` : ""}
-            ${hero.paragraphs.map((paragraph) => `<p class="hero-summary">${inlineMarkdown(paragraph)}</p>`).join("")}
-            <div class="hero-actions" aria-label="Profile links">${actions}</div>
-          </div>
-          <aside class="profile-panel" aria-label="Profile">
-            <img src="Yan3.JPG" alt="Portrait of Ming Yan" width="308" height="450">
-            <div>
-              <p>${language === "zh" ? "中国广东省深圳市，518172" : "Shenzhen, Guangdong 518172, China"}</p>
-              <p><a href="mailto:yanming@cuhk.edu.cn">yanming@cuhk.edu.cn</a></p>
-            </div>
-          </aside>
-        </div>
-      </section>
-    `;
-  }
-
-  function renderCard(sectionId, card) {
-    const cardClass = sectionId === "research" ? "research-card" : "list-card";
-    return `
-      <article class="${cardClass}">
-        <h3>${inlineMarkdown(card.title)}</h3>
-        ${renderBlocks(card.lines)}
-      </article>
-    `;
-  }
-
-  function renderPublications(lines) {
-    const items = lines
-      .map((line) => line.trim())
-      .filter((line) => /^-\s+/.test(line))
-      .map((line) => line.replace(/^-\s+/, ""));
-
-    return `
-      <div class="publication-list">
-        ${items
-          .map((item) => {
-            const taggedMatch = item.match(/^\*\*([^*]+)\*\*\s+\|\s+\*\*(\d{4})\*\*\s+(.+)$/);
-            const yearMatch = item.match(/^\*\*(\d{4})\*\*\s+(.+)$/);
-            const tag = taggedMatch ? taggedMatch[1] : "";
-            const year = taggedMatch ? taggedMatch[2] : yearMatch ? yearMatch[1] : "";
-            const bodyText = taggedMatch ? taggedMatch[3] : yearMatch ? yearMatch[2] : item;
-            const tagHtml = tag ? `<span class="pub-tag ${topicClass(tag)}">${escapeHtml(tag)}</span>` : "";
-            return `<article>${year ? `<time>${year}</time>` : ""}<p>${tagHtml}${inlineMarkdown(bodyText)}</p></article>`;
-          })
-          .join("")}
-      </div>
-    `;
-  }
-
-  function renderResearchPublications(section) {
-    if (!section.publications) {
-      return "";
-    }
-
-    const intro = renderBlocks(section.publications.lines.filter((line) => !/^\s*-\s+/.test(line)));
-    return `
-      <div class="research-publications" id="publications-${section.language}" data-section-id="publications">
-        <div class="research-subsection-heading">
-          <h3>${inlineMarkdown(section.publications.title)}</h3>
-          ${intro}
-        </div>
-        ${renderPublications(section.publications.lines)}
-      </div>
-    `;
-  }
-
-  function renderSponsorLogos() {
-    return "";
-  }
-
-  function renderSection(section) {
-    const { intro, cards } = splitIntroAndCards(section.lines);
-    const isCardSection = cardSections.has(section.id) && cards.length > 0;
-    const classNames = ["section", "markdown-section"];
-    if (bandSections.has(section.id)) {
-      classNames.push("section-band");
-    }
-
-    const introHtml =
-      section.id === "publications" ? renderBlocks(intro.filter((line) => !/^\s*-\s+/.test(line))) : renderBlocks(intro);
-
-    let bodyHtml = "";
-    if (section.id === "publications") {
-      bodyHtml = renderPublications(section.lines);
-    } else if (isCardSection) {
-      const gridClass =
-        {
-          about: "timeline",
-          research: "research-grid",
-          people: "people-grid",
-          teaching: "course-columns",
-          join: "opportunity-grid",
-        }[section.id] || "card-grid";
-      bodyHtml = `<div class="${gridClass}">${cards.map((card) => renderCard(section.id, card)).join("")}</div>`;
-    } else if (section.id !== "support") {
-      bodyHtml = renderBlocks(section.lines);
-    }
-
-    if (section.id === "research") {
-      bodyHtml += renderResearchPublications(section);
-    }
-
-    if (section.id === "support") {
-      bodyHtml += renderSponsorLogos();
-    }
-
-    return `
-      <section class="${classNames.join(" ")}" id="${section.id}-${section.language}" data-section-id="${section.id}">
-        <div class="section-heading wide">
-          <h2>${inlineMarkdown(section.title)}</h2>
-          ${introHtml}
-        </div>
-        ${bodyHtml}
-      </section>
-    `;
-  }
-
-  function mergeSharedSections(languageSections, sharedSections, language) {
-    const sharedById = sharedSections.reduce((map, section) => {
-      map[section.id] = section;
-      return map;
-    }, {});
-    const publicationSection = languageSections.find((section) => section.id === "publications");
-    const sharedPublications = sharedById.publications;
-    const publicationLines = sharedPublications
-      ? [...(publicationSection ? publicationSection.lines : []), "", ...sharedPublications.lines]
-      : publicationSection
-        ? publicationSection.lines
-        : [];
-    const publicationTitle = publicationSection
-      ? publicationSection.title
-      : language === "zh"
-        ? "论文"
-        : "Selected Publications";
-
-    return languageSections.filter((section) => section.id !== "publications").map((section) => {
-      const shared = sharedById[section.id];
-      const publications =
-        section.id === "research" && publicationLines.length
-          ? {
-              title: publicationTitle,
-              lines: publicationLines,
-            }
-          : null;
-
-      return {
-        ...section,
-        language,
-        publications,
-        lines: shared ? [...section.lines, "", ...shared.lines] : section.lines,
-      };
-    });
-  }
-
-  function renderLanguagePage(parsed, language) {
-    const sectionsById = parsed.sections.reduce((map, section) => {
-      map[section.id] = section;
-      return map;
-    }, {});
-    const orderedSections = sectionOrder.map((id) => sectionsById[id]).filter(Boolean);
-
-    return `
-      <div class="language-page" data-page-lang="${language}">
-        ${renderHero(parsed.hero, language)}
-        ${orderedSections.map(renderSection).join("")}
-      </div>
-    `;
-  }
-
-  function sectionTitle(parsed, id) {
-    const section = parsed.sections.find((item) => item.id === id);
-    return section ? section.title : id;
-  }
-
-  function updateNavTitles(en, zh) {
-    navIds.forEach((id) => {
-      const link = navLinks.find((item) => item.dataset.section === id);
-      if (!link) {
-        return;
-      }
-
-      const enSpan = link.querySelector('[data-lang="en"]');
-      const zhSpan = link.querySelector('[data-lang="zh"]');
-      if (enSpan) {
-        enSpan.textContent = sectionTitle(en, id);
-      }
-      if (zhSpan) {
-        zhSpan.textContent = sectionTitle(zh, id);
-      }
-    });
-  }
-
-  function chooseInitialLanguage() {
-    const saved = localStorage.getItem("site-language");
-    if (saved === "en" || saved === "zh") {
-      return saved;
-    }
+  function initialLanguage() {
+    const linkedLanguage = hashTarget().match(/-(en|zh)$/);
+    if (linkedLanguage) return linkedLanguage[1];
+    try {
+      const saved = localStorage.getItem("site-language");
+      if (saved === "en" || saved === "zh") return saved;
+    } catch (_) { /* Reading the site does not require browser storage. */ }
     return navigator.language && navigator.language.toLowerCase().startsWith("zh") ? "zh" : "en";
   }
 
-  function setActiveNav() {
-    if (observer) {
-      observer.disconnect();
-    }
-
-    const language = root.dataset.lang === "zh" ? "zh" : "en";
-    const sections = navLinks
-      .map((link) => document.getElementById(`${link.dataset.section}-${language}`))
-      .filter(Boolean);
-
-    if (!("IntersectionObserver" in window) || !sections.length) {
-      return;
-    }
-
-    observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-          navLinks.forEach((link) => {
-            link.classList.toggle("active", `${link.dataset.section}-${language}` === entry.target.id);
-          });
-        });
-      },
-      { rootMargin: "-35% 0px -55% 0px", threshold: 0 }
-    );
-
-    sections.forEach((section) => observer.observe(section));
+  function updateActiveNav() {
+    scrollPending = false;
+    const header = document.querySelector(".site-header");
+    const threshold = (header ? header.getBoundingClientRect().height : 0) + 48;
+    let active = null;
+    navLinks.forEach((link) => {
+      const section = document.getElementById(`${link.dataset.section}-${root.dataset.lang}`);
+      if (section && section.getBoundingClientRect().top <= threshold) active = link;
+    });
+    navLinks.forEach((link) => {
+      link.classList.toggle("active", link === active);
+      if (link === active) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
   }
 
-  function setLanguage(language) {
-    const nextLanguage = language === "zh" ? "zh" : "en";
-    root.lang = nextLanguage === "zh" ? "zh-CN" : "en";
-    root.dataset.lang = nextLanguage;
-    body.dataset.lang = nextLanguage;
-    document.title = nextLanguage === "zh" ? "Ming Yan" : "Ming Yan";
-    localStorage.setItem("site-language", nextLanguage);
+  function scheduleNavUpdate() {
+    if (scrollPending) return;
+    scrollPending = true;
+    requestAnimationFrame(updateActiveNav);
+  }
 
-    buttons.forEach((button) => {
-      button.setAttribute("aria-pressed", String(button.dataset.setLang === nextLanguage));
-    });
+  function applyLanguage(language) {
+    const next = language === "zh" ? "zh" : "en";
+    root.lang = next === "zh" ? "zh-CN" : "en";
+    root.dataset.lang = next;
+    document.body.dataset.lang = next;
+    languageButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.setLang === next)));
+    navLinks.forEach((link) => link.setAttribute("href", `#${link.dataset.section}-${next}`));
+    if (homeLink) homeLink.setAttribute("href", `#top-${next}`);
+    try { localStorage.setItem("site-language", next); } catch (_) { /* Language switching still works. */ }
+    scheduleNavUpdate();
+  }
 
-    navLinks.forEach((link) => {
-      link.setAttribute("href", `#${link.dataset.section}-${nextLanguage}`);
-      link.classList.remove("active");
-    });
+  function scrollToHash() {
+    const target = document.getElementById(hashTarget());
+    if (target) requestAnimationFrame(() => target.scrollIntoView({ block: "start", behavior: "auto" }));
+  }
 
-    if (homeLink) {
-      homeLink.setAttribute("href", `#top-${nextLanguage}`);
+  function switchLanguage(language) {
+    const oldTarget = hashTarget();
+    const activeLink = navLinks.find((link) => link.classList.contains("active"));
+    const section = oldTarget.match(/^(.+)-(en|zh)$/)?.[1] || (activeLink ? activeLink.dataset.section : "top");
+    applyLanguage(language);
+    const nextTarget = document.getElementById(`${section}-${root.dataset.lang}`);
+    if (nextTarget) {
+      try { history.replaceState(null, "", `#${nextTarget.id}`); }
+      catch (_) { window.location.hash = nextTarget.id; }
+      scrollToHash();
     }
+  }
 
-    setActiveNav();
+  function applyPublicationFilter() {
+    contentRoot.querySelectorAll("[data-publications]").forEach((group) => {
+      const articles = Array.from(group.querySelectorAll("[data-publication-topic]"));
+      let shown = 0;
+      articles.forEach((article) => {
+        article.hidden = !!selectedTopic && article.dataset.publicationTopic !== selectedTopic;
+        if (!article.hidden) shown += 1;
+      });
+      group.querySelectorAll("[data-publication-filter]").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.publicationFilter === selectedTopic));
+      });
+      const status = group.querySelector("[data-publication-count]");
+      if (status) status.textContent = group.dataset.language === "zh"
+        ? `显示 ${shown} / ${articles.length} 篇论文${selectedTopic ? `（${selectedTopic}）` : ""}`
+        : `${shown} of ${articles.length} publications${selectedTopic ? ` · ${selectedTopic}` : ""}`;
+    });
+    scheduleNavUpdate();
+  }
+
+  function initializeContent() {
+    navLinks = mainNav ? Array.from(mainNav.querySelectorAll("a[data-section]")) : [];
+    applyLanguage(initialLanguage());
+    applyPublicationFilter();
+    scrollToHash();
   }
 
   async function fetchText(path) {
     const response = await fetch(`${path}?v=${Date.now()}`, { cache: "no-store" });
-    if (!response.ok) {
-      throw new Error(`Could not load ${path}`);
-    }
+    if (!response.ok) throw new Error(`Could not load ${path}`);
     return response.text();
   }
 
   async function loadContent() {
-    const [enMarkdown, zhMarkdown, sharedMarkdown] = await Promise.all([
-      fetchText("content/en.md"),
-      fetchText("content/zh.md"),
-      fetchText("content/shared.md"),
+    if (!window.SiteRenderer) throw new Error("The page renderer is unavailable.");
+    const [en, zh, shared] = await Promise.all([
+      fetchText("content/en.md"), fetchText("content/zh.md"), fetchText("content/shared.md"),
     ]);
-
-    const shared = parseMarkdown(sharedMarkdown);
-    const en = parseMarkdown(enMarkdown);
-    const zh = parseMarkdown(zhMarkdown);
-    en.sections = mergeSharedSections(en.sections, shared.sections, "en");
-    zh.sections = mergeSharedSections(zh.sections, shared.sections, "zh");
-
-    updateNavTitles(en, zh);
-    contentRoot.innerHTML = `${renderLanguagePage(en, "en")}${renderLanguagePage(zh, "zh")}`;
-    setLanguage(chooseInitialLanguage());
+    const rendered = window.SiteRenderer.renderSite({ en, zh, shared });
+    contentRoot.innerHTML = rendered.contentHtml;
+    contentRoot.dataset.contentReady = "true";
+    if (mainNav) mainNav.innerHTML = rendered.navHtml;
+    initializeContent();
   }
 
-  function showLoadError(error) {
-    contentRoot.innerHTML = `
-      <section class="section loading error">
-        <h1>Content could not be loaded</h1>
-        <p>This version loads Markdown files directly. It works on GitHub Pages, but many browsers block Markdown loading when you open <code>index.html</code> by double-clicking it.</p>
-        <p>To preview locally, run a small local server in this folder, or edit on GitHub and refresh the published page.</p>
-        <p><code>${escapeHtml(error.message)}</code></p>
-      </section>
-    `;
+  function showLoadError() {
+    if (hadPrebuiltContent) {
+      const notice = document.createElement("p");
+      notice.className = "load-notice";
+      notice.setAttribute("role", "status");
+      notice.textContent = root.dataset.lang === "zh" ? "当前显示已保存的页面。请稍后刷新以查看最新内容。" : "Showing the saved page. Refresh later to check for updates.";
+      contentRoot.prepend(notice);
+      initializeContent();
+      return;
+    }
+    contentRoot.innerHTML = `<section class="section loading error"><h1>The page could not be loaded</h1><p>Please refresh the page or use the links below.</p><p><a href="https://scholar.google.com/citations?user=IR1mvb0AAAAJ&amp;hl=en">Publications on Google Scholar</a> · <a href="https://github.com/mingyan08/mingyan08.github.io/tree/main/content">Website content on GitHub</a></p>${window.location.protocol === "file:" ? '<p>For a local preview, open the generated <code>preview.html</code> or follow the preview instructions in the repository README.</p>' : ""}</section>`;
   }
 
-  syncNavShell();
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => setLanguage(button.dataset.setLang));
+  languageButtons.forEach((button) => button.addEventListener("click", () => switchLanguage(button.dataset.setLang)));
+  contentRoot.addEventListener("click", (event) => {
+    const button = event.target.closest && event.target.closest("[data-publication-filter]");
+    if (!button || !contentRoot.contains(button)) return;
+    selectedTopic = button.dataset.publicationFilter || "";
+    applyPublicationFilter();
   });
+  window.addEventListener("hashchange", () => {
+    const linkedLanguage = hashTarget().match(/-(en|zh)$/);
+    if (linkedLanguage) applyLanguage(linkedLanguage[1]);
+    scrollToHash();
+  });
+  window.addEventListener("scroll", scheduleNavUpdate, { passive: true });
+  window.addEventListener("resize", scheduleNavUpdate);
 
-  setLanguage(chooseInitialLanguage());
-  loadContent().catch(showLoadError);
+  initializeContent();
+  // The offline export already contains both languages. A file:// fetch must not erase it.
+  if (!(window.location.protocol === "file:" && hadPrebuiltContent)) loadContent().catch(showLoadError);
 })();

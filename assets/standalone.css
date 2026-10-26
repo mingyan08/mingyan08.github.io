@@ -17,6 +17,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
@@ -447,6 +451,101 @@ h3 {
   gap: 0.8rem;
 }
 
+.publication-controls {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.publication-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.publication-filter {
+  min-height: 40px;
+  padding: 0.45rem 0.8rem;
+  color: var(--green-dark);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.publication-filter:hover {
+  background: var(--soft);
+  border-color: var(--green);
+}
+
+.publication-filter[aria-pressed="true"] {
+  color: #fff;
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.publication-count {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.activity-list {
+  max-width: 920px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.activity-list > li,
+.activity-list > article {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.activity-list p {
+  margin: 0;
+}
+
+.activity-date {
+  color: var(--green-dark);
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.activities-archive {
+  max-width: 920px;
+  margin-top: 1rem;
+}
+
+.activities-archive summary {
+  width: fit-content;
+  padding: 0.5rem 0;
+  color: var(--blue);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.activities-archive summary:focus-visible {
+  outline: 3px solid rgba(15, 118, 103, 0.28);
+  outline-offset: 3px;
+}
+
+.load-notice {
+  max-width: var(--max);
+  margin: 1rem auto;
+  padding: 0.8rem 1rem;
+  border-left: 3px solid var(--green);
+  color: var(--muted);
+  background: var(--soft);
+}
+
 .publication-list article {
   display: grid;
   grid-template-columns: 72px minmax(0, 1fr);
@@ -662,6 +761,12 @@ li + li {
   .publication-list article {
     grid-template-columns: 1fr;
     gap: 0.25rem;
+  }
+
+  .activity-list > li,
+  .activity-list > article {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
   }
 }
 

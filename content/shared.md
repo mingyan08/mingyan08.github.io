@@ -1,13 +1,23 @@
 # Shared Content
 
-This file is used in both English and Chinese versions. Edit repeated content here once.
+<!-- Edit publications, activities, people, and teaching here once for both languages.
+See content/README.md for templates and the supported formatting.
+Keep each publication, activity, or course entry on one source line; visual wrapping is fine.
+-->
 
 ## Publications {#publications}
-- **Optimization** | **2026** J. Pan and M. Yan, [Fast projection onto the top-k-sum constraint](http://doi.org/10.1080/10556788.2026.2692466), *Optimization Methods and Software*. ([slides](https://mingyan08.github.io/Slides/Topk.pdf))
-- **Distributed** | **2024** Z. Song, L. Shi, S. Pu, and M. Yan, [Optimal gradient tracking for decentralized optimization](http://doi.org/10.1007/s10107-023-01997-7), *Mathematical Programming*, 207, 1-53.
-- **Distributed** | **2019** Z. Li, W. Shi, and M. Yan, [A decentralized proximal-gradient method with network independent step-sizes and separated convergence rates](http://doi.org/10.1109/TSP.2019.2926022), *IEEE Transactions on Signal Processing*, 67, 4494-4506. ([Code](https://github.com/mingyan08/NIDS))
-- **Primal-Dual** | **2018** M. Yan, [A new primal-dual algorithm for minimizing the sum of three functions with a linear operator](http://doi.org/10.1007/s10915-018-0680-3), *Journal of Scientific Computing*, 76, 1698-1717. ([Code](https://github.com/mingyan08/PD3O))
-- **Distributed** | **2016** Z. Peng, Y. Xu, M. Yan, and W. Yin [ARock: an algorithmic framework for asynchronous parallel coordinate updates](http://doi.org/10.1137/15M1024950), *SIAM Journal of Scientific Computing*, 38, A2851-2879.
+- **Optimization** | **2026** J. Pan and M. Yan, [Fast projection onto the top-k-sum constraint](https://doi.org/10.1080/10556788.2026.2692466), *Optimization Methods and Software*. ([Slides](https://mingyan08.github.io/Slides/Topk.pdf))
+- **Distributed** | **2024** Z. Song, L. Shi, S. Pu, and M. Yan, [Optimal gradient tracking for decentralized optimization](https://doi.org/10.1007/s10107-023-01997-7), *Mathematical Programming*, 207, 1-53.
+- **Distributed** | **2019** Z. Li, W. Shi, and M. Yan, [A decentralized proximal-gradient method with network independent step-sizes and separated convergence rates](https://doi.org/10.1109/TSP.2019.2926022), *IEEE Transactions on Signal Processing*, 67, 4494-4506. ([Code](https://github.com/mingyan08/NIDS))
+- **Primal-Dual** | **2018** M. Yan, [A new primal-dual algorithm for minimizing the sum of three functions with a linear operator](https://doi.org/10.1007/s10915-018-0680-3), *Journal of Scientific Computing*, 76, 1698-1717. ([Code](https://github.com/mingyan08/PD3O))
+- **Distributed** | **2016** Z. Peng, Y. Xu, M. Yan, and W. Yin [ARock: an algorithmic framework for asynchronous parallel coordinate updates](https://doi.org/10.1137/15M1024950), *SIAM Journal of Scientific Computing*, 38, A2851-2879.
+
+## Selected Activities {#activities}
+
+<!-- Add real dated entries BELOW this comment. Replace all example details first.
+Template: - **YYYY-MM** [Activity title](https://example.edu/event/). Brief description.
+YYYY-MM-DD is also supported. The section stays hidden until an entry is added.
+-->
 
 ## People {#people}
 
@@ -39,7 +49,7 @@ This file is used in both English and Chinese versions. Edit repeated content he
 ### The Chinese University of Hong Kong, Shenzhen
 
 - DDA 1000: Freshmen Induction and Academic Planning - Fall 2026
-- [MAT 1002: Calculus II](https://mingyan08.github.io/Teaching/MAT1002/Sequence.html) - Spring 2023, Spring 2024, Spring 2025, Spring 2026
+- [MAT 1002: Calculus II](/Teaching/MAT1002/) - Spring 2023, Spring 2024, Spring 2025, Spring 2026
 - MAT 3007: Optimization - Summer 2022, Fall 2023
 
 ### Michigan State University

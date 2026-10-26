@@ -12,7 +12,7 @@ Students who enjoy rigorous mathematical thinking, algorithm design, and careful
 
 ## About {#about}
 
-Ming Yan is an Associate Professor and Assistant Dean in the School of Data Science at The Chinese University of Hong Kong, Shenzhen. His research connects optimization theory, machine learning, and scientific computing, with applications to large-scale data, inverse problems, distributed learning, and AI-driven scientific discovery.
+Ming Yan's research connects optimization theory with large-scale data, inverse problems, distributed learning, and AI-driven scientific discovery.
 
 He received his B.S. and M.S. degrees from the University of Science and Technology of China in 2005 and 2008, and his Ph.D. in Mathematics from the University of California, Los Angeles in 2012. Before joining CUHK-Shenzhen in 2022, he was a faculty member at Michigan State University.
 
@@ -35,6 +35,8 @@ Ph.D. in Mathematics; advisor: Professor Luminita A. Vese
 
 **USTC**  
 B.S. and M.S. in Mathematics
+
+## Selected Activities {#activities}
 
 ## Research {#research}
 
