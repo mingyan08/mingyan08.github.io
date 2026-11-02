@@ -7,7 +7,7 @@ My research focuses on the design and analysis of optimization algorithms for ma
 - [Email](mailto:yanming@cuhk.edu.cn)
 - [Google Scholar](https://scholar.google.com/citations?user=IR1mvb0AAAAJ&hl=en)
 - [GitHub](https://github.com/mingyan08)
-- [Appointment](https://apply.cuhk.edu.cn/matrix-base/rs/plan/SDSAB)
+- [DAA Appointment](https://apply.cuhk.edu.cn/matrix-base/rs/plan/SDSAB)
 
 ## About {#about}
 
