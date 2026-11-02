@@ -7,6 +7,7 @@
 - [邮箱](mailto:yanming@cuhk.edu.cn)
 - [Google Scholar](https://scholar.google.com/citations?user=IR1mvb0AAAAJ&hl=en)
 - [GitHub](https://github.com/mingyan08)
+- [预约](https://apply.cuhk.edu.cn/matrix-base/rs/plan/SDSAB)
 
 ## 简介 {#about}
 
