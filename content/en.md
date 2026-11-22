@@ -92,7 +92,8 @@ If you are interested in joining the group, please email me with the subject **P
 
 ### Visiting Students and Research Interns
 
-We also welcome inquiries from students interested in short-term research visits or internships. Please send your CV, transcript, proposed visit period, and a brief description of your research interests.
+We also welcome inquiries from students interested in short-term research visits or internships. 
+If you are interested in joining the group, please email me with the subject **RA Application - [Your Name]** and include your CV, transcript, proposed visit period, and a brief description of your research interests.
 
 ## Acknowledgments {#support}
 
