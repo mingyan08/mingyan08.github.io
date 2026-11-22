@@ -4,7 +4,7 @@
 This file supplies content to both English and Chinese versions of the website.
 Edit publications, activities, people, and teaching here once.
 
-Publication format:
+Publication format: *sparse*
 - **Category** | **Year** Authors, [Title](URL), *Venue*.
 
 Activity format:
@@ -17,15 +17,11 @@ Do not change the section identifiers such as {#publications}.
 ## Publications {#publications}
 - **PINN** | **2026** C. Si, K. An, S. Ma, and M. Yan, [Lightweight geometric adaptation for training physics-informed neural networks](https://arxiv.org/abs/2604.15392), *SIAM Journal on Scientific Computing* (accepted). ([Slides](https://mingyan08.github.io/Slides/26_CA.pdf))
 - **Optimization** | **2026** J. Pan, J. Li, S. Dai, and M. Yan, [Inexact Bregman sparse Newton method for efficient optimal transport](https://arxiv.org/abs/2603.07156), *NeurIPS 2026* (accepted).
-- **PINN** | **2026** C. Si and M. Yan, [Convolution-weighting method for the physics-informed neural network: A primal-dual optimization perspective](https://doi.org/10.1016/j.jcp.2026.114773), *Journal of Computational Physics*, 555, 114773.
 - **PINN** | **2026** C. Si, M. Yan, X. Li, and Z. Xia, [Complex physics-informed neural network](https://doi.org/10.1016/j.jcp.2026.114713), *Journal of Computational Physics*, 553, 114713.
 - **Optimization** | **2026** J. Pan and M. Yan, [Fast projection onto the top-k-sum constraint](https://doi.org/10.1080/10556788.2026.2692466), *Optimization Methods and Software*. ([Slides](https://mingyan08.github.io/Slides/Topk.pdf)) ([Code](https://github.com/PanT12/top-k-sum))
 - **Distributed** | **2024** Z. Song, L. Shi, S. Pu, and M. Yan, [Optimal gradient tracking for decentralized optimization](https://doi.org/10.1007/s10107-023-01997-7), *Mathematical Programming*, 207, 1–53.
 - **Distributed** | **2024** Z. Song, L. Shi, S. Pu, and M. Yan, [Provably accelerated decentralized gradient methods over unbalanced directed graphs](https://doi.org/10.1137/22M148570X), *SIAM Journal on Optimization*, 34, 1131–1156.
-- **Sparse** | **2023** M. Hu, Y. Lou, B. Wang, M. Yan, X. Yang, and Q. Ye, [Accelerated sparse recovery via gradient descent with nonlinear conjugate gradient momentum](https://doi.org/10.1007/s10915-023-02148-y), *Journal of Scientific Computing*, 95, Article 33.
 - **Federated** | **2022** S. Alam, L. Liu, M. Yan, and M. Zhang, [FedRolex: Model-heterogeneous federated learning with rolling sub-model extraction](https://papers.neurips.cc/paper_files/paper/2022/hash/bf5311df07f3efce97471921e6d2f159-Abstract-Conference.html), *NeurIPS 2022*. ([Code](https://github.com/AIoT-MLSys-Lab/FedRolex))
-- **Distributed** | **2022** Z. Song, W. Li, K. Jin, L. Shi, M. Yan, W. Yin, and K. Yuan, [Communication-efficient topologies for decentralized learning with O(1) consensus rate](https://proceedings.neurips.cc/paper_files/paper/2022/hash/0790ef700dd0072f4940abda9b7d0005-Abstract-Conference.html), *NeurIPS 2022*. ([Code](https://github.com/kexinjinnn/EquiTopo))
-- **Distributed** | **2022** Z. Song, L. Shi, S. Pu, and M. Yan, [Compressed gradient tracking for decentralized optimization over general directed networks](https://doi.org/10.1109/TSP.2022.3160238), *IEEE Transactions on Signal Processing*, 70, 1775–1787.
 - **Distributed** | **2019** Z. Li, W. Shi, and M. Yan, [A decentralized proximal-gradient method with network independent step-sizes and separated convergence rates](https://doi.org/10.1109/TSP.2019.2926022), *IEEE Transactions on Signal Processing*, 67, 4494–4506. ([Code](https://github.com/mingyan08/NIDS))
 - **Primal-Dual** | **2018** M. Yan, [A new primal-dual algorithm for minimizing the sum of three functions with a linear operator](https://doi.org/10.1007/s10915-018-0680-3), *Journal of Scientific Computing*, 76, 1698–1717. ([Code](https://github.com/mingyan08/PD3O))
 - **Distributed** | **2016** Z. Peng, Y. Xu, M. Yan, and W. Yin, [ARock: An algorithmic framework for asynchronous parallel coordinate updates](https://doi.org/10.1137/15M1024950), *SIAM Journal on Scientific Computing*, 38, A2851–A2879.
