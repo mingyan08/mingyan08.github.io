@@ -15,7 +15,7 @@ Do not change the section identifiers such as {#publications}.
 -->
 
 ## Publications {#publications}
-
+- **PINN** | **2026** C. Si, K. An, S. Ma, and M. Yan, [Lightweight geometric adaptation for training physics-informed neural networks](https://arxiv.org/abs/2604.15392), *SIAM Journal on Scientific Computing* (accepted). ([Slides](https://mingyan08.github.io/Slides/26_CA.pdf))
 - **Optimization** | **2026** J. Pan, J. Li, S. Dai, and M. Yan, [Inexact Bregman sparse Newton method for efficient optimal transport](https://arxiv.org/abs/2603.07156), *NeurIPS 2026* (accepted).
 - **PINN** | **2026** C. Si and M. Yan, [Convolution-weighting method for the physics-informed neural network: A primal-dual optimization perspective](https://doi.org/10.1016/j.jcp.2026.114773), *Journal of Computational Physics*, 555, 114773.
 - **PINN** | **2026** C. Si, M. Yan, X. Li, and Z. Xia, [Complex physics-informed neural network](https://doi.org/10.1016/j.jcp.2026.114713), *Journal of Computational Physics*, 553, 114713.
