@@ -69,7 +69,7 @@
 
 ## 代表性论文 {#publications}
 
-以下论文展示了我们在优化算法、分布式与联邦学习、科学计算等方向的部分代表性成果。完整论文列表请见 [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ).
+以下列出十篇代表性论文。完整的论文列表请参见我的 [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ) 主页。
 
 ## 团队 {#people}
 
