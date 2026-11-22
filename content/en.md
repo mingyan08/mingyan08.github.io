@@ -88,11 +88,13 @@ If you are interested in joining the group, please email me with the subject **P
 ### Postdoctoral Researchers
 
 Researchers with expertise in optimization, numerical analysis, machine learning, or scientific computing are encouraged to contact me. Relevant experience in algorithm design, convergence analysis, or numerical computation is particularly welcome.
+
 If you are interested in joining the group, please email me with the subject **Postdoc Application - [Your Name]** and include your CV, two representative papers, and a brief research statement outlining your previous work and future research interests.
 
 ### Visiting Students and Research Interns
 
 We also welcome inquiries from students interested in short-term research visits or internships. 
+
 If you are interested in joining the group, please email me with the subject **RA Application - [Your Name]** and include your CV, transcript, proposed visit period, and a brief description of your research interests.
 
 ## Acknowledgments {#support}
