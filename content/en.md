@@ -68,7 +68,7 @@ We explore how machine learning can contribute to the design of optimization alg
 
 ## Selected Publications {#publications}
 
-The following papers highlight selected contributions to optimization algorithms, distributed and federated learning, and scientific computing. A complete publication list is available on [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ).
+Ten representative publications are listed below. For a complete publication list, please visit my [Google Scholar](https://scholar.google.com/citations?hl=en&user=IR1mvb0AAAAJ) profile. 
 
 ## People {#people}
 
